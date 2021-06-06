@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { UserModal } from './UserModal';
+import { UserModal } from './UserModal'
 import { resetOrder } from '../store/actions/orderActions'
+import { onLogout } from '../store/actions/userActions'
 
 class _Header extends Component {
     state = {
@@ -24,6 +25,11 @@ class _Header extends Component {
         this.props.resetOrder(emptyOrder)
     }
 
+    logout = () => {
+        this.props.onLogout()
+        this.setState({isUserModalShown: false})
+    }
+
     render() {
         const { loggedInUser, orders } = this.props;
         const { isUserModalShown } = this.state
@@ -40,15 +46,19 @@ class _Header extends Component {
                     <div>Become a Host</div>
                     <button className="login-btn flex space-between align-center" onClick={() => { this.toggleUserModal() }}>
                         <i className="fas fa-bars fs18"></i>
-                        <i className="fas fa-user-circle fs28"></i>
+                        {loggedInUser &&
+                            <div>
+                                <img className="user-img" src={loggedInUser.img} alt="user profile" />
+                            </div>}
+                        {!loggedInUser &&
+                            <i className="fas fa-user-circle fs28"></i>
+                        }
                     </button>
                     <div className="user-container">
-                        {loggedInUser && <span className="loggedin-user">
-                            <Link to={`user/${loggedInUser._id}`}>
-                                {loggedInUser.fullname}
-                            </Link>
-                        </span>}
-                        {isUserModalShown && <UserModal orders={orders} />}
+                        {/* {loggedInUser && <span>
+                            Hello {loggedInUser.fullName}
+                        </span>} */}
+                        {isUserModalShown && <UserModal orders={orders} loggedInUser={loggedInUser} logout={this.logout} />}
                     </div>
                 </section>
             </section>
@@ -63,7 +73,8 @@ const mapStateToProps = state => {
     }
 }
 const mapDispatchToProps = {
-    resetOrder
+    resetOrder,
+    onLogout
 }
 
 

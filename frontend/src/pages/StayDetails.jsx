@@ -109,7 +109,7 @@ class _StayDetails extends Component {
       updatedOrder.location = this.props.stay.loc.address
       updatedOrder.stay = this.props.stay
       this.props.setLocation(updatedOrder)
-      this.props.addOrder(updatedOrder)
+      this.props.addOrder(updatedOrder, this.props.stay.host._id)
       this.setState({ isSecondClick: true })
       this.setState({ isChargeShown: false })
     

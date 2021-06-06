@@ -1,16 +1,27 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
-export function UserModal() {
+export function UserModal({ loggedInUser, logout }) {
 
     return (
-        // isUserModalShown &&
         <div className="user-modal flex column">
             <ul>
-                <li>Messages</li>
-                <Link to="/trips">
-                    <li>Trips</li>
-                </Link>
-                <li>Wishlist</li>
+                {!loggedInUser &&
+                    <NavLink to="/login">
+                        <li className="login-link">Login</li>
+                    </NavLink>
+                }
+                {loggedInUser &&
+                    <div className="options-loggedin">
+                        <li>Messages</li>
+                        <Link to="/trips">
+                            <li>Trips</li>
+                        </Link>
+                        <li>Wishlist</li>
+                    </div>
+                }
+                {/* {loggedInUser.isHost &&
+                    <li>Dashboard</li>
+                } */}
                 {/* <div className="tiny-border-bottom"></div> */}
                 <div className="divider"></div>
                 <li>Host your home</li>
@@ -19,7 +30,9 @@ export function UserModal() {
                 <div className="divider"></div>
                 {/* <div className="tiny-border-bottom"></div> */}
                 <li>Help</li>
-                <li>Log out</li>
+                <Link to="/">
+                    <li onClick={() => logout()}>Log out</li>
+                </Link>
             </ul>
         </div>
     )

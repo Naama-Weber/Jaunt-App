@@ -1,171 +1,116 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { NavBar } from '../cmps/NavBar.jsx'
 
-import {
-  loadUsers,
-  removeUser,
-  login,
-  logout,
-  signup
-} from '../store/actions/userActions'
+import React, { Component } from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { connect } from 'react-redux'
+import { onLogin, onSignup } from '../store/actions/userActions'
+import { TextField} from '@material-ui/core'
+import { Header } from '../cmps/Header';
 
 class _LoginSignup extends Component {
-  state = {
-    msg: '',
-    loginCred: {
-      username: '',
-      password: ''
-    },
-    signupCred: {
-      username: '',
-      password: '',
-      fullname: ''
+
+    state = {
+        userInfo: {
+            fullname: '',
+            username: '',
+            password: ''
+        },
+        credentials: {
+            username: '',
+            password: ''
+        },
+        pageMode: null
     }
-  }
 
-  componentDidMount() {
-    this.props.loadUsers()
-  }
-
-  loginHandleChange = ev => {
-    const { name, value } = ev.target
-    this.setState(prevState => ({
-      loginCred: {
-        ...prevState.loginCred,
-        [name]: value
-      }
-    }))
-  }
-
-  signupHandleChange = ev => {
-    const { name, value } = ev.target
-    this.setState(prevState => ({
-      signupCred: {
-        ...prevState.signupCred,
-        [name]: value
-      }
-    }))
-  }
-
-  doLogin = async ev => {
-    ev.preventDefault()
-    const { username, password } = this.state.loginCred
-    if (!username) {
-      return this.setState({ msg: 'Please enter user/password' })
+    componentDidMount() {
+        const { loggedinUser } = this.props
+        if (loggedinUser) this.props.history.push('/')
+        const pageMode = this.props.location.pathname === '/login' ? 'login' : 'signup'
+        this.setState({ pageMode })
     }
-    const userCreds = { username, password }
-    try {
-      this.props.login(userCreds)
-      this.setState({ loginCred: { username: '', password: '' } })
-    } catch (err) {
-      this.setState({ msg: 'Login failed, try again.' })
+
+    componentDidUpdate() {
+        const { loggedInUser } = this.props
+        if (loggedInUser) this.props.history.goBack()
     }
-  }
 
-  doSignup = async ev => {
-    ev.preventDefault()
-    const { username, password, fullname } = this.state.signupCred
-    if (!username || !password || !fullname) {
-      return this.setState({ msg: 'All inputs are required' })
+    validate = (values) => {
+        const errors = {}
+        if (!values.username) {
+            errors.username = 'Required'
+        } else if (values.username.length < 6) {
+            errors.username = 'Please use at least 6 characters'
+        }
+        if (values.password.length < 6) {
+            errors.password = 'Password too short'
+        }
+        if (!values.fullname) {
+            errors.fullname = 'Required'
+        } else if (values.fullname.length < 6) {
+            errors.fullname = 'Please use at least 6 characters'
+        }
+        return errors
     }
-    const signupCreds = { username, password, fullname }
-    this.props.signup(signupCreds)
-    this.setState({ signupCred: { username: '', password: '', fullname: '' } })
-  }
 
-  removeUser = userId => {
-    this.props.removeUser(userId)
-  }
-  render() {
-    
-    let signupSection = (
-      <div className="form-container">
-        <form className="frm" onSubmit={this.doSignup}>
-          <h2>Signup</h2>
-          <input
-            type="text"
-            name="fullname"
-            value={this.state.signupCred.fullname}
-            onChange={this.signupHandleChange}
-            placeholder="Full name"
-            autoComplete="fullname"
-          />
-          <input
-            name="password"
-            type="password"
-            value={this.state.signupCred.password}
-            onChange={this.signupHandleChange}
-            placeholder="Password"
-            autoComplete="current-password"
-          />
-          <input
-            type="text"
-            name="username"
-            value={this.state.signupCred.username}
-            onChange={this.signupHandleChange}
-            placeholder="Username"
-            autoComplete="username"
-          />
-          <br />
-          <button>Signup</button>
-        </form>
-      </div>
-    )
-    let loginSection = (
-      <div className="form-container">
-        <form className="frm" onSubmit={this.doLogin}>
-          <h2>Login</h2>
-          <select
-            name="username"
-            value={this.state.loginCred.username}
-            onChange={this.loginHandleChange}
-          >
-            <option value="">Select User</option>
-            {this.props.users && this.props.users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
-          </select>
-          <button>Login</button>
-        </form>
-      </div>
-    )
+    onSubmit = (values) => {
+        const { pageMode } = this.state
+        const { onLogin, onSignup } = this.props
+        pageMode === 'login' ? onLogin(values) : onSignup(values)
+    }
 
-    const { loggedInUser } = this.props
-    return (
-      <div className="form-container">
-        <div className="login">
-        <NavBar/>
+    styledField = (props) => {
+        return  <TextField {...props} variant="outlined" color={'primary'} />
+    }
 
-          <p>{this.state.msg}</p>
-          {loggedInUser && (
-            <div>
-              <h3>
-                Welcome {loggedInUser.fullname}
-                <button onClick={this.props.logout}>Logout</button>
-              </h3>
-            </div>
-          )}
-          {!loggedInUser && loginSection}
-          {!loggedInUser && signupSection}
-
-        </div>
-      </div>
-    )
-  }
+    render() {
+        const { pageMode, credentials, userInfo } = this.state
+        const { loginErr } = this.props
+        if (!pageMode) return ''
+        return (<section className="login-page">
+        <Header/>
+            {pageMode === 'login' && <section className="login-signup flex column align-center">
+                <h2>Login</h2>
+                <Formik initialValues={credentials} onSubmit={this.onSubmit} >
+                    <Form className="flex column">
+                        <Field type="username" label="Username" name="username" as={this.styledField} />
+                        <ErrorMessage name="username" component="div" />
+                        <Field type="password" label="Password" name="password" as={this.styledField} />
+                        <ErrorMessage name="password" component="div" as={this.styledField} />
+                        {loginErr && <p>{loginErr}</p>}
+                        <button type="submit" className="primary-btn">Login</button>
+                    </Form>
+                </Formik>
+            </section>}
+            {pageMode === 'signup' &&
+                <section className="login-signup flex column align-center full">
+                    <h1>Signup</h1>
+                    <Formik initialValues={userInfo} validateOnChange={false} validateOnBlur={false} validate={this.validate} onSubmit={this.onSubmit}>
+                        <Form className="flex column">
+                            <Field type="fullname" label="Fullname" name="fullname" as={this.styledField} />
+                            <ErrorMessage name="fullname" component="p" />
+                            <Field type="username" label="Username" name="username" as={this.styledField} />
+                            <ErrorMessage name="username" component="p" />
+                            <Field type="password" label="Password" name="password" as={this.styledField} />
+                            <ErrorMessage name="password" component="p" />
+                            <button type="submit" className="primary-btn">Signup</button>
+                        </Form>
+                    </Formik>
+                </section>}
+        </section>
+        )
+    }
 }
 
-const mapStateToProps = state => {
-  return {
-    users: state.userModule.users,
-    loggedInUser: state.userModule.loggedInUser,
-    isLoading: state.systemModule.isLoading
-  }
+function mapStateToProps(state) {
+    return {
+        loggedInUser: state.userModule.loggedInUser,
+        loginErr: state.userModule.loginErr
+    }
 }
+
+
 const mapDispatchToProps = {
-  login,
-  logout,
-  signup,
-  removeUser,
-  loadUsers
+    onLogin,
+    onSignup,
 }
 
 export const LoginSignup = connect(mapStateToProps, mapDispatchToProps)(_LoginSignup)

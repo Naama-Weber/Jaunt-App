@@ -11,6 +11,7 @@ export const userService = {
     remove,
     update,
     getLoggedinUser,
+    addOrder
 }
 
 window.userService = userService
@@ -38,6 +39,14 @@ async function add(order) {
     // Handle case in which admin updates other user's details
     // if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
 }
+async function addOrder(order, hostId) {
+    // return storageService.post('order', order)
+    const host = await httpService.get(`user/${hostId}`)
+    host.incomingOrders.push(order)
+    httpService.put(`user/${hostId}`, host)
+    // Handle case in which admin updates other user's details
+    // if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
+}
 async function update(user) {
     // return storageService.put('user', user)
     user = await httpService.put(`user/${user._id}`, user)
@@ -46,29 +55,40 @@ async function update(user) {
 }
 
 
-async function login(userCred) {
-    // const users = await storageService.query('user')
-    // const user = users.find(user => user.username === userCred.username)
-    // return _saveLocalUser(user)
+async function login(credentials) {
+    try {
+        const user = await httpService.post('auth/login', credentials)
+        if (user) return _saveLocalUser(user)
+    } catch (err) {
+        throw err
+    }
+}
 
-    const user = await httpService.post('auth/login', userCred)
-    if (user) return _saveLocalUser(user)
+async function signup(userInfo) {
+    try {
+        const user = await httpService.post('auth/signup', userInfo)
+        return _saveLocalUser(user)
+    } catch (err) {
+        throw err
+    }
 }
-async function signup(userCred) {
-    // const user = await storageService.post('user', userCred)
-    const user = await httpService.post('auth/signup', userCred)
-    return _saveLocalUser(user)
-}
+
 async function logout() {
-    sessionStorage.clear()
-    return await httpService.post('auth/logout')
+    try {
+        sessionStorage.clear()
+        return await httpService.post('auth/logout')
+    } catch (err) {
+        throw err
+    }
 }
+
 function _saveLocalUser(user) {
     sessionStorage.setItem('loggedinUser', JSON.stringify(user))
     return user
 }
 
 function getLoggedinUser() {
-    return JSON.parse(sessionStorage.getItem('loggedinUser'))
+    return JSON.parse(sessionStorage.getItem('loggedinUser') || 'null')
 }
+
 
