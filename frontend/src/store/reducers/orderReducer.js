@@ -17,6 +17,8 @@ export function orderReducer(state = initialState, action = {}) {
             return { ...state, currOrder: action.guestAmount }
         case 'RESET_ORDER':
             return { ...state, currOrder: action.emptyOrder }
+        case 'SET_ORDER':
+            return { ...state, currOrder: action.order }
         default:
             return state
     }
