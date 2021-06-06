@@ -76,7 +76,7 @@ class _StayDetails extends Component {
       return <button className="check-btn fs16"
         onMouseMove={this.handleMouseMove}
         style={style}
-        onClick={this.toggleCharge}>
+        onClick={(ev)=> this.toggleCharge(ev)}>
         Check Availability
         </button>
     } else if (isChargeShown && !isSecondClick) {
@@ -98,7 +98,8 @@ class _StayDetails extends Component {
 
   }
 
-  toggleCharge = () => {
+  toggleCharge = (ev) => {
+    ev.preventDefault()
     const { isChargeShown } = this.state
     if (!isChargeShown) {
       this.setState({ isChargeShown: true })
@@ -144,6 +145,7 @@ class _StayDetails extends Component {
 
   render() {
     const { stay, order } = this.props
+    // console.log('stay in details render ', stay);
     const { startDate, endDate,isSecondClick } = this.state
     if (!stay) return <div>loading</div>
     return (

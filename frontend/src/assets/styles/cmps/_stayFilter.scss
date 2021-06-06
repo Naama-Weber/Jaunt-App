@@ -24,12 +24,17 @@
 
         .location{
             padding-left: 30px;
-            input:focus{
+            input:focus,
+            input:active,
+            input:visited{
                 background-color: transparent;
             }
         }
         div.date-picker {
             padding-left: 40px;
+            span{
+                font-family: cereal-medium;
+            }
         }
         .tiny-border{
             border-right: 1px solid #ddd;

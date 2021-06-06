@@ -105,7 +105,7 @@ class _StayFilter extends Component {
                 </div>
                 <div className="tiny-border"></div>
                 <div className="date-picker flex column justify-center">
-                    Dates
+                    <span>Dates</span>
                     <DatePicker
                         placeholderText={(this.props.order.startDate && this.props.order.endDate)? utilService.formatTime(this.props.order.startDate) + '-' + utilService.formatTime(this.props.order.endDate) : "Choose dates"}
                         selected={startDate}

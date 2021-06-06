@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 
 export function StayMainInfo({stay}) {
-
     return (
         <section>
             <div className="details-title">

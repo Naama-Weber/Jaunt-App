@@ -4,6 +4,7 @@ import { loadStays } from '../store/actions/stayActions.js'
 import { setDates, setGuestAmount,setLocation } from '../store/actions/orderActions.js'
 import { StayList } from '../cmps/StayList'
 import { NavBar } from '../cmps/NavBar.jsx'
+import { stayService } from '../services/stayService.js'
 
 class _StayApp extends Component {
     state = {
