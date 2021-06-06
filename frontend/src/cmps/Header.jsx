@@ -47,7 +47,7 @@ class _Header extends Component {
                     <button className="login-btn flex space-between align-center" onClick={() => { this.toggleUserModal() }}>
                         <i className="fas fa-bars fs18"></i>
                         {loggedInUser &&
-                            <div>
+                            <div className="flex">
                                 <img className="user-img" src={loggedInUser.img} alt="user profile" />
                             </div>}
                         {!loggedInUser &&
