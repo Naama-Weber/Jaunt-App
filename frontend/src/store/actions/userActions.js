@@ -27,11 +27,10 @@ export function removeUser(userId) {
     }
   }
 }
-export function addOrder(order) {
+export function addOrder(order, hostId) {
   return async dispatch => {
     try {
-      await userService.add(order)
-      console.log('order in addOrder ', order);
+      await userService.addOrder(order, hostId)
       dispatch({ type: 'ADD_ORDER', order })
     } catch (err) {
       console.log('UserActions: err in addOrder', err)
@@ -39,34 +38,35 @@ export function addOrder(order) {
   }
 }
 
+export function onLogin(credentials) {
+  return async dispatch => {
+      try {
+          const user = await userService.login(credentials)
+          dispatch({ type: 'SET_USER', user })
+      } catch (err) {
+          console.log('UserActions: err in login', err)
+      }
+  }
+}
 
-export function login(userCreds) {
+export function onSignup(userInfo) {
   return async dispatch => {
-    try {
-      const user = await userService.login(userCreds)
-      dispatch({ type: 'SET_USER', user })
-    } catch (err) {
-      console.log('UserActions: err in login', err)
-    }
+      try {
+          const user = await userService.signup(userInfo)
+          dispatch({ type: 'SET_USER', user })
+      } catch (err) {
+          console.log('UserActions: err in signup', err)
+      }
   }
 }
-export function signup(userCreds) {
+
+export function onLogout() {
   return async dispatch => {
-    try {
-      const user = await userService.signup(userCreds)
-      dispatch({ type: 'SET_USER', user })
-    } catch (err) {
-      console.log('UserActions: err in signup', err)
-    }
-  }
-}
-export function logout() {
-  return async dispatch => {
-    try {
-      await userService.logout()
-      dispatch({ type: 'SET_USER', user: null })
-    } catch (err) {
-      console.log('UserActions: err in logout', err)
-    }
+      try {
+          await userService.logout()
+          dispatch({ type: 'SET_USER', user: null })
+      } catch (err) {
+          console.log('UserActions: err in logout', err)
+      }
   }
 }

@@ -40,6 +40,15 @@
     .btns{
         flex: 1;
     }
+    .login-link{
+      font-family: cereal-bold;
+    }
+    .options-loggedin{
+      li{
+        padding: 15px 30px;
+
+      }
+    }
 
    button{
     background-color: inherit;

@@ -5,6 +5,7 @@ import { LoginSignup } from './pages/LoginSignup'
 import { StayDetails } from './pages/StayDetails'
 import { StayApp } from './pages/StayApp'
 import { Trips } from './pages/Trips'
+import { Dashboard } from './pages/Dashboard'
 
 
 export function App() {
@@ -16,6 +17,7 @@ export function App() {
             <Route path="/stay/:id" component={StayDetails} />
             <Route path="/stay" component={StayApp} />
             <Route path="/trips" component={Trips} />
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="/login" component={LoginSignup} />
             <Route path="/" component={Home} />
           </Switch>

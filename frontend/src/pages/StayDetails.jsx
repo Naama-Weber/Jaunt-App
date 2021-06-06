@@ -110,7 +110,7 @@ class _StayDetails extends Component {
     updatedOrder.location = this.props.stay.loc.address
     updatedOrder.stay = this.props.stay
     this.props.setLocation(updatedOrder)
-    this.props.addOrder(updatedOrder)
+    this.props.addOrder(updatedOrder, this.props.stay.host._id)
   }
 
   getGuestsNum = () => {
@@ -145,7 +145,6 @@ class _StayDetails extends Component {
 
   render() {
     const { stay, order } = this.props
-    // console.log('stay in details render ', stay);
     const { startDate, endDate,isSecondClick } = this.state
     if (!stay) return <div>loading</div>
     return (
