@@ -16,7 +16,7 @@ class _StayFilter extends Component {
         isModalShown: false,
         startDate: '',
         endDate: '',
-        // guestAmount: { adults: 0, children: 0, infants: 0 },
+         guestAmount: { adults: 0, children: 0, infants: 0 },
         x: 0,
         y: 0
     }

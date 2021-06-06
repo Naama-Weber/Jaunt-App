@@ -4,6 +4,7 @@ import { loadStays } from '../store/actions/stayActions.js'
 import { setDates, setGuestAmount,setLocation } from '../store/actions/orderActions.js'
 import { StayList } from '../cmps/StayList'
 import { NavBar } from '../cmps/NavBar.jsx'
+import { LoaderCmp } from '../cmps/LoaderCmp'
 import { stayService } from '../services/stayService.js'
 
 class _StayApp extends Component {
@@ -44,8 +45,8 @@ class _StayApp extends Component {
 
     render() {
         const { stays, order, setDates, setGuestAmount, setLocation } = this.props
+        if (!stays) return <LoaderCmp/> 
         const loc = this.getFilterBy().location
-        if (!stays) return <div>Loading...</div>
         return (
             <section className="stay-app">
                 <NavBar order={order} setDates={setDates} setGuestAmount={setGuestAmount} setLocation={setLocation} />
@@ -53,6 +54,7 @@ class _StayApp extends Component {
                 {loc &&
                  <h1 className="headline-explore">Stays in {loc}</h1>
                 }
+                {/* <LoaderCmp/> */}
                 <StayList stays={stays} />
             </section>
         )

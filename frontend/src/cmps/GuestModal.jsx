@@ -1,4 +1,5 @@
 export function GuestModal({ isModalShown, updateGuestsAmount, guestAmount }) {
+console.log(guestAmount);
 
     return (
         isModalShown &&

@@ -1,5 +1,7 @@
 .search-container{
-
+    input:-webkit-autofill {
+        color: #2a2a2a !important;
+    }
     .react-datepicker__header{
         background-color: white;
     }
