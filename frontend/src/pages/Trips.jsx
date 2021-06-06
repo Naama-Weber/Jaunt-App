@@ -7,7 +7,8 @@ class _Trips extends Component {
 
 
     render() {
-        const { orders } = this.props
+        const { orders, loggedInUser } = this.props
+        console.log(orders);
         return (
             <section className="trips-page">
                 <Header />
@@ -40,7 +41,8 @@ class _Trips extends Component {
 
 const mapStateToProps = state => {
     return {
-        orders: state.userModule.orders
+        orders: state.userModule.orders,
+        loggedInUser: state.userModule.loggedInUser
     }
 }
 
