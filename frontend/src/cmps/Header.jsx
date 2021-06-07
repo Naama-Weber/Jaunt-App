@@ -34,7 +34,6 @@ class _Header extends Component {
         const { loggedInUser, orders } = this.props;
         const { isUserModalShown } = this.state
         return <header className="flex space-between align-center">
-            <section className="flex space-between">
                 <div onClick={() => { this.goToHomepage() }} className="logo-container flex space-between">
                     <NavLink exact to="/">
                         <i className="fab fa-airbnb fs34"></i>
@@ -65,7 +64,6 @@ class _Header extends Component {
                     </div>
 
                 </section>
-            </section>
         </header>
     }
 
