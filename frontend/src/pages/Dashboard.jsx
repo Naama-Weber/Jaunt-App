@@ -1,103 +1,109 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Alert from '../cmps/Alert'
 import { Header } from '../cmps/Header'
-// import {utilService} from '../services/utilService'
+import { utilService } from '../services/utilService'
 import dashboard from '../assets/img/dashboard.png'
 
 class _Dashboard extends Component {
-
+    state = {
+        reqStatus: 'pending'
+    }
+    acceptedOrders = () => {
+        this.state.reqStatus === 'pending' ? this.setState({ reqStatus: 'accepted' }) : this.setState({ reqStatus: 'pending' })
+    }
 
     render() {
-        const orders = [
+        const { orders } = this.props
+        const acceptedOrders = [
             {
-                name: "yotam",
-                img: "https://source.unsplash.com/random/100x100/?face",
-                expire: "12 hours",
-                desc: "1 guest · Mar 26, 2021 - Mar 27, 2021 · Apartamento reformado para",
+                name: "Jo Michelle",
+                img: "https://res.cloudinary.com/dyz2f5gzh/image/upload/v1623042546/Jaunt%20Demo%20Data/oliver_zabasl.webp",
+                desc: "1 guest ·  22/04/2021-24/04/2021 · Apartamento reformado para",
                 status: "accepted"
             },
             {
-                name: "yotam",
-                img: "https://source.unsplash.com/random/100x100/?face",
-                expire: "12 hours",
-                desc: "1 guest · Mar 26, 2021 - Mar 27, 2021 · Apartamento reformado para",
+                name: "Megan Brooks",
+                img: "https://res.cloudinary.com/dyz2f5gzh/image/upload/v1623042039/Jaunt%20Demo%20Data/megan_gluepb.jpg",
+                desc: "2 guest ·  26/04/2021-30/04/2021 · Apartamento reformado para",
                 status: "accepted"
             },
             {
-                name: "yotam",
-                img: "https://source.unsplash.com/random/100x100/?face",
-                expire: "12 hours",
-                desc: "1 guest · Mar 26, 2021 - Mar 27, 2021 · Apartamento reformado para",
+                name: "Amanda Levin",
+                img: "https://res.cloudinary.com/dyz2f5gzh/image/upload/v1623042124/Jaunt%20Demo%20Data/girl_lnm8jz.webp",
+                desc: "2 guest ·  01/05/2021-10/05/2021 · Lovely duplex near the market",
                 status: "accepted"
             },
             {
-                name: "yotam",
-                img: "https://source.unsplash.com/random/100x100/?face",
-                expire: "12 hours",
-                desc: "1 guest · Mar 26, 2021 - Mar 27, 2021 · Apartamento reformado para",
+                name: "Arnold Ben Harush",
+                img: "https://res.cloudinary.com/dyz2f5gzh/image/upload/v1623042627/Jaunt%20Demo%20Data/boy_ebfvdi.jpg",
+                desc: "2 guest ·  05/05/2021-10/05/2021 · Lovely duplex near the market",
                 status: "accepted"
             },
-            {
-                name: "yotam",
-                img: "https://source.unsplash.com/random/100x100/?face",
-                expire: "12 hours",
-                desc: "1 guest · Mar 26, 2021 - Mar 27, 2021 · Apartamento reformado para",
-                status: "accepted"
-            },
-            {
-                name: "yotam",
-                img: "https://source.unsplash.com/random/100x100/?face",
-                expire: "12 hours",
-                desc: "1 guest · Mar 26, 2021 - Mar 27, 2021 · Apartamento reformado para",
-                status: "accepted"
-            },
-            {
-                name: "yotam",
-                img: "https://source.unsplash.com/random/100x100/?face",
-                expire: "12 hours",
-                desc: "1 guest · Mar 26, 2021 - Mar 27, 2021 · Apartamento reformado para",
-                status: "accepted"
-            },
+
         ]
         return (
             <section className="dashboard-page">
                 <Header />
                 <h2>Pending / Accepted</h2>
                 <section className="host-container flex">
-                    <div className="reservations">
-                        {orders.map((order, idx) =>
-                            <div className="res-card flex" key={idx}>
-                                <div className="res-img"><img src={order.img} alt={order.name} /> </div>
-                                <div className="txt">
-                                    <div className="name">Request by: {order.name}</div>
-                                    <div className="expire">Expires in {order.expire}</div>
-                                    <div className="desc">{order.desc}</div>
+                    <section className="all-reservations flex column">
+                        <div className="new-reservations">
+                            {orders.map((order, idx) =>
+                                <div className="res-card flex" key={idx}>
+                                    <div className="res-img"><img src={order.guest.img} alt={order.stay.name} /> </div>
+                                    <div className="txt">
+                                        <div className="name">Request by: {order.guest.fullName}</div>
+                                        <div className="expire">Expires in 12 hours</div>
+                                        <div className="desc">{order.guestAmount.adults} guests · {utilService.formatTime(order.startDate)}-{utilService.formatTime(order.endDate)} · {order.stay.name}</div>
+                                    </div>
+                                    {this.state.reqStatus === 'pending' &&
+                                        <div className="status pending" onClick={() => this.acceptedOrders()}>{this.state.reqStatus}</div>
+                                    }
+                                    {this.state.reqStatus === 'accepted' &&
+                                        <div className="status" onClick={() => this.acceptedOrders()}>{this.state.reqStatus}
+                                            <Alert text="Order accepted" />
+                                            {/* {setTimeout(<Alert text="Order accepted" />, 3000)} */}
+
+                                        </div>
+                                    }
                                 </div>
-                                <div className="status">{order.status}</div>
-                            </div>
-                        )}
-                    </div>
+                            )}
+                        </div>
+                        <div className="old-reservations">
+                            {acceptedOrders.map((order, idx) =>
+                                <div className="res-card flex" key={idx}>
+                                    <div className="res-img"><img src={order.img} alt={order.name} /> </div>
+                                    <div className="txt">
+                                        <div className="name">Request by: {order.name}</div>
+                                        <div className="expire">Expired</div>
+                                        <div className="desc">{order.desc}</div>
+                                    </div>
+                                    <div className="status">{order.status}</div>
+                                </div>
+                            )}
+                        </div>
+                    </section>
+
                     <div className="summary">
                         <div className="title">Hosting summary</div>
                         <div className="details flex space-between">
                             <div className="txt">
-                                <p className="head">Fantastic job !</p>
+                                <p className="head">Fantastic job!</p>
                                 <div className="main">
                                     <p>Guests love what you're doing.</p>
-                                    <p>keep up the great work !</p>
+                                    <p>Keep up the great work!</p>
                                 </div>
-                                <p className="bottom">View details</p>
                             </div>
-                            {/* to edit img source */}
                             <div className="v-img"> <img src="http://homeseek-app.herokuapp.com/img/checkmark.0fe4b53e.svg" alt="v-img" /> </div>
                         </div>
                         <div className="earnings-container">
                             <div className="earnings  flex space-between">
-                                <div >November earnings</div>
+                                <div >June earnings</div>
                                 <div className="green">2650$</div>
                             </div>
                             <div className="views flex space-between">
-                                <div>30-day views</div>
+                                <div>60-day views</div>
                                 <div className="green">751</div>
                             </div>
                         </div>

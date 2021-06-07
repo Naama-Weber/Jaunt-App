@@ -108,9 +108,11 @@ class _StayDetails extends Component {
       const updatedOrder = { ...this.props.order }
       updatedOrder.location = this.props.stay.loc.address
       updatedOrder.stay = this.props.stay
+      updatedOrder.guest = this.props.loggedInUser
       this.props.setLocation(updatedOrder)
-      this.props.addOrder(updatedOrder, this.props.stay.host._id)
+      this.props.addOrder(updatedOrder, this.props.stay.host._id, this.props.loggedInUser._id)
       this.setState({ isSecondClick: true , isChargeShown: false })
+    
   }
 
   getGuestsNum = () => {
@@ -167,7 +169,7 @@ class _StayDetails extends Component {
               </section>
             </div>
             {isSecondClick && 
-            <Alert/>}
+            <Alert text="Order has booked successfully, check it on trips page!"/>}
             <CheckAvailability state={this.state} props={this.props} getGuestsNum={this.getGuestsNum} toggleModal={this.toggleModal} toggleCharge={this.toggleCharge} updateGuestsAmount={this.updateGuestsAmount} handleMouseMove={this.handleMouseMove} setDates={this.setDates} changeBtn={this.changeBtn} getTotalDays={this.getTotalDays} />
           </section>
         </section>
@@ -186,7 +188,8 @@ const mapStateToProps = state => {
   return {
     stay: state.stayModule.currStay,
     order: state.orderModule.currOrder,
-    orders: state.userModule.orders
+    orders: state.userModule.orders,
+    loggedInUser: state.userModule.loggedInUser
   }
 }
 const mapDispatchToProps = {

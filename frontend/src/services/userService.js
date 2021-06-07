@@ -39,10 +39,13 @@ async function add(order) {
     // Handle case in which admin updates other user's details
     // if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
 }
-async function addOrder(order, hostId) {
+async function addOrder(order, hostId, userId) {
     // return storageService.post('order', order)
     const host = await httpService.get(`user/${hostId}`)
+    const user = await httpService.get(`user/${userId}`)
     host.incomingOrders.push(order)
+    user.orders.push(order)
+    httpService.put(`user/${user._id}`, user)
     httpService.put(`user/${hostId}`, host)
     // Handle case in which admin updates other user's details
     // if (getLoggedinUser()._id === user._id) _saveLocalUser(user)

@@ -48,7 +48,7 @@ class _Header extends Component {
                         <i className="fas fa-bars fs18"></i>
                         {loggedInUser &&
                             <div className="flex">
-                                <img className="user-img" src={loggedInUser.img} alt="user profile" />
+                                <img className="user-img justify-center" src={loggedInUser.img} alt="user profile" />
                             </div>}
                         {!loggedInUser &&
                             <i className="fas fa-user-circle fs28"></i>
