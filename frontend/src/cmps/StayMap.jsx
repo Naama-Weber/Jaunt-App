@@ -32,8 +32,8 @@ class _GoogleMap extends Component {
 
                     }}
                 //    containerStyle={{
-                    // width: '1280px',
-                    // height: '500px',
+                //     width: '1280px',
+                //     height: '500px',
                     // margin:'100px',
                     // padding: '50px 0'
                 //    }}

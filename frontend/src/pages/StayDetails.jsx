@@ -111,8 +111,7 @@ class _StayDetails extends Component {
       updatedOrder.guest = this.props.loggedInUser
       this.props.setLocation(updatedOrder)
       this.props.addOrder(updatedOrder, this.props.stay.host._id, this.props.loggedInUser._id)
-      this.setState({ isSecondClick: true , isChargeShown: false })
-    
+      this.setState({ isSecondClick: true , isChargeShown: false})
   }
 
   getGuestsNum = () => {
