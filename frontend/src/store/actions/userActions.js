@@ -1,3 +1,4 @@
+import { socketService } from '../../services/socketService'
 import { userService } from '../../services/userService'
 
 // THUNK action creators
@@ -31,6 +32,7 @@ export function addOrder(order, hostId, userId) {
   return async dispatch => {
     try {
       await userService.addOrder(order, hostId, userId)
+      socketService.emit('add order', order)
       dispatch({ type: 'ADD_ORDER', order })
     } catch (err) {
       console.log('UserActions: err in addOrder', err)
@@ -38,35 +40,47 @@ export function addOrder(order, hostId, userId) {
   }
 }
 
+export function loadUser(userId) {
+  console.log('happened');
+  return async dispatch => {
+    try {
+      const user = await userService.getById(userId)
+      dispatch({ type: 'SET_USER', user })
+    } catch (err) {
+      console.log('UserActions: err in loadUser', err)
+    }
+  }
+}
+
 export function onLogin(credentials) {
   return async dispatch => {
-      try {
-          const user = await userService.login(credentials)
-          dispatch({ type: 'SET_USER', user })
-      } catch (err) {
-          console.log('UserActions: err in login', err)
-      }
+    try {
+      const user = await userService.login(credentials)
+      dispatch({ type: 'SET_USER', user })
+    } catch (err) {
+      console.log('UserActions: err in login', err)
+    }
   }
 }
 
 export function onSignup(userInfo) {
   return async dispatch => {
-      try {
-          const user = await userService.signup(userInfo)
-          dispatch({ type: 'SET_USER', user })
-      } catch (err) {
-          console.log('UserActions: err in signup', err)
-      }
+    try {
+      const user = await userService.signup(userInfo)
+      dispatch({ type: 'SET_USER', user })
+    } catch (err) {
+      console.log('UserActions: err in signup', err)
+    }
   }
 }
 
 export function onLogout() {
   return async dispatch => {
-      try {
-          await userService.logout()
-          dispatch({ type: 'SET_USER', user: null })
-      } catch (err) {
-          console.log('UserActions: err in logout', err)
-      }
+    try {
+      await userService.logout()
+      dispatch({ type: 'SET_USER', user: null })
+    } catch (err) {
+      console.log('UserActions: err in logout', err)
+    }
   }
 }

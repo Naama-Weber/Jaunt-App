@@ -8,6 +8,9 @@ const style = {
   bottom: "50px",
 }
 
+// setTimeout(() => {
+//   style.display= "none"
+// }, 2000);
 
 export default function ColorAlerts({ text }) {
   return (

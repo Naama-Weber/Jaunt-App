@@ -4,21 +4,35 @@ import Alert from '../cmps/Alert'
 import { Header } from '../cmps/Header'
 import { utilService } from '../services/utilService'
 import dashboard from '../assets/img/dashboard.png'
+import { socketService } from '../services/socketService'
+import {loadUser} from '../store/actions/userActions'
 
 class _Dashboard extends Component {
     state = {
         reqStatus: 'pending'
     }
+
+    componentDidMount() {
+        socketService.emit('topic', this.props.loggedInUser._id)
+        socketService.on('load orders', ()=>this.props.loadUser(this.props.loggedInUser._id))
+
+    }
+
+    componentWillUnmount() {
+        socketService.off('load orders')
+    }
+    
+    
     acceptedOrders = () => {
         this.state.reqStatus === 'pending' ? this.setState({ reqStatus: 'accepted' }) : this.setState({ reqStatus: 'pending' })
     }
 
     render() {
-        const { orders } = this.props
+        const { incomingOrders } = this.props.loggedInUser
         const acceptedOrders = [
             {
                 name: "Jo Michelle",
-                img: "https://res.cloudinary.com/dyz2f5gzh/image/upload/v1623042546/Jaunt%20Demo%20Data/oliver_zabasl.webp",
+                img: "https://res.cloudinary.com/dyz2f5gzh/image/upload/v1623042712/Jaunt%20Demo%20Data/boy2_tkk09n.jpg",
                 desc: "1 guest ·  22/04/2021-24/04/2021 · Apartamento reformado para",
                 status: "accepted"
             },
@@ -49,13 +63,14 @@ class _Dashboard extends Component {
                 <section className="host-container flex">
                     <section className="all-reservations flex column">
                         <div className="new-reservations">
-                            {orders.map((order, idx) =>
+                            {incomingOrders.map((order, idx) =>
                                 <div className="res-card flex" key={idx}>
                                     <div className="res-img"><img src={order.guest.img} alt={order.stay.name} /> </div>
                                     <div className="txt">
                                         <div className="name">Request by: {order.guest.fullName}</div>
                                         <div className="expire">Expires in 12 hours</div>
-                                        <div className="desc">{order.guestAmount.adults} guests · {utilService.formatTime(order.startDate)}-{utilService.formatTime(order.endDate)} · {order.stay.name}</div>
+                                        <div className="desc">{order.guestAmount.adults} guests · {order.stay.name}</div>
+                                        {/* · {utilService.formatTime(order.startDate) + '-' + utilService.formatTime(order.endDate)} */}
                                     </div>
                                     {this.state.reqStatus === 'pending' &&
                                         <div className="status pending" onClick={() => this.acceptedOrders()}>{this.state.reqStatus}</div>
@@ -136,4 +151,8 @@ const mapStateToProps = state => {
     }
 }
 
-export const Dashboard = connect(mapStateToProps, null)(_Dashboard)
+const mapDispatchToProps = {
+    loadUser
+  } 
+
+export const Dashboard = connect(mapStateToProps, mapDispatchToProps)(_Dashboard)
