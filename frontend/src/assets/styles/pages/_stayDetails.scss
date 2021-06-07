@@ -132,6 +132,7 @@
     }
 
         .order-details{
+            font-size: 20px;
             border-radius: 10px;
             border: 1px solid #b0b0b0;
             width: 100%;
@@ -146,9 +147,21 @@
             }
             .react-datepicker__input-container,
             .guests{
-                line-height: 4rem;
+                // line-height: 4rem;
+                padding: 20px;
                 color: #757575;
                 cursor: pointer;
+
+                .guests-modal{
+                    text-align: left;
+                    font-size: 16px;
+                    margin-top: 30px;
+                    left: 27px;
+                    
+                    p:first-child{
+                        color: #222222;
+                    }
+                }
             }
             .date-picker{
                 outline: none;

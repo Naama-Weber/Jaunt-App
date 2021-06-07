@@ -116,7 +116,7 @@ class _Dashboard extends Component {
                         <div className="earnings-container">
                             <div className="earnings  flex space-between">
                                 <div >June earnings</div>
-                                <div className="green">$2650</div>
+                                <div className="green">$2,650</div>
                             </div>
                             <div className="views flex space-between">
                                 <div>60-day views</div>

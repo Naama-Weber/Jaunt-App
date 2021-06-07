@@ -23,7 +23,7 @@ class _GoogleMap extends Component {
                 <h1>Location</h1>
                 <Map
                     google={this.props.google}
-                    zoom={14}
+                    zoom={15}
                     center={pos}
 
                    containerStyle={{
@@ -32,7 +32,7 @@ class _GoogleMap extends Component {
                     height: '500px',
                     marginTop:'20px',
                     }}>
-                        
+
                     <Marker
                         position={pos}
                         name={'stay location'} />

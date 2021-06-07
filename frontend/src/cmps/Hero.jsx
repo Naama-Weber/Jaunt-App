@@ -13,10 +13,12 @@ export function Hero({order, setDates, setGuestAmount, setLocation}) {
                 <section className="search-container flex justify-center align-center">
                     <StayFilter order={order} setDates={setDates} setGuestAmount={setGuestAmount} setLocation={setLocation}/>
                 </section>
-            <div className="app-desc main-container flex column fs30">
-                Jaunt <span>2021</span>
+            <div className="app-desc flex  ">
+                Start a <br /> 
+                New Journey
+                {/* Jaunt <span>2021</span>
                 <br />Enter a new journy
-                <br /> <NavLink to="/stay">Get exploring</NavLink>
+                <br /> <NavLink to="/stay">Get exploring</NavLink> */}
             </div>
             </section>
         </section>

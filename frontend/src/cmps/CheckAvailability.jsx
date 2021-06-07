@@ -21,7 +21,7 @@ export function CheckAvailability({ state, props, getGuestsNum, toggleModal, upd
                         {stay.reviews.length > 1 && <span className="reviews-amount">({stay.reviews.length} reviews)</span>}
                     </span>
                 </div>
-                <div className="order-details details-container fs20 flex column align-center">
+                <div className="order-details details-container flex column align-center">
                     <DatePicker
                         className="date-picker"
                         placeholderText={(props.order.startDate && props.order.endDate) ? utilService.formatTime(props.order.startDate) + '-' + utilService.formatTime(props.order.endDate) : "Choose dates"}
