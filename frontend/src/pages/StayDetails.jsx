@@ -12,6 +12,7 @@ import { addOrder } from '../store/actions/userActions'
 import { CheckAvailability } from '../cmps/CheckAvailability'
 import { StayDesc } from '../cmps/StayDesc'
 import Alert from '../cmps/Alert'
+import { socketService } from '../services/socketService'
 
 class _StayDetails extends Component {
   state = {
@@ -32,8 +33,14 @@ class _StayDetails extends Component {
   }
 
   async componentDidMount() {
-    this.props.setStay(this.props.match.params.id)
+    await this.props.setStay(this.props.match.params.id)
+    socketService.emit('topic', this.props.stay.host._id)
   }
+
+  componentWillUnmount() {
+    socketService.off('topic')
+  }
+  
 
   handleChange = ({ target }) => {
     const { name, value } = target
@@ -145,12 +152,12 @@ class _StayDetails extends Component {
   }
 
   render() {
-    const { stay, order } = this.props
+    const { stay, order, setLocation } = this.props
     const { startDate, endDate,isSecondClick } = this.state
     if (!stay) return <div>loading</div>
     return (
       <section className="stay-details-container main-container">
-        <NavBar order={order} setGuestAmount={this.props.setGuestAmount} setDates={this.props.setDates} startDate={startDate} endDate={endDate} />
+        <NavBar order={order} setLocation={setLocation} setGuestAmount={this.props.setGuestAmount} setDates={this.props.setDates} startDate={startDate} endDate={endDate} />
         <section className="desc-page">
           <StayMainInfo stay={stay} />
           <section className="description flex">

@@ -24,7 +24,7 @@ function connectSockets(http, session) {
                 gSocketBySessionIdMap[socket.handshake.sessionID] = null
             }
         })
-        socket.on('chat topic', topic => {
+        socket.on('topic', topic => {
             if (socket.myTopic === topic) return;
             if (socket.myTopic) {
                 socket.leave(socket.myTopic)
@@ -33,12 +33,12 @@ function connectSockets(http, session) {
             // logger.debug('Session ID is', socket.handshake.sessionID)
             socket.myTopic = topic
         })
-        socket.on('chat newMsg', msg => {
-            console.log('Msg', msg);
+        socket.on('add order', order => {
+            socket.broadcast.emit('load orders')
             // emits to all sockets:
             // gIo.emit('chat addMsg', msg)
             // emits only to sockets in the same room
-            gIo.to(socket.myTopic).emit('chat addMsg', msg)
+            // gIo.to(socket.myTopic).emit('chat addMsg', msg)
         })
         socket.on('user-watch', userId => {
             socket.join(userId)

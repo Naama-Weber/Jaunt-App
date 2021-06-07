@@ -27,23 +27,25 @@ class _Header extends Component {
 
     logout = () => {
         this.props.onLogout()
-        this.setState({isUserModalShown: false})
+        this.setState({ isUserModalShown: false })
     }
 
     render() {
         const { loggedInUser, orders } = this.props;
         const { isUserModalShown } = this.state
-        return <header className="flex column">
-            <section className="flex space-between align-center">
+        return <header className="flex space-between align-center">
                 <div onClick={() => { this.goToHomepage() }} className="logo-container flex space-between">
                     <NavLink exact to="/">
                         <i className="fab fa-airbnb fs34"></i>
                         <span className="fs30" role="img" aria-label="logo">jaunt</span>
                     </NavLink>
                 </div>
-                <section className="header-nav flex fs14">
-                    <NavLink to="/stay" >Explore</NavLink>
-                    <div>Become a Host</div>
+            <section className="header-nav flex fs14">
+                <NavLink to="/stay" >Explore</NavLink>
+                <div>Become a Host</div>
+                <section />
+            </section>
+                <section>
                     <button className="login-btn flex space-between align-center" onClick={() => { this.toggleUserModal() }}>
                         <i className="fas fa-bars fs18"></i>
                         {loggedInUser &&
@@ -60,8 +62,8 @@ class _Header extends Component {
                         </span>} */}
                         {isUserModalShown && <UserModal orders={orders} loggedInUser={loggedInUser} logout={this.logout} />}
                     </div>
+
                 </section>
-            </section>
         </header>
     }
 

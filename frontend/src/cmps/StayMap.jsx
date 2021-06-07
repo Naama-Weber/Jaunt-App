@@ -23,21 +23,16 @@ class _GoogleMap extends Component {
                 <h1>Location</h1>
                 <Map
                     google={this.props.google}
-                    zoom={10}
+                    zoom={14}
                     center={pos}
-                    style={{
-                         width: '1240px',
-                        height: '550px',
-                    //     margin: '0 auto',
 
-                    }}
-                //    containerStyle={{
-                //     width: '1280px',
-                //     height: '500px',
-                    // margin:'100px',
-                    // padding: '50px 0'
-                //    }}
-                >
+                   containerStyle={{
+                    // position:"fixed",
+                    width: '1240px',
+                    height: '500px',
+                    marginTop:'20px',
+                    }}>
+                        
                     <Marker
                         position={pos}
                         name={'stay location'} />

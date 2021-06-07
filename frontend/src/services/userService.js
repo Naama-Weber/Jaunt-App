@@ -45,7 +45,8 @@ async function addOrder(order, hostId, userId) {
     const user = await httpService.get(`user/${userId}`)
     host.incomingOrders.push(order)
     user.orders.push(order)
-    httpService.put(`user/${user._id}`, user)
+    console.log('user ', user , '| host ', host);
+    httpService.put(`user/${userId}`, user)
     httpService.put(`user/${hostId}`, host)
     // Handle case in which admin updates other user's details
     // if (getLoggedinUser()._id === user._id) _saveLocalUser(user)

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loadStays } from '../store/actions/stayActions.js'
-import { setDates, setGuestAmount,setLocation } from '../store/actions/orderActions.js'
+import { setDates, setGuestAmount, setLocation } from '../store/actions/orderActions.js'
 import { StayList } from '../cmps/StayList'
 import { NavBar } from '../cmps/NavBar.jsx'
 import { LoaderCmp } from '../cmps/LoaderCmp'
 import { stayService } from '../services/stayService.js'
+import { socketService } from '../services/socketService.js'
 
 class _StayApp extends Component {
     state = {
@@ -17,6 +18,7 @@ class _StayApp extends Component {
         y: 0
     }
     componentDidMount() {
+        socketService.setup()
         const filterBy = this.getFilterBy();
         this.props.loadStays(filterBy)
     }
@@ -30,6 +32,11 @@ class _StayApp extends Component {
             this.props.loadStays(this.getFilterBy())
         }
     }
+
+    // componentWillUnmount() {
+    //     socketService.terminate()
+    // }
+    
 
     getFilterBy = () => {
         let search = this.props.location.search;

@@ -91,6 +91,11 @@
                 border-radius: 12px;
                 align-items: center;
 
+                .v-img{
+                    width: 20px;
+                    //  padding: 22px 0 14px 0;
+                }
+
                 .res-img{
                     margin-inline-end: 20px;
                     flex: 1;
@@ -129,6 +134,8 @@
                     flex: 2;
                     color: #008489;
                     cursor: pointer;
+                    font-size: 20px;
+                    font-weight: 600;
                     &.pending{
                         color: red
                     }
