@@ -6,6 +6,7 @@ import { StayDetails } from './pages/StayDetails'
 import { StayApp } from './pages/StayApp'
 import { Trips } from './pages/Trips'
 import { Dashboard } from './pages/Dashboard'
+import { Footer } from './cmps/Footer'
 
 
 export function App() {
@@ -22,8 +23,8 @@ export function App() {
             <Route path="/" component={Home} />
           </Switch>
         </main>
-        <footer>
-          &copy; Copy Rights 2021
+        <footer className="main-container">
+        <Footer/>
         </footer>
       </Router>
     </div>

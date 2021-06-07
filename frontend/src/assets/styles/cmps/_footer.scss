@@ -1,0 +1,25 @@
+footer{
+height: 100%;
+background-color: #f7f7f7;
+border-top: 1px solid #ddd;
+margin-top: 60px;
+
+    .footer-container{
+    height: 80px;
+
+        .icons{
+            font-size: 22px;
+            gap:20px;
+            color: rgb(70, 70, 70);
+            
+            i{
+                
+                &:hover{
+                    color: rgb(34, 34, 34);
+                    cursor: pointer;
+                }
+            }
+            
+        }
+    }
+}

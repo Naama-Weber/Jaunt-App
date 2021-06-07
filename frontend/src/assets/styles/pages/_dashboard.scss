@@ -18,8 +18,8 @@
             .dashboard{
                 padding: 0;
                 img{
-                    width: 300px;
-                    height:350px;
+                    width: 270px;
+                    height:300px;
                 }
             }
 
@@ -65,13 +65,10 @@
                     color: #31af91;
                 }
             }      
+            .earnings-container{
+                 border-bottom: 1px solid #ddd;                
+            }
         }
-
-        &:nth-child(2){
-             border-bottom: 1px solid #ddd; 
-            
-        }
-
 
 
         .reservations{
@@ -125,16 +122,9 @@
                     cursor: pointer;
 
                 }
-
-
             }
         }
     }
-
-
-
-
-
 
     .logo-container{
         color: $clr1
