@@ -9,7 +9,7 @@ export function StayMainInfo({stay}) {
                     <div className="left flex space-between">
                         <div className="stay-rate">
                             <i className='fa fa-star'></i>
-                            <span>
+                            <span className="reviews-rate">
                                 {stay.reviews[0].rate}
                             </span>
                             {stay.reviews.length === 1 && <span className="reviews-amount"> ({stay.reviews.length} review)</span>}

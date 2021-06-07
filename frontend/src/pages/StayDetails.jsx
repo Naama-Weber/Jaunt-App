@@ -40,7 +40,7 @@ class _StayDetails extends Component {
   componentWillUnmount() {
     socketService.off('topic')
   }
-  
+
 
   handleChange = ({ target }) => {
     const { name, value } = target
@@ -83,10 +83,10 @@ class _StayDetails extends Component {
       return <button className="check-btn fs16"
         onMouseMove={this.handleMouseMove}
         style={style}
-        onClick={(ev)=> this.toggleCharge(ev)}>
+        onClick={(ev) => this.toggleCharge(ev)}>
         Check Availability
         </button>
-    }  if (isChargeShown && !isSecondClick) {
+    } if (isChargeShown && !isSecondClick) {
       return (
         <button className="check-btn fs16"
           onMouseMove={this.handleMouseMove}
@@ -95,7 +95,7 @@ class _StayDetails extends Component {
           Reserve
         </button>
       )
-    } else if(!isChargeShown && isSecondClick){
+    } else if (!isChargeShown && isSecondClick) {
       return (
         <span className="reserved-btn fs16">
           Reserved
@@ -107,19 +107,19 @@ class _StayDetails extends Component {
 
   toggleCharge = (ev) => {
     ev.preventDefault()
-    const { isChargeShown,isSecondClick } = this.state
-    if (!isChargeShown&&!isSecondClick) {
+    const { isChargeShown, isSecondClick } = this.state
+    if (!isChargeShown && !isSecondClick) {
       this.setState({ isChargeShown: true })
       return
     }
-      const updatedOrder = { ...this.props.order }
-      updatedOrder.location = this.props.stay.loc.address
-      updatedOrder.stay = this.props.stay
-      updatedOrder.guest = this.props.loggedInUser
-      this.props.setLocation(updatedOrder)
-      this.props.addOrder(updatedOrder, this.props.stay.host._id, this.props.loggedInUser._id)
-      this.setState({ isSecondClick: true , isChargeShown: false })
-    
+    const updatedOrder = { ...this.props.order }
+    updatedOrder.location = this.props.stay.loc.address
+    updatedOrder.stay = this.props.stay
+    updatedOrder.guest = this.props.loggedInUser
+    this.props.setLocation(updatedOrder)
+    this.props.addOrder(updatedOrder, this.props.stay.host._id, this.props.loggedInUser._id)
+    this.setState({ isSecondClick: true, isChargeShown: false })
+
   }
 
   getGuestsNum = () => {
@@ -154,7 +154,7 @@ class _StayDetails extends Component {
 
   render() {
     const { stay, order, setLocation } = this.props
-    const { startDate, endDate,isSecondClick } = this.state
+    const { startDate, endDate, isSecondClick } = this.state
     if (!stay) return <div>loading</div>
     return (
       <section className="stay-details-container main-container">
@@ -175,15 +175,13 @@ class _StayDetails extends Component {
                 <SelectDates startDate={startDate} endDate={endDate} setDates={this.setDates} />
               </section>
             </div>
-            {isSecondClick && 
-            <Alert text="Order has booked successfully, check it on trips page!"/>}
+            {isSecondClick &&
+              <Alert text="Order has booked successfully, check it on trips page!" />}
             <CheckAvailability state={this.state} props={this.props} getGuestsNum={this.getGuestsNum} toggleModal={this.toggleModal} toggleCharge={this.toggleCharge} updateGuestsAmount={this.updateGuestsAmount} handleMouseMove={this.handleMouseMove} setDates={this.setDates} changeBtn={this.changeBtn} getTotalDays={this.getTotalDays} />
           </section>
-        </section>
-        <div className="divider"></div>
-        <Reviews reviews={stay.reviews} />
-        <div className="divider"></div>
-        <section className="map-container">
+          <div className="divider"></div>
+          <Reviews reviews={stay.reviews} />
+          <div className="divider"></div>
           <StayMap stay={stay} />
         </section>
       </section>
