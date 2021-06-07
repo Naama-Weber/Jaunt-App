@@ -109,7 +109,7 @@ class _StayDetails extends Component {
       updatedOrder.location = this.props.stay.loc.address
       updatedOrder.stay = this.props.stay
       this.props.setLocation(updatedOrder)
-      this.props.addOrder(updatedOrder, this.props.stay.host._id)
+      this.props.addOrder(updatedOrder, this.props.stay.host._id, this.props.loggedInUser)
       this.setState({ isSecondClick: true })
       this.setState({ isChargeShown: false })
     
@@ -188,7 +188,8 @@ const mapStateToProps = state => {
   return {
     stay: state.stayModule.currStay,
     order: state.orderModule.currOrder,
-    orders: state.userModule.orders
+    orders: state.userModule.orders,
+    loggedInUser: state.userModule.loggedInUser
   }
 }
 const mapDispatchToProps = {

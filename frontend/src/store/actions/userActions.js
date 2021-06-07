@@ -27,10 +27,10 @@ export function removeUser(userId) {
     }
   }
 }
-export function addOrder(order, hostId) {
+export function addOrder(order, hostId, user) {
   return async dispatch => {
     try {
-      await userService.addOrder(order, hostId)
+      await userService.addOrder(order, hostId, user)
       dispatch({ type: 'ADD_ORDER', order })
     } catch (err) {
       console.log('UserActions: err in addOrder', err)
