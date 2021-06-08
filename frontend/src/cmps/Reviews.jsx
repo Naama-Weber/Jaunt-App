@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 export function Reviews({ reviews }) {
 
     return (
-        <section className="reviews-container details-container flex column">
+        <section id="any" className="reviews-container details-container flex column ">
             <div className="value-rate flex space-between ">
                 <span className="stay-rate flex align-center">
                     <i className='fa fa-star fs18'></i>

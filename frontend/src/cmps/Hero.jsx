@@ -12,6 +12,7 @@ export function Hero({order, setDates, setGuestAmount, setLocation}) {
                 </section>
                 <section className="search-container flex justify-center align-center">
                     <StayFilter order={order} setDates={setDates} setGuestAmount={setGuestAmount} setLocation={setLocation}/>
+                
                 </section>
             <div className="app-desc flex  ">
                 Start a <br /> 
