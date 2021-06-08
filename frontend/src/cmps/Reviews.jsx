@@ -9,7 +9,7 @@ export function Reviews({ reviews }) {
         <section className="reviews-container details-container flex column">
             <div className="value-rate flex space-between ">
                 <span className="stay-rate flex align-center">
-                    <i className='fa fa-star fs14'></i>
+                    <i className='fa fa-star fs18'></i>
                     {reviews.length === 1 && <span className="reviews-amount fs22">{reviews.length} review</span>}
                     {reviews.length > 1 && <span className="reviews-amount fs22">{reviews.length} reviews</span>}
                 </span>

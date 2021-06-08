@@ -19,7 +19,7 @@ class _GoogleMap extends Component {
     render() {
         const { pos } = this.state
         return (
-            <div className="map">
+            <div className="map-container">
                 <h1>Location</h1>
                 <Map
                     google={this.props.google}
@@ -37,10 +37,6 @@ class _GoogleMap extends Component {
                         position={pos}
                         name={'stay location'} />
                 </Map>
-                <div>
-
-                {/* <h1>{pos.address}</h1> */}
-                </div>
             </div>
         )
     }

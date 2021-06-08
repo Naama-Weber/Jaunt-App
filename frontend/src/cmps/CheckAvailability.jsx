@@ -16,7 +16,7 @@ export function CheckAvailability({ state, props, getGuestsNum, toggleModal, upd
                     <span><b className="fs22">${stay.price}</b> / night</span>
                     <span className="stay-rate flex align-center">
                         <i className='fa fa-star'></i>
-                        <span>{stay.reviews[0].rate}</span>
+                        <span className="reviews-rate">{stay.reviews[0].rate}</span>
                         {stay.reviews.length === 1 && <span className="reviews-amount">({stay.reviews.length} review)</span>}
                         {stay.reviews.length > 1 && <span className="reviews-amount">({stay.reviews.length} reviews)</span>}
                     </span>

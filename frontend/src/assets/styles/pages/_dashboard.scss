@@ -22,6 +22,7 @@
             color: #484848;
             border-radius: 12px;
             margin-top: 20px;
+            
 
             .dashboard{
                 padding: 0;
@@ -58,10 +59,9 @@
                     }
                 }
 
-                .v-img{
-                    width: 40px;
-                }
+                
             }
+            
 
             & > *:not(:first-child):not(:last-child){
                 padding: 15px 0;
@@ -79,10 +79,12 @@
         }
 
 
-
+        .v-img{
+            width: 40px;
+        }
         .all-reservations{
-            flex: 2;
             margin-inline-end: 20px;
+            flex: 2;
 
             .res-card{
                 margin-top: 20px;
@@ -91,9 +93,20 @@
                 border-radius: 12px;
                 align-items: center;
 
+                .order-status-container{
+                    flex: 2.5;
+                    justify-content: flex-end;
+                    &>*{
+                        margin: 0;
+                    }
+                    .reject-btn{
+                        justify-content: flex-end;
+                        color: #dc3545;
+                    }
+                }
+
                 .v-img{
                     width: 20px;
-                    //  padding: 22px 0 14px 0;
                 }
 
                 .res-img{
@@ -136,12 +149,12 @@
                     cursor: pointer;
                     font-size: 20px;
                     font-weight: 600;
-                    &.pending{
-                        color: red
+                    &:first-child{
+                        margin-right: 10px;
+
                     }
                 }
             }
         }
     }
-
 }
