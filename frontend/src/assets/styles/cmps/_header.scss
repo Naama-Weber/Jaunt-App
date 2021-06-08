@@ -2,7 +2,6 @@ header {
     background-color: transparent;
     color: #fff;
     // justify-content: space-between;
-    font-family: cereal-medium;
 
     
     .logo-container{
@@ -30,8 +29,11 @@ header {
     .header-nav{
         align-items: center;
     }
-    .header-nav>*:not(:last-child){
-        margin-right: 20px;
+    .header-nav{
+        :first-child{
+
+            margin-right: 20px;
+        }
     } 
     
     .login-btn{

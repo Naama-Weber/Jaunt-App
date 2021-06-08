@@ -6,14 +6,14 @@ import Button from '@material-ui/core/Button';
 export function Reviews({ reviews }) {
 
     return (
-        <section id="any" className="reviews-container details-container flex column ">
-            <div className="value-rate flex space-between ">
+        <section id="reviews" className="reviews-container details-container flex column">
+            <h2 className="value-rate flex space-between ">
                 <span className="stay-rate flex align-center">
                     <i className='fa fa-star fs18'></i>
                     {reviews.length === 1 && <span className="reviews-amount fs22">{reviews.length} review</span>}
                     {reviews.length > 1 && <span className="reviews-amount fs22">{reviews.length} reviews</span>}
                 </span>
-            </div>
+            </h2>
             <div className="user-reviews flex space-between">
 
                 {reviews.map(review =>
@@ -30,7 +30,7 @@ export function Reviews({ reviews }) {
                 )}
             </div>
             <div className="add-review-container">
-                <h3>Add a review</h3>
+                <h2>Add a review</h2>
                 <div className="details-container grid">
                     <div className="stars-container flex">
                         <article className="review-ctg flex align-center">

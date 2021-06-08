@@ -97,15 +97,15 @@ class _StayFilter extends Component {
         const style = { backgroundPosition: `calc((100 - ${x}) * 1%) calc((100 - ${y}) * 1%)` }
         return (
             <form className="stay-filter flex justify-center align-center" >
-                <div className=" flex column justify-center">
+                <div className = "flex column justify-center">
                     <div className="location">
-                        <label htmlFor="location">Location</label>
+                        <label className="label fs12" htmlFor="location">Location</label>
                         <input type="text" name="location" id="location" placeholder={location ? location : "Where are you going?"} value={filterBy.location} onChange={this.handleChange} />
                     </div>
                 </div>
                 <div className="tiny-border"></div>
                 <div className="date-picker flex column justify-center">
-                    <span>Dates</span>
+                    <span className="label fs12">Dates</span>
                     <DatePicker
                         placeholderText={(this.props.order.startDate && this.props.order.endDate) ? utilService.formatTime(this.props.order.startDate) + '-' + utilService.formatTime(this.props.order.endDate) : "Choose dates"}
                         selected={startDate}
@@ -121,10 +121,10 @@ class _StayFilter extends Component {
                 </div>
                 <div className="tiny-border"></div>
                 <div className="guests flex column justify-center" onClick={(ev) => this.toggleModal()}>
-                    <label htmlFor="guestAmount">Guests</label>
+                    <label className="label fs12" htmlFor="guestAmount">Guests</label>
                     {(guestAmount.adults + guestAmount.children + guestAmount.infants) <= 0 ?
-                        <span className="add-guests">Add guests</span> :
-                        <span>{guestAmount.adults + guestAmount.children + guestAmount.infants} guests</span>
+                        <span className="add-guests fs14">Add guests</span> :
+                        <span >{guestAmount.adults + guestAmount.children + guestAmount.infants} guests</span>
                     }
                     <div className="guest-modal">
                         <GuestModal isModalShown={isModalShown} guestAmount={guestAmount} updateGuestsAmount={this.updateGuestsAmount} />

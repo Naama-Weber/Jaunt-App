@@ -1,5 +1,5 @@
 .reviews-container{
-
+    margin-bottom: 40px;
     .stay-rate{
         font-size: 1.5rem;
         margin-bottom: 1.5rem;
@@ -13,14 +13,15 @@
     }
     
     .user-reviews{
-        margin-bottom: 5.5rem;
         .review-by{
             gap: 2rem;
             margin-bottom: 1.5rem;
         }
     }
 
-    
+    h2{
+        margin: 2.5rem 0;
+    }
     .user-reviews,
     .add-review-container{
         flex-wrap: wrap;
