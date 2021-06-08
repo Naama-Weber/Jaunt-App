@@ -24,10 +24,11 @@
 
         &>div{
             height: 100%;
+            max-width: 210px;
         }
 
         .location{
-            padding-left: 30px;
+            padding-left: 15px;
             input:focus,
             input:active,
             input:visited{
@@ -35,7 +36,7 @@
             }
         }
         div.date-picker {
-            padding-left: 40px;
+            // padding-left: 40px;
         }
         .tiny-border{
             border-right: 1px solid #ddd;
@@ -88,7 +89,6 @@
             border: none;
             background-color: transparent;
             outline: none;
-            width: 100%;
             min-width: 100px;
             font-family: cereal-light;
             font-size: 14px;
@@ -96,7 +96,7 @@
         
         .guests{
             position: relative;
-            padding-left: 40px;
+            // padding-left: 40px;
             .add-guests{
                 color: #757575
             }

@@ -7,7 +7,7 @@ export function StayMainInfo({stay}) {
                 <div className="title-primary fs24"><h1>{stay.name}</h1></div>
                 <div className="title-secondery flex space-between fs14">
                     <div className="left flex space-between">
-                        <div className="stay-rate">
+                        <div className="stay-rate flex align-center space-between">
                             <i className='fa fa-star'></i>
                             <span className="reviews-rate">
                                 {stay.reviews[0].rate}
