@@ -191,7 +191,12 @@
     .value-rate{
         align-items: baseline; 
         width: 100%;
+        .reviews-rate{
+            // font-family: cereal-light;
+            font-weight: 600;
+        }
     }
+    
 
     .react-datepicker__header{
         background-color: white;
