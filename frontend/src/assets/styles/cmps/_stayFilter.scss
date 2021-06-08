@@ -30,6 +30,10 @@ input:-webkit-autofill:active
         &>div{
             height: 100%;
             max-width: 210px;
+
+            i:not(.search-icon){
+                display: none;
+            }
         }
 
         .location{

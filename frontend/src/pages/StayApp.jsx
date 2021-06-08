@@ -15,12 +15,16 @@ class _StayApp extends Component {
         },
         isModalShown: false,
         x: 0,
-        y: 0
+        y: 0,
+        isLoading: true
     }
-    componentDidMount() {
+    async componentDidMount() {
         socketService.setup()
         const filterBy = this.getFilterBy();
-        this.props.loadStays(filterBy)
+        await this.props.loadStays(filterBy)
+        setTimeout(() => {
+            this.setState({ isLoading: false })
+        }, 1500);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -36,7 +40,7 @@ class _StayApp extends Component {
     // componentWillUnmount() {
     //     socketService.terminate()
     // }
-    
+
 
     getFilterBy = () => {
         let search = this.props.location.search;
@@ -52,14 +56,21 @@ class _StayApp extends Component {
 
     render() {
         const { stays, order, setDates, setGuestAmount, setLocation } = this.props
-        if (!stays) return <LoaderCmp/>
+        if (this.state.isLoading) return (
+            <section style={{minHeight:'100vh'}}>
+                <NavBar order={order} setDates={setDates} setGuestAmount={setGuestAmount} setLocation={setLocation} />
+                <LoaderCmp />
+            </section>
+        )
+        if (!stays || stays === []) return <div>load</div>
         const loc = this.getFilterBy().location
         return (
             <section className="stay-app">
+
                 <NavBar order={order} setDates={setDates} setGuestAmount={setGuestAmount} setLocation={setLocation} />
                 {!loc && <h1 className="headline-explore">Explore all stays</h1>}
                 {loc &&
-                 <h1 className="headline-explore">Stays in {loc}</h1>
+                    <h1 className="headline-explore">Stays in {loc}</h1>
                 }
                 <StayList stays={stays} />
             </section>
