@@ -1,12 +1,10 @@
 .search-container{
-
     input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active
-{
- -webkit-box-shadow: 0 0 0 30px #f7f7f7 inset !important;
-}
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #f7f7f7 inset !important;
+    }
     .react-datepicker__header{
         background-color: white;
     }
@@ -32,6 +30,12 @@ input:-webkit-autofill:active
             max-width: 210px;
         }
 
+        i{
+            &:not(.search-icon){
+                display: none;
+            }
+        }
+
         .location{
             padding-left: 15px;
             input:focus,
@@ -40,9 +44,7 @@ input:-webkit-autofill:active
                 background-color: transparent;
             }
         }
-        div.date-picker {
-            // padding-left: 40px;
-        }
+        
         .tiny-border{
             border-right: 1px solid #ddd;
             border-radius: 0;
@@ -54,8 +56,6 @@ input:-webkit-autofill:active
                 background-color: #EBEBEB;
             }
         }
-
-        
         &>*{
             border-radius: 32px;
             line-height: 20px;
@@ -63,14 +63,11 @@ input:-webkit-autofill:active
             padding: 10px;
             cursor: pointer;
             margin: 0;
-
         }
-
         &>*:hover:not(:last-child),
         &:nth-child(2)>input:hover{
             background-color: #EBEBEB
         }
-
         .search-btn{
             // background-size: 200% 200%;
             // transition: opacity 1.25s ease 0s;
@@ -125,19 +122,18 @@ input:-webkit-autofill:active
             border-radius: 0;
             width: 100%;
 
-            & > div{
-                // width: 33.3%;
-            }
-
-            .location,.date-picker,.guests{
+            .location,
+            .date-picker,
+            .guests{
                 display: none;
-                
-            }
-
+            }  
             .search-btn{
-            width: 30px;
-            height: 30px;
-            font-size: 0.8rem;
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+            i{
+                display: block !important;
             }
         }      
     }

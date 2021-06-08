@@ -98,14 +98,14 @@ class _StayFilter extends Component {
         return (
             <form className="stay-filter flex justify-center align-center" >
                 <div className = "flex column justify-center">
-                        <i className="fas fa-map-marked-alt fs24" hidden></i>
+                        <i className="fas fa-map-marked-alt fs24"></i>
                     <div className="location">
                         <label className="label fs12" htmlFor="location">Location</label>
                         <input type="text" name="location" id="location" placeholder={location ? location : "Where are you going?"} value={filterBy.location} onChange={this.handleChange} />
                     </div>
                 </div>
                 <div className="tiny-border"></div>
-                <i className="far fa-calendar-alt fs24" hidden></i>
+                <i className="far fa-calendar-alt fs24"></i>
                 <div className="date-picker flex column justify-center">
                     <span className="label fs12">Dates</span>
                     <DatePicker
@@ -122,7 +122,7 @@ class _StayFilter extends Component {
                     />
                 </div>
                 <div className="tiny-border"></div>
-                <i className="fas fa-user-plus fs24" hidden></i>
+                <i className="fas fa-user-plus fs24"></i>
                 <div className="guests flex column justify-center" onClick={(ev) => this.toggleModal()}>
                     <label className="label fs12" htmlFor="guestAmount">Guests</label>
                     {(guestAmount.adults + guestAmount.children + guestAmount.infants) <= 0 ?
