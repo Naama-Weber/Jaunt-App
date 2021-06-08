@@ -1,7 +1,12 @@
 .search-container{
-    input:-webkit-autofill {
-        color: #2a2a2a !important;
-    }
+
+    input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active
+{
+ -webkit-box-shadow: 0 0 0 30px #f7f7f7 inset !important;
+}
     .react-datepicker__header{
         background-color: white;
     }
@@ -102,5 +107,38 @@
             }
         }
         
+    }
+}
+
+@include for-mobile-layout{
+    .search-container {
+        .stay-filter{
+            padding-right: 35px ;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 5;
+            box-shadow: none;
+            grid-column: 1/-1;
+            margin: 0;
+            border-radius: 0;
+            width: 100%;
+
+            & > div{
+                // width: 33.3%;
+            }
+
+            .location,.date-picker,.guests{
+                display: none;
+                
+            }
+
+            .search-btn{
+            width: 30px;
+            height: 30px;
+            font-size: 0.8rem;
+            }
+        }      
     }
 }
