@@ -5,7 +5,7 @@ import { TxtLength } from './TxtLength'
 export function StayPreview({ stay }) {
     return (
         <div>
-            <article className="stay-preview fs16">
+            <article className="stay-preview fs16 flex column">
                 <ImgCarousel stay={stay} />
                 <Link to={`/stay/${stay._id}`} className="primary-btn">
                     <span className="stay-rate flex">

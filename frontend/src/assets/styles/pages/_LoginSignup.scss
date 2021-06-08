@@ -1,5 +1,5 @@
 .login-page{
-
+min-height: 85vh;
     header{
         color: $clr2;
         padding-top: 20px;;
@@ -48,10 +48,8 @@
             border-bottom: 3px solid #bbb;   
         }
     }
-    
+
     .navbar{
         height: 1vh;
     }
-    
-    
 }

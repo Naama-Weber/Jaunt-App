@@ -8,6 +8,7 @@
     // font-size: 0.7rem;
     margin-bottom: 15px;
     position: relative;
+
     i{
         color: $clr1;
     }
@@ -37,6 +38,9 @@
     .stay-price{
         margin-top: 4px;
     }
+    .Carousel-root-1{
+        min-height: 214px;
+    } 
 }
 
 .save-btn{
@@ -50,4 +54,8 @@
     }
 }
 
-// need to move to helpers and create new class
+@include for-mobile-layout{
+    .stay-app{
+        background-color: rgb(37, 37, 37);
+    }
+}

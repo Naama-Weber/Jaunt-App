@@ -3,7 +3,7 @@
     .hero{
         height: 45vw;
         background-image: url(../../img/hero2.jpg);
-        background-position: top;
+        background-position: center;
         background-size:100%;
         background-repeat: no-repeat;
         .search-container{
@@ -23,8 +23,8 @@
         color: #fff;
         font-size: 70px;
         font-weight: 600;
-        span,
-        a{
+        
+        span,a{
             background-color: #fff;
             line-height: 50px;
             padding: 11px;

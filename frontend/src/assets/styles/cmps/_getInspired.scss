@@ -1,6 +1,5 @@
 .getInspired-container{
-    height: 100%;
-
+    
     .details{
         height: 100%;
         position: absolute;
@@ -10,7 +9,7 @@
         z-index: 1;
         max-width: 480px;
     }
-
+    
     .inspiration{
         position: relative;
          flex-wrap: wrap;
@@ -21,7 +20,7 @@
              font-weight: 300;
              margin: 0;
          }
-
+         
          p{
              font-size: 1.2rem;
              line-height: 24px;
@@ -30,9 +29,11 @@
          }
          
          img{
+            object-fit: cover;
              border-radius: 15px;
-         }
-
+             height: 500px;
+            }
+            
         .inspire-btn{
          margin: 20px 0 0 0;
          padding: 15px 30px;
