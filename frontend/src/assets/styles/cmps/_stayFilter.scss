@@ -16,8 +16,10 @@
         width: fit-content;
         border-radius: 32px; 
 
-        label{
-            font-family: cereal-medium;
+        .label{
+            letter-spacing: 0.04em;
+            font-family: cereal-bold;
+            font-weight: 600;
         }
 
         &>div{
@@ -34,9 +36,6 @@
         }
         div.date-picker {
             padding-left: 40px;
-            span{
-                font-family: cereal-medium;
-            }
         }
         .tiny-border{
             border-right: 1px solid #ddd;
@@ -92,14 +91,13 @@
             width: 100%;
             min-width: 100px;
             font-family: cereal-light;
-            font-size: 0.8rem;
+            font-size: 14px;
         }
         
         .guests{
             position: relative;
             padding-left: 40px;
             .add-guests{
-                 font-size: 0.8rem;
                 color: #757575
             }
         }

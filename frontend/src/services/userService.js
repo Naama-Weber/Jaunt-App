@@ -44,8 +44,9 @@ async function addOrder(order, hostId, userId) {
     const host = await httpService.get(`user/${hostId}`)
     const user = await httpService.get(`user/${userId}`)
     host.incomingOrders.push(order)
-    user.orders.push(order)
-    console.log('user ', user , '| host ', host);
+    const myOrder = {...order}
+    delete myOrder.guest
+    user.orders.push(myOrder)
     httpService.put(`user/${userId}`, user)
     httpService.put(`user/${hostId}`, host)
     // Handle case in which admin updates other user's details

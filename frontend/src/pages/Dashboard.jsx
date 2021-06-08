@@ -7,14 +7,12 @@ import { socketService } from '../services/socketService'
 import { loadUser } from '../store/actions/userActions'
 
 class _Dashboard extends Component {
-    state = {
-        reqStatus: 'pending'
-    }
+   
 
     componentDidMount() {
+        this.props.loadUser(this.props.loggedInUser._id)
         socketService.emit('topic', this.props.loggedInUser._id)
         socketService.on('load orders', () => this.props.loadUser(this.props.loggedInUser._id))
-
     }
 
     componentWillUnmount() {
@@ -32,33 +30,6 @@ class _Dashboard extends Component {
 
     render() {
         const { incomingOrders } = this.props.loggedInUser
-        const acceptedOrders = [
-            {
-                name: "Jo Michelle",
-                img: "https://res.cloudinary.com/dyz2f5gzh/image/upload/v1623042712/Jaunt%20Demo%20Data/boy2_tkk09n.jpg",
-                desc: "1 guest ·  22/04/2021-24/04/2021 · Apartamento reformado para",
-                status: "Accepted"
-            },
-            {
-                name: "Megan Brooks",
-                img: "https://res.cloudinary.com/dyz2f5gzh/image/upload/v1623042039/Jaunt%20Demo%20Data/megan_gluepb.jpg",
-                desc: "2 guest ·  26/04/2021-30/04/2021 · Apartamento reformado para",
-                status: "Accepted"
-            },
-            {
-                name: "Amanda Levin",
-                img: "https://res.cloudinary.com/dyz2f5gzh/image/upload/v1623042124/Jaunt%20Demo%20Data/girl_lnm8jz.webp",
-                desc: "2 guest ·  01/05/2021-10/05/2021 · Lovely duplex near the market",
-                status: "Accepted"
-            },
-            {
-                name: "Arnold Ben Harush",
-                img: "https://res.cloudinary.com/dyz2f5gzh/image/upload/v1623042627/Jaunt%20Demo%20Data/boy_ebfvdi.jpg",
-                desc: "2 guest ·  05/05/2021-10/05/2021 · Lovely duplex near the market",
-                status: "Accepted"
-            },
-
-        ]
         return (
             <section className="dashboard-page">
                 <Header />
@@ -77,7 +48,6 @@ class _Dashboard extends Component {
                                             {order.startDate.slice(0, 10)} - {order.endDate.slice(0, 10)} ·
                                             {order.stay.name}
                                             </div>
-
                                     </div>
                                     <div className="order-status-container flex space-between">
                                         <div className="status accept-btn" onClick={() => this.accepteOrder()}>Accept</div>
@@ -87,26 +57,10 @@ class _Dashboard extends Component {
                                 </div>
                             )}
                         </div>
-                        <div className="old-reservations">
-                            {acceptedOrders.map((order, idx) =>
-                                <div className="res-card flex" key={idx}>
-                                    <div className="res-img"><img src={order.img} alt={order.name} /> </div>
-                                    <div className="txt">
-                                        <div className="name">Request by: {order.name}</div>
-                                        <div className="expire">Expired</div>
-                                        <div className="desc">{order.desc}</div>
-                                    </div>
-                                    <div className="order-status-container flex">
-                                        <div className="status">{order.status}</div>
-                                        <img className="v-img" src="http://homeseek-app.herokuapp.com/img/checkmark.0fe4b53e.svg" alt="v-img" />
-                                    </div>
-                                </div>
-                            )}
-                        </div>
                     </section>
 
                     <div className="summary">
-                        <div className="title">Hosting summary</div>
+                        <h2 className="title">Hosting summary</h2>
                         <div className="details flex space-between">
                             <div className="txt">
                                 <p className="head">Fantastic job!</p>

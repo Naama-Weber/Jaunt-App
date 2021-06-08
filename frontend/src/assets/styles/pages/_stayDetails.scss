@@ -5,9 +5,14 @@
         text-decoration: underline;
         color: $clr3;
     } 
+
+    .desc-title{
+        margin-bottom: 2.5rem;
+    }
     
     .title-secondery{
         margin-bottom: 1.5rem;
+        font-family: cereal-medium;
         text-transform: capitalize;
         &>*{
         gap: 20px;
@@ -41,6 +46,12 @@
     }
 
     .description{
+        .details-container{
+            margin: 2.5rem 0;
+            div :first-of-type{
+                margin-top: 0;
+            } 
+    }
         .availability{
             margin-left: 10%;
             position: sticky;

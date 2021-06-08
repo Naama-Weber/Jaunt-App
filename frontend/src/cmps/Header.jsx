@@ -40,7 +40,7 @@ class _Header extends Component {
                         <span className="fs30" role="img" aria-label="logo">jaunt</span>
                     </NavLink>
                 </div>
-            <section className="header-nav flex fs14">
+            <section className="header-nav flex fs16">
                 <NavLink to="/stay" >Explore</NavLink>
                 <div>Become a Host</div>
                 <section />

@@ -1,7 +1,7 @@
 export function StayDesc({ stay }) {
     return (
         <div>
-            <div className="details-container flex space-between">
+            <div className="desc-title flex space-between">
                 <div className="titles">
                     <h2>{`Entire apartment hosted by ${stay.host.fullname}`}</h2>
                     <p>{`${stay.capacity} guests `}</p>
