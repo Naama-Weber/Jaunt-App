@@ -1,12 +1,4 @@
 @font-face {
-    font-family: circular;
-    src: url(../../fonts/Circular/CircularStd-Medium.ttf);
-}
-@font-face {
-    font-family: circular-bold;
-    src: url(../../fonts/Circular/CircularStd-Bold.ttf);
-}
-@font-face {
     font-family: roboto-bold;
     src: url(../../fonts/Roboto/Roboto-Bold.ttf);
 }
@@ -29,4 +21,12 @@
 @font-face {
     font-family: cereal-bold ;
     src: url('../../fonts/Airbnb-Cereal/AirbnbCerealBold.ttf');
+}
+@font-face {
+    font-family: cereal-book ;
+    src: url('../../fonts/Airbnb-Cereal/AirbnbCerealBook.ttf');
+}
+@font-face {
+    font-family: cereal-black ;
+    src: url('../../fonts/Airbnb-Cereal/AirbnbCerealBlack.ttf');
 }

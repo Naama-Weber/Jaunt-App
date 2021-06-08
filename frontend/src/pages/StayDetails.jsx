@@ -108,16 +108,19 @@ class _StayDetails extends Component {
   toggleCharge = (ev) => {
     ev.preventDefault()
     const { isChargeShown, isSecondClick } = this.state
+    const { fullName, img, username, _id } = this.props.loggedInUser
+    const { address, country } = this.props.stay.loc
+    const { host, imgUrls, name } = this.props.stay
+    const updatedOrder = { ...this.props.order }
     if (!isChargeShown && !isSecondClick) {
       this.setState({ isChargeShown: true })
       return
     }
-    const updatedOrder = { ...this.props.order }
-    updatedOrder.location = this.props.stay.loc.address
-    updatedOrder.stay = this.props.stay
-    updatedOrder.guest = this.props.loggedInUser
+    updatedOrder.location = address
+    updatedOrder.stay = { name, imgUrls, country }
+    updatedOrder.guest = { fullName, img, username, _id }
     this.props.setLocation(updatedOrder)
-    this.props.addOrder(updatedOrder, this.props.stay.host._id, this.props.loggedInUser._id)
+    this.props.addOrder(updatedOrder, host._id, _id)
     this.setState({ isSecondClick: true, isChargeShown: false })
 
   }

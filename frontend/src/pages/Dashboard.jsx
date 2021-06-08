@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Alert from '../cmps/Alert'
+// import Alert from '../cmps/Alert'
 import { Header } from '../cmps/Header'
-import { utilService } from '../services/utilService'
 import dashboard from '../assets/img/dashboard.png'
 import { socketService } from '../services/socketService'
-import {loadUser} from '../store/actions/userActions'
+import { loadUser } from '../store/actions/userActions'
 
 class _Dashboard extends Component {
     state = {
@@ -14,17 +13,21 @@ class _Dashboard extends Component {
 
     componentDidMount() {
         socketService.emit('topic', this.props.loggedInUser._id)
-        socketService.on('load orders', ()=>this.props.loadUser(this.props.loggedInUser._id))
+        socketService.on('load orders', () => this.props.loadUser(this.props.loggedInUser._id))
 
     }
 
     componentWillUnmount() {
         socketService.off('load orders')
     }
-    
-    
-    acceptedOrders = () => {
-        this.state.reqStatus === 'pending' ? this.setState({ reqStatus: 'accepted' }) : this.setState({ reqStatus: 'pending' })
+
+
+    accepteOrder() {
+        console.log('accepted');
+    }
+
+    rejectOrder(){
+        console.log('rejected');
     }
 
     render() {
@@ -34,25 +37,25 @@ class _Dashboard extends Component {
                 name: "Jo Michelle",
                 img: "https://res.cloudinary.com/dyz2f5gzh/image/upload/v1623042712/Jaunt%20Demo%20Data/boy2_tkk09n.jpg",
                 desc: "1 guest ·  22/04/2021-24/04/2021 · Apartamento reformado para",
-                status: "accepted"
+                status: "Accepted"
             },
             {
                 name: "Megan Brooks",
                 img: "https://res.cloudinary.com/dyz2f5gzh/image/upload/v1623042039/Jaunt%20Demo%20Data/megan_gluepb.jpg",
                 desc: "2 guest ·  26/04/2021-30/04/2021 · Apartamento reformado para",
-                status: "accepted"
+                status: "Accepted"
             },
             {
                 name: "Amanda Levin",
                 img: "https://res.cloudinary.com/dyz2f5gzh/image/upload/v1623042124/Jaunt%20Demo%20Data/girl_lnm8jz.webp",
                 desc: "2 guest ·  01/05/2021-10/05/2021 · Lovely duplex near the market",
-                status: "accepted"
+                status: "Accepted"
             },
             {
                 name: "Arnold Ben Harush",
                 img: "https://res.cloudinary.com/dyz2f5gzh/image/upload/v1623042627/Jaunt%20Demo%20Data/boy_ebfvdi.jpg",
                 desc: "2 guest ·  05/05/2021-10/05/2021 · Lovely duplex near the market",
-                status: "accepted"
+                status: "Accepted"
             },
 
         ]
@@ -69,19 +72,18 @@ class _Dashboard extends Component {
                                     <div className="txt">
                                         <div className="name">Request by: {order.guest.fullName}</div>
                                         <div className="expire">Expires in 12 hours</div>
-                                        <div className="desc">{order.guestAmount.adults} guests · {order.stay.name}</div>
-                                        {/* · {utilService.formatTime(order.startDate) + '-' + utilService.formatTime(order.endDate)} */}
-                                    </div>
-                                    {this.state.reqStatus === 'pending' &&
-                                        <div className="status pending" onClick={() => this.acceptedOrders()}>{this.state.reqStatus}</div>
-                                    }
-                                    {this.state.reqStatus === 'accepted' &&
-                                        <div className="status" onClick={() => this.acceptedOrders()}>{this.state.reqStatus}
-                                            <Alert text="Order accepted" />
-                                            {/* {setTimeout(<Alert text="Order accepted" />, 3000)} */}
+                                        <div className="desc flex column">
+                                            {order.guestAmount.adults} guests ·
+                                            {order.startDate.slice(0, 10)} - {order.endDate.slice(0, 10)} ·
+                                            {order.stay.name}
+                                            </div>
 
-                                        </div>
-                                    }
+                                    </div>
+                                    <div className="order-status-container flex space-between">
+                                        <div className="status accept-btn" onClick={() => this.accepteOrder()}>Accept</div>
+                                        <div className="status reject-btn flex" onClick={() => this.rejectOrder()}>Reject</div>
+                                        {/* <Alert text="Order accepted" /> */}
+                                    </div>
                                 </div>
                             )}
                         </div>
@@ -94,7 +96,10 @@ class _Dashboard extends Component {
                                         <div className="expire">Expired</div>
                                         <div className="desc">{order.desc}</div>
                                     </div>
-                                    <div className="status">{order.status}</div>
+                                    <div className="order-status-container flex">
+                                        <div className="status">{order.status}</div>
+                                        <img className="v-img" src="http://homeseek-app.herokuapp.com/img/checkmark.0fe4b53e.svg" alt="v-img" />
+                                    </div>
                                 </div>
                             )}
                         </div>
@@ -115,17 +120,17 @@ class _Dashboard extends Component {
                         <div className="earnings-container">
                             <div className="earnings  flex space-between">
                                 <div >June earnings</div>
-                                <div className="green">2650$</div>
+                                <div className="green">$2,650</div>
                             </div>
                             <div className="views flex space-between">
                                 <div>60-day views</div>
-                                <div className="green">751</div>
+                                <div className="green">820</div>
                             </div>
                         </div>
                         <div className="reviews">
                             <div className="earnings flex space-between">
                                 <div >Overall rating</div>
-                                <div className="green">4.9 󰀄</div>
+                                <div className="green flex"><i className="fa fa-star "></i> <span>4.9</span> </div>
                             </div>
                             <div className="views flex space-between">
                                 <div>Total reviews
@@ -153,6 +158,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     loadUser
-  } 
+}
 
 export const Dashboard = connect(mapStateToProps, mapDispatchToProps)(_Dashboard)

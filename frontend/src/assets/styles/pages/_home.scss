@@ -1,13 +1,13 @@
 .home {
     grid-column: 1/-1;
     .hero{
-        height: 50vw;
+        height: 45vw;
         background-image: url(../../img/hero2.jpg);
         background-position: top;
         background-size:100%;
         background-repeat: no-repeat;
         .search-container{
-            margin-bottom: 10vw;
+            margin-bottom: 17vw;
         }
     }
     .main-header{
@@ -17,10 +17,12 @@
     }
     .app-desc{
         // flex: 1;
-        display: block;
+        // display: block;
         align-self: flex-end;
         margin-bottom: 13vw;
         color: #fff;
+        font-size: 70px;
+        font-weight: 600;
         span,
         a{
             background-color: #fff;

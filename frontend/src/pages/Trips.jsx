@@ -20,7 +20,7 @@ class _Trips extends Component {
                             <img src={order.stay.imgUrls[0]} alt="stay" />
                             <section className="order-details">
                                 <div className="dates fs16">{utilService.formatTime(order.startDate)} - {utilService.formatTime(order.endDate)}</div>
-                                <h2 className="country fs26">{order.stay.loc.country}</h2>
+                                <h2 className="country fs26">{order.stay.country}</h2>
                                 <div className="divider"></div>
                                 <div className="fs14 description flex space-between align-center">
                                     <div className="img-container flex">

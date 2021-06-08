@@ -123,7 +123,7 @@ class _StayFilter extends Component {
                 <div className="guests flex column justify-center" onClick={(ev) => this.toggleModal()}>
                     <label htmlFor="guestAmount">Guests</label>
                     {(guestAmount.adults + guestAmount.children + guestAmount.infants) <= 0 ?
-                        <span>Add guests</span> :
+                        <span className="add-guests">Add guests</span> :
                         <span>{guestAmount.adults + guestAmount.children + guestAmount.infants} guests</span>
                     }
                     <div className="guest-modal">
@@ -131,10 +131,9 @@ class _StayFilter extends Component {
                     </div>
                 </div>
                 <button onMouseMove={this.handleMouseMove}
-                    className="search-btn"
+                    className="search-btn flex align-center justify-center"
                     onClick={this.onSubmit}
-                    style={style}
-                >
+                    style={style}>
                     <i className="fas fa-search search-icon"></i>
                 </button>
             </form>
