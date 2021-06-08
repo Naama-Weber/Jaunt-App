@@ -38,11 +38,13 @@ header {
         background-color: #fff;
         border-radius: 21px;
         border: 1px solid #ddd;
-        padding: 7px 15px;
+        padding: 5px 5px 5px 12px;
         gap: 5px;
-        width: 83px;
+        width: 77px;
+        height: 42px;
         i:first-child{
             color: $clr2;
+             margin-left: 4px;
         }
         i:last-child{
             color: gray

@@ -5,7 +5,7 @@ import { Header } from './Header'
 
 export function Hero({order, setDates, setGuestAmount, setLocation}) {
     return (
-        <section className="hero flex column full main-header main-container space-between">
+        <section className="hero flex column full main-header home-container space-between">
             <section>
                 <section className="header-container">
                     <Header />

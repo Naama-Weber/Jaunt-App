@@ -14,9 +14,9 @@ class _Home extends Component {
   render() {
     const { order, setDates, setGuestAmount, setLocation } = this.props
     return (
-      <div className="home">
+      <div className="home home-container">
         <Hero order={order} setDates={setDates} setGuestAmount={setGuestAmount} setLocation={setLocation} />
-        <section className="explore-nearby main-container">
+        <section className="explore-nearby ">
           <h1>Explore nearby</h1>
           <Nearby />
           <section className="live-anywhere-constainer flex column">

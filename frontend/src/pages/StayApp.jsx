@@ -52,7 +52,7 @@ class _StayApp extends Component {
 
     render() {
         const { stays, order, setDates, setGuestAmount, setLocation } = this.props
-        if (!stays) return <LoaderCmp/> 
+        if (!stays) return <LoaderCmp/>
         const loc = this.getFilterBy().location
         return (
             <section className="stay-app">
@@ -61,7 +61,6 @@ class _StayApp extends Component {
                 {loc &&
                  <h1 className="headline-explore">Stays in {loc}</h1>
                 }
-                {/* <LoaderCmp/> */}
                 <StayList stays={stays} />
             </section>
         )

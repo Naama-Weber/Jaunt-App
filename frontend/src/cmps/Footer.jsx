@@ -1,6 +1,6 @@
 export function Footer() {
     return (
-        <section className="footer-container flex align-center space-between">
+        <section className="footer-container flex align-center justify-center">
             <div className="">
                 © Copy Rights 2021 Jaunt · Privacy · Terms · Sitemap
             </div>

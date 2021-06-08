@@ -1,8 +1,7 @@
 .become-host-container{
     margin-top: 60px;
-    height: 100%;
     color:rgb(255, 255, 255) ;
-
+    
     .details{
         height: 100%;
         position: absolute;
@@ -12,7 +11,7 @@
         z-index: 1;
         max-width: 500px;
     }
-
+    
     .host{
         position: relative;
          flex-wrap: wrap;
@@ -22,16 +21,18 @@
              line-height: 3.25rem;
              font-weight: 300;
              margin: 0;
-         }
+            }
 
-         p{
-             font-size: 1.2rem;
-             line-height: 24px;
-             font-weight: 100;
-             padding-top: 12px
-         }
-         
-         img{
+            p{
+                font-size: 1.2rem;
+                line-height: 24px;
+                font-weight: 100;
+                padding-top: 12px
+            }
+            
+            img{
+                object-fit: cover;
+             height: 500px;
              border-radius: 15px;
          }
 
