@@ -1,10 +1,12 @@
 .search-container{
     input:-webkit-autofill,
-    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:hover,
     input:-webkit-autofill:focus, 
     input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px #f7f7f7 inset !important;
+        -webkit-box-shadow: 0 0 0 30px #f7f7f7 inset !important;
     }
+
+    
     .react-datepicker__header{
         background-color: white;
     }
@@ -38,11 +40,14 @@
 
         .location{
             padding-left: 15px;
-            input:focus,
-            input:active,
-            input:visited{
-                background-color: transparent;
+            input:hover{
+               background-color: transparent;
             }
+            // input:focus,
+            // input:active,
+            // input:visited{
+            //     background-color: transparent;
+            // }
         }
         
         .tiny-border{
@@ -88,6 +93,7 @@
         }
 
         input{
+            padding: 0;
             border: none;
             background-color: transparent;
             outline: none;
@@ -100,6 +106,7 @@
             position: relative;
             // padding-left: 40px;
             .add-guests{
+                padding: 0;
                 color: #757575
             }
         }

@@ -127,7 +127,7 @@ class _StayFilter extends Component {
                     <label className="label fs12" htmlFor="guestAmount">Guests</label>
                     {(guestAmount.adults + guestAmount.children + guestAmount.infants) <= 0 ?
                         <span className="add-guests fs14">Add guests</span> :
-                        <span >{guestAmount.adults + guestAmount.children + guestAmount.infants} guests</span>
+                        <span className="add-guests fs14">{guestAmount.adults + guestAmount.children + guestAmount.infants} guests</span>
                     }
                     <div className="guest-modal">
                         <GuestModal isModalShown={isModalShown} guestAmount={guestAmount} updateGuestsAmount={this.updateGuestsAmount} />
