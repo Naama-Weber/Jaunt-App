@@ -1,20 +1,20 @@
-.dashboard-page{
-    .logo-container{
-        color: $clr1
+.dashboard-page {
+    .logo-container {
+        color: $clr1;
     }
-    h2{
+    h2 {
         padding: 20px 0;
         margin: 0;
     }
-    header{
+    header {
         color: $clr2;
-        padding-top: 20px;;
+        padding-top: 20px;
     }
 
-    .host-container{
+    .host-container {
         align-items: flex-start;
 
-        .summary{
+        .summary {
             flex: 1;
             width: 65%;
             border: 1px solid #ddd;
@@ -22,96 +22,90 @@
             color: #484848;
             border-radius: 12px;
             margin-top: 20px;
-            
 
-            .dashboard{
+            .dashboard {
                 padding: 0;
-                img{
+                img {
                     width: 270px;
-                    height:300px;
+                    height: 300px;
                 }
             }
 
-            .title{
+            .title {
                 font-size: 22px;
                 // padding: 10px 0;
             }
 
-            .details{
+            .details {
                 padding-bottom: 20px;
                 border-bottom: 1px solid #ddd;
-                .txt{
-
-                    .head{
+                .txt {
+                    .head {
                         font-size: 16px;
                         line-height: 22px;
                         margin-bottom: 6px;
                         color: #484848;
-                        letter-spacing: .07px;                    
+                        letter-spacing: 0.07px;
                     }
 
-                    .main{
+                    .main {
                         line-height: 20px;
                         font-size: 16px;
                         margin-bottom: 20px;
                     }
                 }
-
-                
             }
-            
 
-            & > *:not(:first-child):not(:last-child){
+            & > *:not(:first-child):not(:last-child) {
                 padding: 15px 0;
 
-                & > *{
+                & > * {
                     padding: 6px 0;
                 }
-                .green{
+                .green {
                     color: #31af91;
                 }
-            }      
-            .earnings-container{
-                 border-bottom: 1px solid #ddd;                
+            }
+            .earnings-container {
+                border-bottom: 1px solid #ddd;
             }
         }
 
-
-        .v-img{
+        .v-img {
             width: 40px;
         }
-        .all-reservations{
+        .all-reservations {
             margin-inline-end: 20px;
             flex: 2;
 
-            .res-card{
+            .res-card {
                 margin-top: 20px;
                 padding: 20px;
                 border: 1px solid #ddd;
                 border-radius: 12px;
                 align-items: center;
 
-                .order-status-container{
+                .order-status-container {
                     flex: 2.5;
                     justify-content: flex-end;
-                    &>*{
+                    & > * {
                         margin: 0;
                     }
-                    .reject-btn{
+                    .reject-btn {
                         justify-content: flex-end;
                         color: #dc3545;
                     }
                 }
 
-                .v-img{
+                .v-img {
                     width: 20px;
                 }
 
-                .res-img{
+                .res-img {
                     margin-inline-end: 20px;
                     flex: 1;
 
-                    img{
+                    img {
                         object-fit: cover;
                         vertical-align: middle;
                         width: 50px;
@@ -120,36 +114,35 @@
                     }
                 }
 
-                .txt{
+                .txt {
                     flex: 9;
 
-                    .name{
+                    .name {
                         line-height: 20px;
                         color: #ff385c;
                         font-weight: 700;
                     }
 
-                    .expire{
+                    .expire {
                         line-height: 20px;
                         font-size: 14px;
                     }
 
-                    .desc{
+                    .desc {
                         line-height: 16px;
                         font-size: 12px;
                         color: #bbb;
                     }
                 }
 
-                .status{
+                .status {
                     flex: 2;
                     color: #008489;
                     cursor: pointer;
                     font-size: 20px;
                     font-weight: 600;
-                    &:first-child{
+                    &:first-child {
                         margin-right: 10px;
-
                     }
                 }
             }
@@ -157,29 +150,36 @@
     }
 }
 
-@include for-mobile-layout{
-    .host-container{
-        flex-direction: column;
-        
-        .all-reservations{
-            margin-inline-end:0 auto;
-            
-            .res-card{
-                flex-direction: column;
-                position: relative;
+@include for-mobile-layout {
+    .dashboard-page {
 
-                & > * {
-                    margin-bottom: 5px;
-                }
-                
-                .res-img{
-                    position: absolute;
-                    right: 0px;
-                    top: 20px;
+        .host-container {
+            flex-direction: column;
+
+            .all-reservations {
+                margin: 0 auto;
+
+                .res-card {
+                    flex-direction: column;
+                    position: relative;
+
+                    &,
+                    .txt > * {
+                        margin-bottom: 10px;
+                    }
+
+                    .res-img {
+                        margin: 0 auto;
+                        position: absolute;
+                        right: 20px;
+                        top: 20px;
+                    }
                 }
             }
+
+            .summary{
+                width: 100%;
+            }
         }
-        
     }
-        
-    }
+}
