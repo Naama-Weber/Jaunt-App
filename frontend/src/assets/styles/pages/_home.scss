@@ -39,9 +39,12 @@
     @include for-mobile-layout{
         .hero{
         height: 100vw;
+        background-position: 53%;
+        background-size: cover;
         }
-        .app-desc{
-            font-size: 47px;
-        }
+            .app-desc{
+                font-size: 40px;
+                margin-bottom: 2vw;
+            }
     }
 }

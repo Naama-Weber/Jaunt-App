@@ -6,7 +6,7 @@ import { Header } from './Header'
 export function Hero({order, setDates, setGuestAmount, setLocation}) {
     return (
         <section className="hero flex column full main-header home-container space-between">
-            <section>
+            <>
                 <section className="header-container">
                     <Header />
                 </section>
@@ -21,7 +21,7 @@ export function Hero({order, setDates, setGuestAmount, setLocation}) {
                 <br />Enter a new journy
                 <br /> <NavLink to="/stay">Get exploring</NavLink> */}
             </div>
-            </section>
+            </>
         </section>
     )
 }
