@@ -4,7 +4,9 @@ export function GetInspired() {
 
     return (
         <div className="inspiration">
+            <div className="img-wrapper">
             <img src={inspierdImg} alt="" />
+            </div>
             <div className="details flex column justify-center">
                 <h1>The Greatest Houses</h1>
                 <p>Wishlists curated by Jaunt</p>
