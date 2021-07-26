@@ -15,3 +15,15 @@
         }
     }
 }
+
+@include for-mobile-layout{
+    .live-anywhere-constainer{
+        .live-anywhere{
+         grid-template-columns: auto;
+
+         img {
+            max-height: 340px;
+            }
+        }
+    }
+}

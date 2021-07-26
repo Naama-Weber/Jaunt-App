@@ -36,3 +36,9 @@
         font-weight: 600;
     }
 }
+
+@include for-mobile-layout{
+    .explore{
+        grid-template-columns: auto
+    }
+}
