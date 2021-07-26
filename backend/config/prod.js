@@ -1,4 +1,4 @@
 module.exports = {
-  dbURL: 'mongodb+srv://puki:puki123@cluster0.oaihw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
-  dbName: 'camar21_db',
+  dbURL: 'mongodb+srv://admin:naama@cluster0.9qkqb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+  dbName: 'JAUNT_DB',
 }
