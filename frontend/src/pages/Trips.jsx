@@ -9,6 +9,7 @@ class _Trips extends Component {
 
     render() {
         const { orders } = this.props
+        if (!orders) return <div>No orders yet!</div>
         return (
             <section className="trips-page">
                 <Header />

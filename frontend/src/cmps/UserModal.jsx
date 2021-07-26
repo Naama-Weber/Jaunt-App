@@ -12,14 +12,10 @@ export function UserModal({ loggedInUser, logout }) {
                 {loggedInUser &&
                     <div className="options-loggedin">
                         <li>Messages</li>
-                        <Link to="/trips">
-                            <li>Trips</li>
-                        </Link>
+                        <li><Link to="/trips">Trips</Link></li>
                         <li>Wishlist</li>
-                        {loggedInUser.isHost==='true' &&
-                            <Link to="/dashboard">
-                                <li>Dashboard</li>
-                            </Link>
+                        {loggedInUser.isHost === 'true' &&
+                            <li><Link to="/dashboard">Dashboard</Link></li>
                         }
                     </div>
                 }
