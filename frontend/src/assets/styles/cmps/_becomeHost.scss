@@ -48,3 +48,14 @@
         }
     }
 }
+
+@include for-mobile-layout {
+        .img-wrapper{
+            height: 240px;
+
+            img{
+                border-radius: 15px 15px 0 0;
+                height: 240px;
+            }
+        }
+    }
