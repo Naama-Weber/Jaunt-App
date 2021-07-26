@@ -156,3 +156,30 @@
         }
     }
 }
+
+@include for-mobile-layout{
+    .host-container{
+        flex-direction: column;
+        
+        .all-reservations{
+            margin-inline-end:0 auto;
+            
+            .res-card{
+                flex-direction: column;
+                position: relative;
+
+                & > * {
+                    margin-bottom: 5px;
+                }
+                
+                .res-img{
+                    position: absolute;
+                    right: 0px;
+                    top: 20px;
+                }
+            }
+        }
+        
+    }
+        
+    }
