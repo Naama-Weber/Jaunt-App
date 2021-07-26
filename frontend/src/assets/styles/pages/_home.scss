@@ -36,4 +36,12 @@
             line-height: 3;
         }
     }
+    @include for-mobile-layout{
+        .hero{
+        height: 100vw;
+        }
+        .app-desc{
+            font-size: 47px;
+        }
+    }
 }

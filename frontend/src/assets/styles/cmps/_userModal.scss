@@ -19,13 +19,15 @@
       list-style-type: none;
       margin: 0;
       & > li,
-      & > a li{
+      & > a li,
+      .options-loggedin > li,
+      .options-loggedin> a li{
           padding: 15px 30px;
           align-items: center;
         &:hover{
           background-color: #F5F5F5;
         }
-        }
+      }
     }
     
       
