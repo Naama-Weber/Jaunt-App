@@ -1,65 +1,100 @@
-.reviews-container{
+.reviews-container {
     margin-bottom: 40px;
-    .stay-rate{
+    .stay-rate {
         font-size: 1.5rem;
         margin-bottom: 1.5rem;
         font-family: cereal-medium;
-        .reviews-amount{
+        .reviews-amount {
             color: $clr2;
         }
-        i{
-            margin-right: 8px
+        i {
+            margin-right: 8px;
         }
     }
-    
-    .user-reviews{
-        .review-by{
+
+    .user-reviews {
+        .review-by {
             gap: 2rem;
             margin-bottom: 1.5rem;
         }
     }
 
-    h2{
+    h2 {
         margin: 2.5rem 0;
     }
     .user-reviews,
-    .add-review-container{
+    .add-review-container {
         flex-wrap: wrap;
-        button{
-            font-family: 'cereal-bold';
+        button {
+            font-family: "cereal-bold";
         }
 
-        article{
+        article {
             width: 47%;
             margin-bottom: 40px;
         }
     }
-    .add-review-container{
-        h3{
+    .add-review-container {
+        h3 {
             font-size: 1.5rem;
         }
-        div.grid{
-
+        div.grid {
             grid-template-rows: 1fr;
             grid-template-columns: repeat(2, 1fr);
         }
-        textarea{
+        textarea {
             grid-column: 2;
             resize: none;
         }
-        .stars-container{
+        .stars-container {
             flex-wrap: wrap;
-            article{
+            article {
                 height: fit-content;
                 gap: 20px;
-                h4{
+                h4 {
                     margin: 0;
                     width: 150px;
-                }       
-                
-            }   
+                }
+            }
+        }
+    }
+}
+
+@include for-mobile-layout {
+    .user-reviews {
+        article {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
         }
     }
 
-    
+    .add-review-container {
+        position: relative;
+        button {
+            position: absolute;
+            top: 430px;
+            left: 190px;
+        }
+        .details-container {
+            display: flex;
+            flex-direction: column;
+
+            textarea {
+                max-width: 350px;
+            }
+
+            .stars-container {
+                flex-wrap: nowrap;
+                flex-direction: column;
+                margin-bottom: 20px;
+
+                .review-ctg {
+                    width: 100%;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
 }

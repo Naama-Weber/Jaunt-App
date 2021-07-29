@@ -8,35 +8,51 @@ class _GoogleMap extends Component {
             adddress: null,
             lat: null,
             lng: null
-        }
+        },
+        isMobile: false
     }
 
     componentDidMount() {
         const pos = this.props.stay.loc
-        this.setState({ pos })
+        const isMobile = this.props.isMobile
+        this.setState({ pos, isMobile})
     }
 
     render() {
-        const { pos } = this.state
+        const { pos, isMobile } = this.state
         return (
             <div className="map-container">
                 <h1>Location</h1>
-                <Map
-                    google={this.props.google}
-                    zoom={15}
-                    center={pos}
+                { isMobile ?
+                    <Map
+                        google={this.props.google}
+                        zoom={15}
+                        center={pos}
+                        containerStyle={{
+                            width: '320px',
+                            height: '300px',
+                            marginTop: '20px',
+                        }}>
+                        <Marker
+                            position={pos}
+                            name={'stay location'} />
+                    </Map> 
+                    :
+                    <Map
+                        google={this.props.google}
+                        zoom={15}
+                        center={pos}
+                        containerStyle={{
+                            width: '1240px',
+                            height: '500px',
+                            marginTop: '20px',
+                        }}>
 
-                   containerStyle={{
-                    // position:"fixed",
-                    width: '1240px',
-                    height: '500px',
-                    marginTop:'20px',
-                    }}>
-
-                    <Marker
-                        position={pos}
-                        name={'stay location'} />
-                </Map>
+                        <Marker
+                            position={pos}
+                            name={'stay location'} />
+                    </Map>
+                }
             </div>
         )
     }

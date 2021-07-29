@@ -1,35 +1,34 @@
-.desc-page{
+.desc-page {
     margin-top: 3rem;
 
-    a{
+    a {
         text-decoration: underline;
         color: $clr3;
-    } 
+    }
 
-    .desc-title{
+    .desc-title {
         margin-bottom: 2.5rem;
     }
-    
-    .title-secondery{
+
+    .title-secondery {
         margin-bottom: 1.5rem;
         font-family: cereal-medium;
         text-transform: capitalize;
-        &>*{
-        gap: 20px;
-        } 
-        
+        & > * {
+            gap: 20px;
+        }
     }
-    
-    .img-grid-container{
+
+    .img-grid-container {
         display: grid;
-        grid-template-columns: repeat(4,1fr);
-        grid-template-rows: repeat(2,1fr);
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
         gap: 5px;
         margin-bottom: 40px;
-        img:not(:first-child){
+        img:not(:first-child) {
             object-fit: cover;
             height: 250px;
-            width: 100%;  
+            width: 100%;
         }
         :first-child {
             object-fit: cover;
@@ -37,22 +36,22 @@
             grid-area: 1/1/3/3;
             border-radius: 10px 0 0 10px;
         }
-        :nth-child(3){
+        :nth-child(3) {
             border-radius: 0 10px 0 0;
         }
-        :nth-child(5){
+        :nth-child(5) {
             border-radius: 0 0 10px 0;
         }
     }
 
-    .description{
-        .details-container{
+    .description {
+        .details-container {
             margin: 2.5rem 0;
-            div :first-of-type{
+            div :first-of-type {
                 // margin-top: 0;
-            } 
-    }
-        .availability{
+            }
+        }
+        .availability {
             margin-left: 10%;
             position: sticky;
             top: 30px;
@@ -61,25 +60,32 @@
             border: 1px solid #dddddd;
             border-radius: 10px;
             padding: 24px;
-            box-shadow:0px 6px 16px #0000001f;
-            .date-picker{
+            box-shadow: 0px 6px 16px #0000001f;
+            .date-picker {
                 font-size: 20px;
                 border: none;
                 text-align: center;
                 cursor: pointer;
-                color: #222222 ;
-
+                color: #222222;
             }
-            .check-btn{
+            .check-btn {
                 background-size: 150% 150%;
-                background-image: radial-gradient(circle at center center, rgb(255, 56, 92) 0%, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%, rgb(215, 4, 102) 57.5%, rgb(189, 30, 89) 75%, rgb(189, 30, 89) 100%);
+                background-image: radial-gradient(
+                    circle at center center,
+                    rgb(255, 56, 92) 0%,
+                    rgb(230, 30, 77) 27.5%,
+                    rgb(227, 28, 95) 40%,
+                    rgb(215, 4, 102) 57.5%,
+                    rgb(189, 30, 89) 75%,
+                    rgb(189, 30, 89) 100%
+                );
                 border-radius: 10px;
                 padding: 20px;
                 font-family: cereal-medium;
                 width: 100%;
             }
 
-            .reserved-btn{
+            .reserved-btn {
                 border-radius: 10px;
                 padding: 20px;
                 font-family: cereal-medium;
@@ -87,124 +93,146 @@
                 background-color: grey;
                 color: $clr6;
             }
-            
-            .react-datepicker{
+
+            .react-datepicker {
                 display: flex;
                 width: min-content;
             }
         }
         .trip-reserve {
-
             width: 100%;
-        .total-price{
-            padding-bottom: 0;
-            p{
-                margin: 0;
+            .total-price {
+                padding-bottom: 0;
+                p {
+                    margin: 0;
+                }
             }
+            & > * {
+                padding-bottom: 1rem;
+                text-align: left;
+            }
+            :first-child {
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+            :last-child {
+                margin-top: 1.5rem;
+                font-weight: 600;
+                font-size: 1.4rem;
+            }
+
+            // :nth-child(4){
+            //     border-bottom: 1px solid #bababa;
+            // }
         }
-        & > *{
-            padding-bottom: 1rem;
-            text-align: left;   
-        }
-        :first-child{
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-        :last-child{
-            margin-top: 1.5rem;
-            font-weight: 600;
-            font-size: 1.4rem;
-        }
-        
-        // :nth-child(4){
-        //     border-bottom: 1px solid #bababa;
-        // }
-        }
-        .stay-description{
+        .stay-description {
             flex: 2;
-        .stay-rate{
-            margin-bottom: 1.5rem;
-                
+            .stay-rate {
+                margin-bottom: 1.5rem;
             }
         }
-        .availability{
+        .availability {
             flex: 1;
             text-align: center;
         }
-    
-    .summary-container{
-        margin: 50px 0;
-    }
 
-    .info-container{
-        .info{
-            gap: 20px;
+        .summary-container {
+            margin: 50px 0;
         }
-        div:not(:last-child){
-            margin-bottom: 1.5rem;
-        }
-    }
 
-        .order-details{
+        .info-container {
+            .info {
+                gap: 20px;
+            }
+            div:not(:last-child) {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        .order-details {
             font-size: 20px;
             border-radius: 10px;
             border: 1px solid #b0b0b0;
             width: 100%;
             font-family: cereal-light;
-            .react-datepicker__input-container{
+            .react-datepicker__input-container {
                 border-bottom: 1px solid #b0b0b0;
-                &>*{
-
-                    font-family: 'cereal-light';
+                & > * {
+                    font-family: "cereal-light";
                     color: #757575;
                 }
             }
             .react-datepicker__input-container,
-            .guests{
+            .guests {
                 // line-height: 4rem;
                 padding: 20px;
                 color: #757575;
                 cursor: pointer;
 
-                .guests-modal{
+                .guests-modal {
                     text-align: left;
                     font-size: 16px;
                     margin-top: 30px;
                     left: 27px;
-                    
-                    p:first-child{
+
+                    p:first-child {
                         color: #222222;
                     }
                 }
             }
-            .date-picker{
+            .date-picker {
                 outline: none;
                 caret-color: transparent;
             }
-            
-            &>*{
+
+            & > * {
                 width: 100%;
             }
         }
-
     }
-    .value-rate{
-        align-items: baseline; 
+    .value-rate {
+        align-items: baseline;
         width: 100%;
-        .reviews-rate{
+        .reviews-rate {
             // font-family: cereal-light;
             font-weight: 600;
         }
     }
-    
 
-    .react-datepicker__header{
+    .react-datepicker__header {
         background-color: white;
     }
 
-    .right > *{
+    .right > * {
         text-decoration: underline;
     }
 }
 
+@include for-mobile-layout {
+    .desc-page {
+        .img-grid-container {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            & > *:not(:first-child) {
+                height: 150px;
+            }
+            :first-child {
+                height: 250px;
+                grid-area: 1/1/1/5;
+                border-radius: 10px 10px 0 0  ;
+            }
+            :nth-child(2) {
+                border-radius: 0 0 0 10px  ;
+            }
+            :nth-child(3) {
+                border-radius:0%;
+            }
+        }
+        .map-container {
+        }
 
+        .description{
+            display: block;
+        }
+    }
+}

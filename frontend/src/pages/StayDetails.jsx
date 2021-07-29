@@ -16,6 +16,7 @@ import { socketService } from '../services/socketService'
 
 class _StayDetails extends Component {
   state = {
+    isMobile: false,
     isSecondClick: false,
     startDate: '',
     endDate: '',
@@ -35,6 +36,10 @@ class _StayDetails extends Component {
   async componentDidMount() {
     await this.props.setStay(this.props.match.params.id)
     socketService.emit('topic', this.props.stay.host._id)
+    if (window.innerWidth < 769) {
+      const isMobile = true
+      this.setState({ isMobile });
+  }
   }
 
   componentWillUnmount() {
@@ -157,8 +162,9 @@ class _StayDetails extends Component {
 
   render() {
     const { stay, order, setLocation } = this.props
-    const { startDate, endDate, isSecondClick } = this.state
+    const { isMobile, startDate, endDate, isSecondClick } = this.state
     if (!stay) return <div>loading</div>
+    // else if (stay && isMobile) return <div>loading</div>
     return (
       <section className="stay-details-container main-container">
         <NavBar order={order} setLocation={setLocation} setGuestAmount={this.props.setGuestAmount} setDates={this.props.setDates} startDate={startDate} endDate={endDate} />
@@ -185,7 +191,7 @@ class _StayDetails extends Component {
           <div className="divider"></div>
           <Reviews reviews={stay.reviews} />
           <div className="divider"></div>
-          <StayMap stay={stay} />
+          <StayMap stay={stay} isMobile={isMobile} />
         </section>
       </section>
     )
