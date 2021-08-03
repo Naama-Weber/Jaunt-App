@@ -2,9 +2,10 @@ import React from 'react';
 import Rate from 'rc-rate';
 import 'rc-rate/assets/index.css';
 import Button from '@material-ui/core/Button';
+import { TxtLength } from './TxtLength'
 
-export function Reviews({ reviews }) {
-
+export function Reviews({ reviews,isMobile }) {
+console.log(isMobile);
     return (
         <section id="reviews" className="reviews-container details-container flex column">
             <h2 className="value-rate flex space-between ">
@@ -24,7 +25,8 @@ export function Reviews({ reviews }) {
                             {/* <p className="review-date"></p> */}
                         </div>
                         <div className="review-parameters flex column">
-                            <p className="review-txt">{review.txt}</p>
+                            {isMobile && <p className="review-txt"><TxtLength text={review.txt}/></p> }
+                            {/* <p className="review-txt">{review.txt}</p> */}
                         </div>
                     </article>
                 )}

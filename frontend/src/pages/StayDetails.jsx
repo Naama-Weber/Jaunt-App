@@ -126,7 +126,7 @@ class _StayDetails extends Component {
     updatedOrder.guest = { fullName, img, username, _id }
     this.props.setLocation(updatedOrder)
     this.props.addOrder(updatedOrder, host._id, _id)
-    this.setState({ isSecondClick: true, isChargeShown: false })
+    this.setState({ Click: true, isChargeShown: false })
 
   }
 
@@ -189,7 +189,7 @@ class _StayDetails extends Component {
             <CheckAvailability state={this.state} props={this.props} getGuestsNum={this.getGuestsNum} toggleModal={this.toggleModal} toggleCharge={this.toggleCharge} updateGuestsAmount={this.updateGuestsAmount} handleMouseMove={this.handleMouseMove} setDates={this.setDates} changeBtn={this.changeBtn} getTotalDays={this.getTotalDays} />
           </section>
           <div className="divider"></div>
-          <Reviews reviews={stay.reviews} />
+          <Reviews reviews={stay.reviews} isMobile={isMobile}/>
           <div className="divider"></div>
           <StayMap stay={stay} isMobile={isMobile} />
         </section>
