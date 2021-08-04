@@ -1,9 +1,7 @@
 import Carousel from 'react-material-ui-carousel'
-// import { Paper, Button } from '@material-ui/core'
-// import { Height } from '@material-ui/icons'
 import { Link } from 'react-router-dom'
 
-export function ImgCarousel({ stay}) {
+export function ReviewCarousel({ reviews }) {
 
     return (
         <Carousel
@@ -14,12 +12,10 @@ export function ImgCarousel({ stay}) {
             autoPlay={false}
             navButtonsProps={{
                 style: {
-                    // position:'absolute',
-                    backgroundColor: 'white',
-                    color: 'black',
+                    backgroundColor: 'black',
+                    color: 'white',
                     width:'15px',
                     height:'15px'
-                    //  bottom:'20px',
                 }
             }}
 
@@ -30,22 +26,26 @@ export function ImgCarousel({ stay}) {
             }}
             indicatorContainerProps={{
                 style: {
-                    position: 'absolute',
-                    bottom: '20px',
+                    display: 'none'
                 }
             }
             }
             activeIndicatorIconButtonProps={{
-                style:{color: "white"}
+                style:{display: "white"}
             }} >
 
             {
-                stay.imgUrls.map((img, idx) =>
-                    <Link to={`/stay/${stay._id}`} className="primary-btn" key={idx} >
-                        <img src={img} alt="rooms"/>
-                    </Link>)
-            }
-
+               reviews.map(review =>
+                <article className="flex column" key={review.id}>
+                    <div className="review-by flex align-center">
+                        <img className="host-img" src={review.by.imgUrl} alt="host"/>
+                        <h4 className="review-name">{review.by.fullname}</h4>
+                    </div>
+                    <div className="review-parameters flex column">
+                        <p className="review-txt">{review.txt}</p>
+                    </div>
+                </article>
+            )}
         </Carousel>
     )
 }

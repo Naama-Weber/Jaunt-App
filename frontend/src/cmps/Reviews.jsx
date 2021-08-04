@@ -3,6 +3,7 @@ import Rate from 'rc-rate';
 import 'rc-rate/assets/index.css';
 import Button from '@material-ui/core/Button';
 import { TxtLength } from './TxtLength'
+import { ReviewCarousel } from './ReviewCarousel'
 
 export function Reviews({ reviews,isMobile }) {
 console.log(isMobile);
@@ -16,20 +17,24 @@ console.log(isMobile);
                 </span>
             </h2>
             <div className="user-reviews flex space-between">
-
-                {reviews.map(review =>
-                    <article className="flex column" key={review.id}>
-                        <div className="review-by flex align-center">
-                            <img className="host-img" src={review.by.imgUrl} alt="host"/>
-                            <h4 className="review-name">{review.by.fullname}</h4>
-                            {/* <p className="review-date"></p> */}
-                        </div>
-                        <div className="review-parameters flex column">
-                            {isMobile && <p className="review-txt"><TxtLength text={review.txt}/></p> }
-                            {/* <p className="review-txt">{review.txt}</p> */}
-                        </div>
-                    </article>
-                )}
+            {isMobile ? 
+            <ReviewCarousel reviews={reviews} />
+            :
+            <div className="flex wrap space-between">
+            {reviews.map(review =>
+                <article className="flex column" key={review.id}>
+                    <div className="review-by flex align-center">
+                        <img className="host-img" src={review.by.imgUrl} alt="host"/>
+                        <h4 className="review-name">{review.by.fullname}</h4>
+                        {/* <p className="review-date"></p> */}
+                    </div>
+                    <div className="review-parameters flex column">
+                        {/* {isMobile && <div className="review-txt"><TxtLength text={review.txt}/></div> } */}
+                        <p className="review-txt">{review.txt}</p>
+                    </div>
+                </article>)}
+                    </div>
+                }
             </div>
             <div className="add-review-container">
                 <h2>Add a review</h2>
