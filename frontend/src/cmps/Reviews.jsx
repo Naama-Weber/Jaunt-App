@@ -36,9 +36,9 @@ console.log(isMobile);
                     </div>
                 }
             </div>
-            <div className="add-review-container">
+            <div className="add-review-container flex ">
                 <h2>Add a review</h2>
-                <div className="details-container grid">
+                <div className="details-container flex ">
                     <div className="stars-container flex">
                         <article className="review-ctg flex align-center">
                             <h4>Cleanliness</h4>

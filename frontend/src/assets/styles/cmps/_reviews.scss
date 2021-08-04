@@ -25,8 +25,12 @@
     .user-reviews,
     .add-review-container {
         flex-wrap: wrap;
-        button {
+
+         button {
             font-family: "cereal-bold";
+            position: absolute;
+            top: 260px;
+            right: 10px;
         }
 
         article {
@@ -35,12 +39,16 @@
         }
     }
     .add-review-container {
+        .details-container > *{
+            flex: 1;
+        }
+        h2{
+            display: flex;
+            // justify-content: end;  
+          }
+        position: relative;
         h3 {
             font-size: 1.5rem;
-        }
-        div.grid {
-            grid-template-rows: 1fr;
-            grid-template-columns: repeat(2, 1fr);
         }
         textarea {
             grid-column: 2;
@@ -71,11 +79,8 @@
         }
         // flex-wrap: nowrap;
         .user-reviews {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x;
             article {
-                scroll-snap-align: start;
+               
                 width: fit-content;
                 border: 1px solid #ddd;
                 border-radius: 10px;
@@ -86,18 +91,16 @@
         }
 
         .add-review-container {
-            position: relative;
             button {
-                position: absolute;
                 top: 430px;
-                left: 190px;
+                right: 10px;
             }
             .details-container {
                 display: flex;
                 flex-direction: column;
 
                 textarea {
-                    max-width: 350px;
+                    max-width: 340px;
                 }
 
                 .stars-container {

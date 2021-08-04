@@ -166,7 +166,7 @@ class _StayDetails extends Component {
     if (!stay) return <div>loading</div>
     // else if (stay && isMobile) return <div>loading</div>
     return (
-      <section className="stay-details-container main-container">
+      <section className="stay-details-container ">
         <NavBar order={order} setLocation={setLocation} setGuestAmount={this.props.setGuestAmount} setDates={this.props.setDates} startDate={startDate} endDate={endDate} />
         <section className="desc-page">
           <StayMainInfo stay={stay} />
