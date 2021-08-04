@@ -1,12 +1,12 @@
 import DatePicker from 'react-datepicker'
 
-export function SelectDates({setDates, startDate, endDate}) {
+export function SelectDates({setDates, startDate, endDate,isMobile}) {
   return (
-    <section className="select-dates-container flex justify-center">
+    <section className="select-dates-container">
       <DatePicker
         minDate={new Date()}
         onChange={dates => setDates(dates)}
-        monthsShown={2}
+        monthsShown={isMobile ? 1 : 2}
         selected={startDate}
         startDate={startDate}
         endDate={endDate}

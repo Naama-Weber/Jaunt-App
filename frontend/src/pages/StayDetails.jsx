@@ -181,12 +181,12 @@ class _StayDetails extends Component {
               <div className="divider"></div>
               <section className="details-container">
                 <h2>Select dates</h2>
-                <SelectDates startDate={startDate} endDate={endDate} setDates={this.setDates} />
+                <SelectDates startDate={startDate} endDate={endDate} setDates={this.setDates} isMobile={isMobile} />
               </section>
             </div>
             {isSecondClick &&
               <Alert text="Order has booked successfully, check it on trips page!" />}
-            <CheckAvailability state={this.state} props={this.props} getGuestsNum={this.getGuestsNum} toggleModal={this.toggleModal} toggleCharge={this.toggleCharge} updateGuestsAmount={this.updateGuestsAmount} handleMouseMove={this.handleMouseMove} setDates={this.setDates} changeBtn={this.changeBtn} getTotalDays={this.getTotalDays} />
+            <CheckAvailability state={this.state} props={this.props} getGuestsNum={this.getGuestsNum} toggleModal={this.toggleModal} toggleCharge={this.toggleCharge} updateGuestsAmount={this.updateGuestsAmount} handleMouseMove={this.handleMouseMove} setDates={this.setDates} changeBtn={this.changeBtn} getTotalDays={this.getTotalDays} isMobile={isMobile} />
           </section>
           <div className="divider"></div>
           <Reviews reviews={stay.reviews} isMobile={isMobile}/>

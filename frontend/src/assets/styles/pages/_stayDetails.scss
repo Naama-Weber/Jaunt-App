@@ -218,6 +218,12 @@
 
 @include for-mobile-layout {
     .desc-page {
+        .description {
+            .availability {
+                margin: 0%;
+            }
+        }
+
         .title-secondery {
             & > * {
                 flex-direction: column;
@@ -256,6 +262,19 @@
 
         .description {
             display: block;
+        }
+    }
+
+    element.style {
+    }
+    .desc-page .description .order-details .react-datepicker__input-container .guests-modal,
+    .desc-page .description .order-details .guests .guests-modal {
+        left: 10px;
+        padding: 0.7rem;
+        font-size: 0.9rem;
+        & > * {
+            gap: 30px;
+            padding: 0.5rem;
         }
     }
 }

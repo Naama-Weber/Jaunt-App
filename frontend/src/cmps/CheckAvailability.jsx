@@ -3,7 +3,7 @@ import { GuestModal } from '../cmps/GuestModal';
 import { utilService } from '../services/utilService';
 
 
-export function CheckAvailability({ state, props, getGuestsNum, toggleModal, updateGuestsAmount, setDates, changeBtn, getTotalDays }) {
+export function CheckAvailability({ state, props, getGuestsNum, toggleModal, updateGuestsAmount, setDates, changeBtn, getTotalDays,isMobile}) {
 
     const { startDate, endDate, isModalShown, isChargeShown } = state
     const { stay, order } = props
@@ -29,7 +29,7 @@ export function CheckAvailability({ state, props, getGuestsNum, toggleModal, upd
                         selected={startDate}
                         startDate={startDate}
                         endDate={endDate}
-                        monthsShown={2}
+                        monthsShown={isMobile ? 1 : 2}
                         dateFormat="dd/MM/yyyy"
                         minDate={new Date()}
                         selectsRange
