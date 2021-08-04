@@ -26,7 +26,7 @@
     .add-review-container {
         flex-wrap: wrap;
 
-         button {
+        button {
             font-family: "cereal-bold";
             position: absolute;
             top: 260px;
@@ -39,13 +39,13 @@
         }
     }
     .add-review-container {
-        .details-container > *{
+        .details-container > * {
             flex: 1;
         }
-        h2{
+        h2 {
             display: flex;
-            // justify-content: end;  
-          }
+            // justify-content: end;
+        }
         position: relative;
         h3 {
             font-size: 1.5rem;
@@ -80,12 +80,11 @@
         // flex-wrap: nowrap;
         .user-reviews {
             article {
-               
                 width: fit-content;
                 border: 1px solid #ddd;
                 border-radius: 10px;
                 padding: 15px;
-                margin: 0 20px 0 0;
+                margin: 0;
                 // height: fit-content;
             }
         }
@@ -98,7 +97,7 @@
             .details-container {
                 display: flex;
                 flex-direction: column;
-
+                width: 100%;
                 textarea {
                     max-width: 340px;
                 }

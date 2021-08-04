@@ -1,3 +1,8 @@
-.select-dates-container{
+.select-dates-container {
     margin: 50px 0;
+}
+@include for-mobile-layout {
+    .react-datepicker__month-container {
+        float: none;
+    }
 }
