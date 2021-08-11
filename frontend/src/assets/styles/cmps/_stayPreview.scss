@@ -12,7 +12,7 @@
     position: relative;
     
     i{
-        color: $clr1;
+        // color: $clr1;
     }
     img{
         width: 100%;
@@ -44,15 +44,15 @@
         min-height: 214px;
     } 
 }
-// }
+
 
 .save-btn{
-    position: absolute;
+    // position: absolute;
     z-index: 1;
-    top: 20px;
-    right: 20px;
+    // top: 20px;
+    // right: 20px;
     i{
-        color: #fff;
+        color: #222;
         
     }
 }

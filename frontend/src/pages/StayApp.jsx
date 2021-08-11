@@ -7,6 +7,7 @@ import { NavBar } from '../cmps/NavBar.jsx'
 import { LoaderCmp } from '../cmps/LoaderCmp'
 import { stayService } from '../services/stayService.js'
 import { socketService } from '../services/socketService.js'
+import { loadUser } from '../store/actions/userActions'
 
 class _StayApp extends Component {
     state = {
@@ -19,6 +20,10 @@ class _StayApp extends Component {
         isLoading: true
     }
     async componentDidMount() {
+        const { loggedInUser } = this.props
+        if (loggedInUser) {
+            this.props.loadUser(this.props.loggedInUser._id)
+        }
         socketService.setup()
         const filterBy = this.getFilterBy();
         await this.props.loadStays(filterBy)
@@ -80,6 +85,7 @@ class _StayApp extends Component {
 
 const mapStateToProps = state => {
     return {
+        loggedInUser: state.userModule.loggedInUser,
         stays: state.stayModule.stays,
         order: state.orderModule.currOrder
 
@@ -89,7 +95,8 @@ const mapDispatchToProps = {
     loadStays,
     setDates,
     setGuestAmount,
-    setLocation
+    setLocation,
+    loadUser
 }
 
 export const StayApp = connect(mapStateToProps, mapDispatchToProps)(_StayApp)
