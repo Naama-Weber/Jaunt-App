@@ -17,12 +17,15 @@ class _StayApp extends Component {
         isModalShown: false,
         x: 0,
         y: 0,
-        isLoading: true
+        isLoading: true,
+        // loggedInUser: true
+
     }
     async componentDidMount() {
-        const { loggedInUser } = this.props
+        const {loggedInUser} = this.props.loadUser(this.props.loggedInUser._id)
         if (loggedInUser) {
-            this.props.loadUser(this.props.loggedInUser._id)
+            console.log(loggedInUser);
+            // this.setState({ loggedInUser })
         }
         socketService.setup()
         const filterBy = this.getFilterBy();
@@ -77,7 +80,7 @@ class _StayApp extends Component {
                 {loc &&
                     <h1 className="headline-explore">Stays in {loc}</h1>
                 }
-                <StayList stays={stays} />
+                <StayList stays={stays}  />
             </section>
         )
     }

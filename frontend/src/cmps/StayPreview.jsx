@@ -2,10 +2,10 @@ import { ImgCarousel } from '../cmps/ImgCarousel'
 import { Link } from 'react-router-dom'
 import { TxtLength } from './TxtLength'
 
-export function StayPreview({ stay }) {
+export function StayPreview({ stay,loggedInUser }) {
 
     function addToWishlist() {
-        console.log('hi')
+        console.log(loggedInUser)
     }
     return (
         <div>

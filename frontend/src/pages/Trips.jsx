@@ -44,7 +44,7 @@ class _Trips extends Component {
 const mapStateToProps = state => {
     return {
         orders: state.userModule.orders,
-        loggedInUser: state.userModule.loggedInUser
+        loggedInUser: state.userModule
     }
 }
 
