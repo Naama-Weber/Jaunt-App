@@ -40,6 +40,17 @@ export function addOrder(order, hostId, userId) {
   }
 }
 
+export function addToWish(stayId) {
+  return async dispatch => {
+    try {
+      await userService.addToWish(stayId)
+      dispatch({ type: 'ADD_TO-WISH', stayId })
+    } catch (err) {
+      console.log('UserActions: err in addToWish', err)
+    }
+  }
+}
+
 export function loadUser(userId) {
   console.log('happened');
   return async dispatch => {

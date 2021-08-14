@@ -1,10 +1,5 @@
 const initialState = {
-    currOrder: {
-        location: '',
-        startDate: '',
-        endDate: '',
-        guestAmount: { adults: 0, children: 0, infants: 0 },
-    }
+stay:[]
 }
 
 export function orderReducer(state = initialState, action = {}) {

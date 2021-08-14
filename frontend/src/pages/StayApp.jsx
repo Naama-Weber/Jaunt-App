@@ -22,11 +22,11 @@ class _StayApp extends Component {
 
     }
     async componentDidMount() {
-        const {loggedInUser} = this.props.loadUser(this.props.loggedInUser._id)
-        if (loggedInUser) {
-            console.log(loggedInUser);
-            // this.setState({ loggedInUser })
-        }
+        const {loggedInUser} = this.props
+        // if (loggedInUser) {
+        //     console.log(loggedInUser);
+        //     // this.setState({ loggedInUser })
+        // }
         socketService.setup()
         const filterBy = this.getFilterBy();
         await this.props.loadStays(filterBy)

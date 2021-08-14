@@ -84,8 +84,8 @@ class _StayDetails extends Component {
   changeBtn = () => {
     const { isChargeShown, isSecondClick, x, y } = this.state
     const style = { backgroundPosition: `calc((100 - ${x}) * 1%) calc((100 - ${y}) * 1%)` }
-    if (!isChargeShown && !isSecondClick) {
-      return <button className="check-btn fs16"
+      if (!isChargeShown && !isSecondClick ) {
+        return <button className="check-btn fs16"
         onMouseMove={this.handleMouseMove}
         style={style}
         onClick={(ev) => this.toggleCharge(ev)}>
@@ -94,9 +94,9 @@ class _StayDetails extends Component {
     } if (isChargeShown && !isSecondClick) {
       return (
         <button className="check-btn fs16"
-          onMouseMove={this.handleMouseMove}
-          style={style}
-          onClick={this.toggleCharge}>
+        onMouseMove={this.handleMouseMove}
+        style={style}
+        onClick={this.toggleCharge}>
           Reserve
         </button>
       )
@@ -107,11 +107,14 @@ class _StayDetails extends Component {
         </span>
       )
     }
-
   }
 
   toggleCharge = (ev) => {
     ev.preventDefault()
+    if (this.props.loggedInUser === null){
+      alert('Log-in first please!')
+      return
+    }
     const { isChargeShown, isSecondClick } = this.state
     const { fullName, img, username, _id } = this.props.loggedInUser
     const { address, country } = this.props.stay.loc
@@ -126,7 +129,7 @@ class _StayDetails extends Component {
     updatedOrder.guest = { fullName, img, username, _id }
     this.props.setLocation(updatedOrder)
     this.props.addOrder(updatedOrder, host._id, _id)
-    this.setState({ Click: true, isChargeShown: false })
+    this.setState({ isSecondClick: true, isChargeShown: false })
 
   }
 
@@ -211,7 +214,7 @@ const mapDispatchToProps = {
   setLocation,
   setDates,
   setGuestAmount,
-  addOrder
+  addOrder,
 }
 
 export const StayDetails = connect(mapStateToProps, mapDispatchToProps)(_StayDetails)

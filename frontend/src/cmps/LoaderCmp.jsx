@@ -1,7 +1,5 @@
 import Loader from "react-loader-spinner";
 export function LoaderCmp() {
-  //other logic
-  console.log('loader');
   
     return (
       <div className="loader flex align-center justify-center">

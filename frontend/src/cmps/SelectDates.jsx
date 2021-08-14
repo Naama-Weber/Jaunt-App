@@ -1,6 +1,6 @@
 import DatePicker from 'react-datepicker'
 
-export function SelectDates({setDates, startDate, endDate,isMobile}) {
+export function SelectDates({ setDates, startDate, endDate, isMobile }) {
   return (
     <section className="select-dates-container">
       <DatePicker

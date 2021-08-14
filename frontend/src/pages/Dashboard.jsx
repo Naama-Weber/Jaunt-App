@@ -10,7 +10,8 @@ class _Dashboard extends Component {
    
 
     componentDidMount() {
-         this.props.loadUser(this.props.loggedInUser._id)
+        this.props.loadUser(this.props.loggedInUser._id)
+        console.log(this.props.loggedInUser)
         socketService.emit('topic', this.props.loggedInUser._id)
         socketService.on('load orders', () => this.props.loadUser(this.props.loggedInUser._id))
     }
