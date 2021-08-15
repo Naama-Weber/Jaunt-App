@@ -2,7 +2,7 @@ import { httpService } from './httpService'
 // import { storageService } from './asyncStorageService'
 // import { utilService } from './utilService'
 
-export const reviewService = {
+export const wishlistService = {
   add,
   query,
   remove

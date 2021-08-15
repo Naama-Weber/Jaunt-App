@@ -1,19 +1,11 @@
 const initialState = {
-stay:[]
+wishlist:[]
 }
 
-export function orderReducer(state = initialState, action = {}) {
+export function wishlistReducer(state = initialState, action = {}) {
     switch (action.type) {
-        case 'SET_LOCATION':
-            return { ...state, currOrder: { ...state.currOrder, location: action.order.location } }
-        case 'SET_DATES':
-            return { ...state, currOrder: { ...state.currOrder, startDate: action.order.startDate, endDate: action.order.endDate } }
-        case 'SET_GUSET_AMOUNT':
-            return { ...state, currOrder: action.guestAmount }
-        case 'RESET_ORDER':
-            return { ...state, currOrder: action.emptyOrder }
-        case 'SET_ORDER':
-            return { ...state, currOrder: action.order }
+        case 'ADD_WISHLIST':
+            return { ...state, wishlist: [...state.wishlist, action.wishlist]}
         default:
             return state
     }

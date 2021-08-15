@@ -8,6 +8,7 @@ import { LoaderCmp } from '../cmps/LoaderCmp'
 import { stayService } from '../services/stayService.js'
 import { socketService } from '../services/socketService.js'
 import { loadUser } from '../store/actions/userActions'
+import { addToWishlist } from '../store/actions/wishlistActions'
 
 class _StayApp extends Component {
     state = {
@@ -23,10 +24,6 @@ class _StayApp extends Component {
     }
     async componentDidMount() {
         const {loggedInUser} = this.props
-        // if (loggedInUser) {
-        //     console.log(loggedInUser);
-        //     // this.setState({ loggedInUser })
-        // }
         socketService.setup()
         const filterBy = this.getFilterBy();
         await this.props.loadStays(filterBy)
@@ -63,7 +60,7 @@ class _StayApp extends Component {
     }
 
     render() {
-        const { stays, order, setDates, setGuestAmount, setLocation } = this.props
+        const { stays, order, setDates, setGuestAmount, setLocation,addToWishlist} = this.props
         if (this.state.isLoading) return (
             <section style={{minHeight:'100vh'}}>
                 <NavBar order={order} setDates={setDates} setGuestAmount={setGuestAmount} setLocation={setLocation} />
@@ -80,7 +77,7 @@ class _StayApp extends Component {
                 {loc &&
                     <h1 className="headline-explore">Stays in {loc}</h1>
                 }
-                <StayList stays={stays}  />
+                <StayList stays={stays} addToWishlist={addToWishlist} />
             </section>
         )
     }
@@ -90,7 +87,8 @@ const mapStateToProps = state => {
     return {
         loggedInUser: state.userModule.loggedInUser,
         stays: state.stayModule.stays,
-        order: state.orderModule.currOrder
+        order: state.orderModule.currOrder,
+         wishlist: state.wishlistMoudule.wishlist
 
     }
 }
@@ -99,7 +97,8 @@ const mapDispatchToProps = {
     setDates,
     setGuestAmount,
     setLocation,
-    loadUser
+    loadUser,
+    addToWishlist
 }
 
 export const StayApp = connect(mapStateToProps, mapDispatchToProps)(_StayApp)
