@@ -19,16 +19,16 @@ class _StayApp extends Component {
         x: 0,
         y: 0,
         isLoading: true,
-        // loggedInUser: true
 
     }
     async componentDidMount() {
         const {loggedInUser} = this.props
+        console.log(loggedInUser);
         socketService.setup()
         const filterBy = this.getFilterBy();
         await this.props.loadStays(filterBy)
         setTimeout(() => {
-            this.setState({ isLoading: false })
+            this.setState({ isLoading: false})
         }, 1500);
     }
 
@@ -60,7 +60,7 @@ class _StayApp extends Component {
     }
 
     render() {
-        const { stays, order, setDates, setGuestAmount, setLocation,addToWishlist} = this.props
+        const { stays, order, setDates, setGuestAmount, setLocation,addToWishlist,loggedInUser} = this.props
         if (this.state.isLoading) return (
             <section style={{minHeight:'100vh'}}>
                 <NavBar order={order} setDates={setDates} setGuestAmount={setGuestAmount} setLocation={setLocation} />
@@ -77,7 +77,7 @@ class _StayApp extends Component {
                 {loc &&
                     <h1 className="headline-explore">Stays in {loc}</h1>
                 }
-                <StayList stays={stays} addToWishlist={addToWishlist} />
+                <StayList stays={stays} addToWishlist={addToWishlist} loggedInUser={loggedInUser} />
             </section>
         )
     }
@@ -88,7 +88,7 @@ const mapStateToProps = state => {
         loggedInUser: state.userModule.loggedInUser,
         stays: state.stayModule.stays,
         order: state.orderModule.currOrder,
-         wishlist: state.wishlistMoudule.wishlist
+         wishlist: state.wishlistModule.wishlist
 
     }
 }

@@ -3,21 +3,21 @@ import { userService } from '../../services/userService'
 // import { socketService,  } from '../../services/socketService'
 
 
-// export function loadWishlist(filterBy) {
-//   return async dispatch => {
-//     try {
-//       const wishlists = await wishlistService.query()
-//       dispatch({ type: 'LOAD_WISHLISTS', wishlists })
+export function loadWishlist(filterBy) {
+  return async dispatch => {
+    try {
+      const wishlists = await wishlistService.query()
+      dispatch({ type: 'LOAD_WISHLISTS', wishlists })
 
-//       // socketService.on(SOCKET_EVENT_wishlist_ADDED, wishlist =>{
-//       //   dispatch({ type: 'ADD_wishlist', wishlist })
-//       // })
+      // socketService.on(SOCKET_EVENT_wishlist_ADDED, wishlist =>{
+      //   dispatch({ type: 'ADD_wishlist', wishlist })
+      // })
 
-//     } catch (err) {
-//       console.log('wishlistActions: err in loadwishlists', err)
-//     }
-//   }
-// }
+    } catch (err) {
+      console.log('wishlistActions: err in loadwishlists', err)
+    }
+  }
+}
 
 export function addToWishlist(wishlist) {
   return async dispatch => {

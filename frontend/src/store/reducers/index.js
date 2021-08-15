@@ -10,5 +10,5 @@ export const rootReducer = combineReducers({
   stayModule: stayReducer,
   orderModule: orderReducer,
   userModule: userReducer,
-  wishlistMoudule: wishlistReducer
+  wishlistModule: wishlistReducer
 })
