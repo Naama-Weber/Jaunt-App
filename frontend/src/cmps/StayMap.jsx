@@ -43,7 +43,7 @@ class _GoogleMap extends Component {
                         zoom={15}
                         center={pos}
                         containerStyle={{
-                            width: '1240px',
+                            width: '1280px',
                             height: '500px',
                             marginTop: '20px',
                         }}>
