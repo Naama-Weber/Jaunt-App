@@ -5,8 +5,6 @@ import { TxtLength } from './TxtLength'
 export function StayPreview({ stay, loggedInUser, addToWishlist }) {
 
     addToWishlist = (stayId) => {
-console.log(loggedInUser);
-        console.log(stayId)
     }
 
     return (

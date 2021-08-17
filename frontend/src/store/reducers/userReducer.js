@@ -11,6 +11,7 @@ const initialState = {
 export function userReducer(state = initialState, action = {}) {
   switch (action.type) {
     case 'ADD_ORDER':
+      console.log('order added')
       return { ...state, orders: [...state.orders, action.order] }
     case 'CANCEL_ORDER':
       return { ...state, orders: state.orders.filter(order => order._id !== action.orderId) }
