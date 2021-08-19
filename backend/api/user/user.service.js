@@ -33,7 +33,6 @@ module.exports = {
 // }
 
 async function getById(userId) {
-    console.log('userId', userId)
     try {
         const collection = await dbService.getCollection('user')
         const user = await collection.findOne({ '_id': ObjectId(userId) })

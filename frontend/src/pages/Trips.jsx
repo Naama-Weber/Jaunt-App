@@ -6,9 +6,14 @@ import trips from '../assets/img/trips.jpg'
 
 class _Trips extends Component {
 
-
+    async componentDidMount() {
+        const {loggedInUser} = this.props
+        console.log(loggedInUser);
+        // await this.props.loadStays()
+    
+    }
     render() {
-        const { orders } = this.props
+        const { orders } = this.props.loggedInUser
         console.log(orders);
         if (!orders) return <div>No orders yet!</div>
         return (
@@ -21,7 +26,7 @@ class _Trips extends Component {
                         <article className="flex column">
                             <img src={order.stay.imgUrls[0]} alt="stay" />
                             <section className="order-details">
-                                <div className="dates fs16">{utilService.formatTime(order.startDate)} - {utilService.formatTime(order.endDate)}</div>
+                                {/* <div className="dates fs16">{utilService.formatTime(order.startDate)} - {utilService.formatTime(order.endDate)}</div> */}
                                 <h2 className="country fs26">{order.stay.country}</h2>
                                 <div className="divider"></div>
                                 <div className="fs14 description flex space-between align-center">
@@ -45,8 +50,11 @@ class _Trips extends Component {
 const mapStateToProps = state => {
     return {
         orders: state.userModule.orders,
-        loggedInUser: state.userModule
+        loggedInUser: state.userModule.loggedInUser
     }
 }
+const mapDispatchToProps = {
+    // loadStays,
+}
 
-export const Trips = connect(mapStateToProps, null)(_Trips)
+export const Trips = connect(mapStateToProps, mapDispatchToProps)(_Trips)

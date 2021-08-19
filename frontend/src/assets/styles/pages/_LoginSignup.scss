@@ -10,6 +10,16 @@ min-height: 85vh;
     h2{
         padding: 20px 0;
     }
+    form{
+        & > *{
+            margin-bottom: 20px;
+        }
+        .primary-btn{
+            width: 100px;
+            height: 30px;
+            border-radius: 5px;
+        }
+    }
     .form-container {
         margin: auto;
         text-align: center;

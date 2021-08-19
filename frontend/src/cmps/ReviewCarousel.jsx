@@ -35,8 +35,8 @@ export function ReviewCarousel({ reviews }) {
             }} >
 
             {
-               reviews.map(review =>
-                <article className="flex column" key={review.id}>
+               reviews.map((review,idx) =>
+                <article className="flex column" key={idx}>
                     <div className="review-by flex align-center">
                         <img className="host-img" src={review.by.imgUrl} alt="host"/>
                         <h4 className="review-name">{review.by.fullname}</h4>

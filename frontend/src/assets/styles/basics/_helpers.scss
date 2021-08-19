@@ -90,6 +90,11 @@
 .loader{
     padding-top: 100px
 }
+.hover{
+    &:hover{
+        cursor: pointer;
+    }
+}
 
 
 // Media helpers

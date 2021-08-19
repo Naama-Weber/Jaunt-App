@@ -5,7 +5,8 @@ const initialState = {
   loggedInUser: localLoggedinUser,
   loginErr: null,
   orders: [],
-  wishlist: []
+  wishlist: [],
+  houses:[]
 }
 
 export function userReducer(state = initialState, action = {}) {
@@ -13,6 +14,9 @@ export function userReducer(state = initialState, action = {}) {
     case 'ADD_ORDER':
       console.log('order added')
       return { ...state, orders: [...state.orders, action.order] }
+      case 'ADD_HOME':
+        console.log('home added')
+        return { ...state, houses: [...state.houses, action.home] }
     case 'CANCEL_ORDER':
       return { ...state, orders: state.orders.filter(order => order._id !== action.orderId) }
     case 'UPDATE_ORDER':

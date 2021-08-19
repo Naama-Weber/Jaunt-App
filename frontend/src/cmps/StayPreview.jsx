@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { TxtLength } from './TxtLength'
 
 export function StayPreview({ stay, loggedInUser, addToWishlist }) {
+    const {wishlist} = loggedInUser
+    console.log(wishlist);
 
     addToWishlist = (stayId) => {
     }

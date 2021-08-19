@@ -8,6 +8,8 @@ import { Trips } from './pages/Trips'
 import { Dashboard } from './pages/Dashboard'
 import { WishList } from './pages/WishList'
 import { Footer } from './cmps/Footer'
+import { NewHomeForm } from './pages/NewHomeForm'
+import { MyStays } from './pages/MyStays'
 
 
 export function App() {
@@ -21,6 +23,8 @@ export function App() {
             <Route path="/trips" component={Trips} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/wishList" component={WishList} />
+            <Route path="/myStays" component={MyStays} />
+            <Route path="/add" component={NewHomeForm} />
             <Route path="/login" component={LoginSignup} />
             <Route path="/" component={Home} />
           </Switch>

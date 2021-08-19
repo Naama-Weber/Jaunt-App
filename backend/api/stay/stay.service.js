@@ -10,6 +10,7 @@ module.exports = {
 
 async function query(filterBy = {}) {
     const criteria = _buildCriteria(filterBy)
+    logger.debug(`stay.service-query filterby ${filterBy}`)
     try {
         const collection = await dbService.getCollection('stay')
         var stays = await collection.find(criteria).toArray()

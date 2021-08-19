@@ -26,22 +26,23 @@ class _StayDetails extends Component {
     y: 0
   }
 
-  handleMouseMove = event => {
-    this.setState({
-      x: event.clientX,
-      y: event.clientY,
-    })
-  }
-
+  
   async componentDidMount() {
     await this.props.setStay(this.props.match.params.id)
     socketService.emit('topic', this.props.stay.host._id)
     if (window.innerWidth < 769) {
       const isMobile = true
       this.setState({ isMobile });
+    }
   }
+  
+  handleMouseMove = event => {
+    this.setState({
+      x: event.clientX,
+      y: event.clientY,
+    })
   }
-
+  
   componentWillUnmount() {
     socketService.off('topic')
   }

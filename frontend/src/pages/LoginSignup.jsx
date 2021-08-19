@@ -70,7 +70,7 @@ class _LoginSignup extends Component {
             {pageMode === 'login' && <section className="login-signup flex column align-center">
                 <h2>Login</h2>
                 <Formik initialValues={credentials} onSubmit={this.onSubmit} >
-                    <Form className="flex column">
+                    <Form className="flex column align-center">
                         <Field type="username" label="Username" name="username" as={this.styledField} />
                         <ErrorMessage name="username" component="div" />
                         <Field type="password" label="Password" name="password" as={this.styledField} />

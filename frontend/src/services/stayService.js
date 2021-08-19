@@ -38,11 +38,13 @@ function remove(stayId) {
 
 }
 async function add(stay) {
-  // const addedStay = await httpService.post(`stay`, stay)
+  console.log('stay', stay)
+  const addedStay = await httpService.post(`stay`, stay)
+  console.log('addedStay', addedStay)
 
   // stay.byUser = userService.getLoggedinUser()
   // stay.aboutUser = await userService.getById(stay.aboutUserId)
-  const addedStay = storageService.post('stay', stay)
+  // const addedStay = storageService.post('stay', stay)
 
   return addedStay
 }

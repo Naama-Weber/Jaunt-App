@@ -21,8 +21,8 @@ export function Reviews({ reviews, isMobile }) {
                     <ReviewCarousel reviews={reviews} />
                     :
                     <div className="flex wrap space-between">
-                        {reviews.map(review =>
-                            <article className="flex column" key={review.id}>
+                        {reviews.map((review,idx) =>
+                            <article className="flex column" key={idx}>
                                 <div className="review-by flex align-center">
                                     <img className="host-img" src={review.by.imgUrl} alt="host" />
                                     <h4 className="review-name">{review.by.fullname}</h4>
@@ -38,8 +38,8 @@ export function Reviews({ reviews, isMobile }) {
                 <h2>Add a review</h2>
                 <div className="details-container flex ">
                     <div className="stars-container flex justify-center">
-                        {reviewCtg.map(ctg =>
-                            <article className="review-ctg flex space-evenly">
+                        {reviewCtg.map((ctg,idx) =>
+                            <article className="review-ctg flex space-evenly" key={idx}>
                                 <h4>{ctg}</h4>
                                 <Rate />
                             </article>

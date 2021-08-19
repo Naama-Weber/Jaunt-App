@@ -29,6 +29,7 @@ export function removeUser(userId) {
   }
 }
 export function addOrder(order, hostId, userId) {
+  console.log('order', order)
   return async dispatch => {
     try {
       await userService.addOrder(order, hostId, userId)
@@ -36,6 +37,19 @@ export function addOrder(order, hostId, userId) {
       dispatch({ type: 'ADD_ORDER', order })
     } catch (err) {
       console.log('UserActions: err in addOrder', err)
+    }
+  }
+}
+
+export function addHome(home, hostId) {
+  console.log('home', home)
+  return async dispatch => {
+    try {
+      await userService.addHome(home, hostId)
+      socketService.emit('add home', home)
+      dispatch({ type: 'ADD_HOME', home })
+    } catch (err) {
+      console.log('UserActions: err in addHome', err)
     }
   }
 }
