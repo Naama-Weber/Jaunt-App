@@ -12,7 +12,8 @@ export const userService = {
     update,
     getLoggedinUser,
     addOrder,
-    addHome
+    addHome,
+    addToWish
 }
 
 window.userService = userService
@@ -63,13 +64,24 @@ async function addHome(home, hostId) {
     // Handle case in which admin updates other user's details
     // if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
 }
+
+async function addToWish(stay, userId) {
+    // return storageService.post('order', order)
+    const user = await httpService.get(`user/${userId}`)
+    user.wishlist.push(stay)
+    // const myHome = {...home}
+    httpService.put(`user/${userId}`, user)
+    // Handle case in which admin updates other user's details
+    // if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
+}
+
+
 async function update(user) {
     // return storageService.put('user', user)
     user = await httpService.put(`user/${user._id}`, user)
     // Handle case in which admin updates other user's details
     if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
 }
-
 
 async function login(credentials) {
     try {

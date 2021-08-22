@@ -38,9 +38,9 @@ class _StayFilter extends Component {
         })
     }
 
-    toggleModal = () => {
+    openModal = () => {
         const { isModalShown } = this.state
-        this.setState({ isModalShown: !isModalShown })
+        this.setState({ isModalShown: true })
     }
 
 
@@ -91,14 +91,19 @@ class _StayFilter extends Component {
         this.props.history.push(`/stay?loc=${location}`)
     }
 
+    closeModal = () => {
+        const { isModalShown } = this.state
+        this.setState({ isModalShown: false })
+    }
+
     render() {
         const { guestAmount, location } = this.props.order
         const { startDate, endDate, isModalShown, x, y, filterBy } = this.state
         const style = { backgroundPosition: `calc((100 - ${x}) * 1%) calc((100 - ${y}) * 1%)` }
         return (
             <form className="stay-filter flex justify-center align-center" >
-                <div className = "flex column justify-center">
-                        <i className="fas fa-map-marked-alt fs24"></i>
+                <div className="flex column justify-center">
+                    <i className="fas fa-map-marked-alt fs24"></i>
                     <div className="location">
                         <label className="label fs12" htmlFor="location">Location</label>
                         <input type="text" name="location" id="location" placeholder={location ? location : "Where are you going?"} value={filterBy.location} onChange={this.handleChange} />
@@ -123,14 +128,14 @@ class _StayFilter extends Component {
                 </div>
                 <div className="tiny-border"></div>
                 <i className="fas fa-user-plus fs24"></i>
-                <div className="guests flex column justify-center" onClick={(ev) => this.toggleModal()}>
+                <div className="guests flex column justify-center" onClick={(ev) => this.openModal()}>
                     <label className="label fs12" htmlFor="guestAmount">Guests</label>
                     {(guestAmount.adults + guestAmount.children + guestAmount.infants) <= 0 ?
                         <span className="add-guests fs14">Add guests</span> :
                         <span className="add-guests fs14">{guestAmount.adults + guestAmount.children + guestAmount.infants} guests</span>
                     }
                     <div className="guest-modal">
-                        <GuestModal isModalShown={isModalShown} guestAmount={guestAmount} updateGuestsAmount={this.updateGuestsAmount} />
+                        <GuestModal isModalShown={isModalShown} guestAmount={guestAmount} updateGuestsAmount={this.updateGuestsAmount} closeModal={this.closeModal} openModal={this.openModal} />
                     </div>
                 </div>
                 <button onMouseMove={this.handleMouseMove}

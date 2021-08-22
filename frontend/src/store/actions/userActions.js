@@ -54,11 +54,11 @@ export function addHome(home, hostId) {
   }
 }
 
-export function addToWish(stayId) {
+export function addToWish(stay,userId) {
   return async dispatch => {
     try {
-      await userService.addToWish(stayId)
-      dispatch({ type: 'ADD_TO-WISH', stayId })
+      await userService.addToWish(stay,userId)
+      dispatch({ type: 'ADD_TO-WISH', stay })
     } catch (err) {
       console.log('UserActions: err in addToWish', err)
     }

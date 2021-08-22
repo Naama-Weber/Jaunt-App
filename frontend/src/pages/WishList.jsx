@@ -26,7 +26,7 @@ class _WishList extends Component {
                 <Link to={`/stay/${wish._id}`} className="primary-btn">
                         <article className="flex column">
                             <img src={wish.imgUrls[0]} alt="stay" />
-                            <span className="remove"><i class="fs20 fas fa-trash"></i></span>
+                            <span className="remove"><i className="fs20 fas fa-trash"></i></span>
                             <section className="wishlist-details">
                                 <h2 className="country fs26">{wish.loc.country}</h2>
                                 <div className="divider"></div>
