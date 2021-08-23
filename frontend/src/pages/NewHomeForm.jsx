@@ -16,7 +16,7 @@ class _NewHomeForm extends Component {
             capacity: 0,
             summary: '',
             country: '',
-            adress: '',
+            address: '',
         },
         isSubmit: false
     }
@@ -72,10 +72,10 @@ class _NewHomeForm extends Component {
                             style={{ width: 400 }}
                         />
                         <TextField
-                            name="adress"
+                            name="address"
                             variant="outlined"
-                            value={stay.adress}
-                            label="adress"
+                            value={stay.address}
+                            label="address"
                             color="primary"
                             onChange={this.handleChange}
                             required={true}

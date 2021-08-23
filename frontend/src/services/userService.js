@@ -13,7 +13,8 @@ export const userService = {
     getLoggedinUser,
     addOrder,
     addHome,
-    addToWish
+    addToWish,
+    removeFromWish
 }
 
 window.userService = userService
@@ -69,6 +70,18 @@ async function addToWish(stay, userId) {
     // return storageService.post('order', order)
     const user = await httpService.get(`user/${userId}`)
     user.wishlist.push(stay)
+    httpService.put(`user/${userId}`, user)
+    // Handle case in which admin updates other user's details
+    // if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
+}
+
+async function removeFromWish(wishlist,wishId, userId) {
+    // return storageService.post('order', order)
+    console.log(wishlist,wishId, userId);
+    const user = await httpService.get(`user/${userId}`)
+    const idx = wishlist.findIndex(wish => wish._id === wishId)
+    console.log('idx', idx)
+    wishlist.splice(idx,1)
     // const myHome = {...home}
     httpService.put(`user/${userId}`, user)
     // Handle case in which admin updates other user's details

@@ -27,10 +27,11 @@ export function GuestModal({ isModalShown, updateGuestsAmount, guestAmount, clos
 
     document.addEventListener("click", (event) => {
         if (event.target.closest('.guests')) {
+            console.log('open');
             openModal()
         }
-        else if (!event.target.closest('.guests-modal')) {
-            // console.log('close');
+        else if (isModalShown && !event.target.matches('.guests-modal')) {
+            console.log('close');
             closeModal()
         }
 

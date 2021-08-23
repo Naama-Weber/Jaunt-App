@@ -65,6 +65,18 @@ export function addToWish(stay,userId) {
   }
 }
 
+export function removeFromWish(wishlist,wishId, userId) {
+  return async dispatch => {
+    try {
+      await userService.removeFromWish(wishlist,wishId, userId)
+      dispatch({ type: 'REMOVE_FROM_WISH', wishId })
+      console.log(wishlist,wishId, userId);
+    } catch (err) {
+      console.log('stayActions: err in removestay', err)
+    }
+  }
+}
+
 export function loadUser(userId) {
   console.log('happened');
   return async dispatch => {

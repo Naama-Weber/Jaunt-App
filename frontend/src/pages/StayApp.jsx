@@ -16,11 +16,15 @@ class _StayApp extends Component {
             location: '',
         },
         isModalShown: false,
+        isOnWish:false,
         x: 0,
         y: 0,
         isLoading: true,
 
     }
+
+
+    
     async componentDidMount() {
         const {loggedInUser} = this.props
         console.log(loggedInUser);
@@ -32,7 +36,8 @@ class _StayApp extends Component {
         }, 1500);
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    
+    Update(prevProps, prevState) {
         const currLocation = this.getFilterBy().location
         let search = prevProps.location.search;
         let params = new URLSearchParams(search);

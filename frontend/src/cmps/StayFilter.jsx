@@ -21,6 +21,23 @@ class _StayFilter extends Component {
         y: 0
     }
 
+    componentDidMount(){
+        const { isModalShown } = this.state
+        this.setState({isModalShown:isModalShown})
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.isModalShown !== this.state.isModalShown) {
+          console.log('pokemons state has changed.')
+        }
+      }
+
+    //   componentWillUnmount(prevProps, prevState){
+    //     if (prevState.isModalShown !== this.state.isModalShown) {
+    //         console.log('pokemons state has changed.')
+    //       }
+    //   }
+
     handleMouseMove = event => {
         this.setState({
             x: event.clientX,
@@ -41,6 +58,8 @@ class _StayFilter extends Component {
     openModal = () => {
         const { isModalShown } = this.state
         this.setState({ isModalShown: true })
+        console.log(isModalShown);
+
     }
 
 
@@ -94,6 +113,7 @@ class _StayFilter extends Component {
     closeModal = () => {
         const { isModalShown } = this.state
         this.setState({ isModalShown: false })
+        console.log(isModalShown);
     }
 
     render() {

@@ -23,14 +23,14 @@ class _MyStays extends Component {
                 <div className="table-box">
                     <table className="houses-table">
                         <tr className="head-row">
-                            <th>name</th><th>country</th><th>adress</th><th>price</th><th>capacity</th><th>summary</th>
+                            <th>name</th><th>country</th><th>address</th><th>price</th><th>capacity</th><th>summary</th>
                         </tr>
                         {houses.map((house, idx) => {
                             return (
                                 <tr className="data row" key={house.name}>
                                     <td>{house.name}</td>
                                     <td>{house.country}</td>
-                                    <td>{house.adress}</td>
+                                    <td>{house.address}</td>
                                     <td>{house.price}</td>
                                     <td>{house.capacity}</td>
                                     <td>{house.summary}</td>
