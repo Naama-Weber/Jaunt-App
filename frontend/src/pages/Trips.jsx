@@ -22,8 +22,8 @@ class _Trips extends Component {
                 <h2>Trips</h2>
                 <div className="divider"></div>
                 <div className="orders-container grid">
-                    {orders.map(order =>
-                        <article className="flex column">
+                    {orders.map((order,idx) =>
+                        <article className="flex column" key={idx}>
                             <img src={order.stay.imgUrls[0]} alt="stay" />
                             <section className="order-details">
                                 {/* <div className="dates fs16">{utilService.formatTime(order.startDate)} - {utilService.formatTime(order.endDate)}</div> */}

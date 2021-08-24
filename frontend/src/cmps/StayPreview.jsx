@@ -4,11 +4,8 @@ import { TxtLength } from './TxtLength'
 import Alert from '../cmps/Alert'
 
 export function StayPreview({ stay, loggedInUser, addToWish }) {
-    if(loggedInUser){
-    }
+
     const {wishlist,_id} = loggedInUser
-       
-    // const {}
     
     function add(stay,userId,ev) {
         ev.preventDefault()

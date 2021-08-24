@@ -8,7 +8,7 @@ import trips from '../assets/img/trips.jpg'
 
 class _WishList extends Component {
 
-    componentDidMount() {
+    async componentDidMount() {
         this.props.loadUser(this.props.loggedInUser._id)
     }
 
@@ -29,8 +29,8 @@ class _WishList extends Component {
                 <h2>Wishlist</h2>
                 <div className="divider"></div>
                 <div className="wishlist-container grid">
-                    {wishlist.map(wish =>
-                        <Link to={`/stay/${wish._id}`} className="primary-btn" key={wish._id}>
+                    {wishlist.map((wish,idx) =>
+                        <Link to={`/stay/${wish._id}`} className="primary-btn" key={idx}>
                             <article className="flex column" >
                                 <img src={wish.imgUrls[0]} alt="stay" />
                                 <span className="remove" onClick={(ev) => this.remove(ev, wishlist, wish._id, _id)}><i className="fs20 fas fa-trash"></i></span>

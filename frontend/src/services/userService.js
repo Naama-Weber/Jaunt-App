@@ -77,8 +77,8 @@ async function addToWish(stay, userId) {
 
 async function removeFromWish(wishlist,wishId, userId) {
     // return storageService.post('order', order)
-    console.log(wishlist,wishId, userId);
     const user = await httpService.get(`user/${userId}`)
+    console.log( userId);
     const idx = wishlist.findIndex(wish => wish._id === wishId)
     console.log('idx', idx)
     wishlist.splice(idx,1)

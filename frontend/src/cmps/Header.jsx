@@ -4,24 +4,40 @@ import { connect } from 'react-redux'
 import { UserModal } from './UserModal'
 import { resetOrder } from '../store/actions/orderActions'
 import { onLogout } from '../store/actions/userActions'
-import {AddHomeModal} from "./AddHomeModal";
+import { AddHomeModal } from "./AddHomeModal";
 
 class _Header extends Component {
     state = {
         isUserModalShown: false,
-        isModalOpen:false
+        isModalOpen: false
     }
 
-    toggleModal = () =>{
-        const {isModalOpen} = this.state
-        this.setState({isModalOpen: !isModalOpen})
+    // async componentDidMount(){
+    //     const { isUserModalShown } = this.state
+    //     this.setState({isUserModalShown:false})
+    //     console.log(isUserModalShown);
+    // }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (prevState.isUserModalShown !== this.state.isUserModalShown) {
+    //       console.log('pokemons state has changed.')
+    //     }
+    //   }
+
+    toggleModal = () => {
+        const { isModalOpen } = this.state
+        this.setState({ isModalOpen: !isModalOpen })
         console.log(isModalOpen);
     }
 
-    toggleUserModal() {
-        const { isUserModalShown } = this.state
-        this.setState({ isUserModalShown: !isUserModalShown })
-    }
+    // openUserModal() {
+    //     this.setState({ isUserModalShown: true })
+    // }
+
+    // closeUserModal() {
+
+    //     this.setState({ isUserModalShown: false })
+    // }
 
     goToHomepage = () => {
         const emptyOrder = {
@@ -40,7 +56,7 @@ class _Header extends Component {
 
     render() {
         const { loggedInUser, orders } = this.props;
-        const { isUserModalShown,isModalOpen } = this.state
+        const { isUserModalShown, isModalOpen } = this.state
         return <header className="flex space-between align-center">
             <div onClick={() => { this.goToHomepage() }} className="logo-container flex space-between">
                 <NavLink exact to="/">
@@ -61,7 +77,7 @@ class _Header extends Component {
                 <section />
             </section>
             <section>
-                <button className="login-btn flex space-between align-center" onClick={() => { this.toggleUserModal() }}>
+                <button className="login-btn flex space-between align-center" onClick={() => this.toggleModal()} >
                     <i className="fas fa-bars fs16"></i>
                     {loggedInUser &&
                         <div className="flex">
@@ -75,7 +91,10 @@ class _Header extends Component {
                     {/* {loggedInUser && <span>
                             Hello {loggedInUser.fullName}
                         </span>} */}
-                    {isUserModalShown && <UserModal orders={orders} loggedInUser={loggedInUser} logout={this.logout} />}
+                    {
+                        isModalOpen &&
+                        <UserModal orders={orders} loggedInUser={loggedInUser} logout={this.logout} toggleModal={this.toggleModal} isUserModalShown={isUserModalShown} />
+                    }
                 </div>
 
             </section>

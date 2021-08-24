@@ -21,7 +21,7 @@ class _StayFilter extends Component {
         y: 0
     }
 
-    componentDidMount(){
+    async componentDidMount(){
         const { isModalShown } = this.state
         this.setState({isModalShown:isModalShown})
     }
@@ -37,14 +37,14 @@ class _StayFilter extends Component {
     //         console.log('pokemons state has changed.')
     //       }
     //   }
-
+    
     handleMouseMove = event => {
         this.setState({
             x: event.clientX,
             y: event.clientY,
         })
     }
-
+    
     handleChange = ({ target }) => {
         const { name, value } = target
         const { filterBy } = this.state
@@ -54,30 +54,16 @@ class _StayFilter extends Component {
             [name]: value
         })
     }
-
+    
     openModal = () => {
-        const { isModalShown } = this.state
+        // const { isModalShown } = this.state
         this.setState({ isModalShown: true })
-        console.log(isModalShown);
-
     }
-
-
-
-    // updateGuestsAmount = (key, num, ev) => {
-    //     // need to handle case when num is < 0
-    //     ev.stopPropagation();
-    //     ev.preventDefault();
-    //     switch (key) {
-    //         case 'adults': this.setState({ key: num })
-    //             break
-    //         case 'children': this.setState({ key: num })
-    //             break
-    //         case 'infants': this.setState({ key: num })
-    //             break
-    //         default:
-    //     }
-    // }
+    
+    closeModal = () => {
+        // const { isModalShown } = this.state
+        this.setState({ isModalShown: false })
+    }
 
     updateGuestsAmount = (typeOfGuest, diff, ev) => {
         // need to handle case when num is < 0
@@ -110,11 +96,6 @@ class _StayFilter extends Component {
         this.props.history.push(`/stay?loc=${location}`)
     }
 
-    closeModal = () => {
-        const { isModalShown } = this.state
-        this.setState({ isModalShown: false })
-        console.log(isModalShown);
-    }
 
     render() {
         const { guestAmount, location } = this.props.order
@@ -148,7 +129,8 @@ class _StayFilter extends Component {
                 </div>
                 <div className="tiny-border"></div>
                 <i className="fas fa-user-plus fs24"></i>
-                <div className="guests flex column justify-center" onClick={(ev) => this.openModal()}>
+                {/* onClick={(ev) => this.openModal()}  no use now*/}
+                <div className="guests flex column justify-center" > 
                     <label className="label fs12" htmlFor="guestAmount">Guests</label>
                     {(guestAmount.adults + guestAmount.children + guestAmount.infants) <= 0 ?
                         <span className="add-guests fs14">Add guests</span> :
