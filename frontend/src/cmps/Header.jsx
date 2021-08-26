@@ -66,7 +66,10 @@ class _Header extends Component {
             </div>
             <section className="header-nav flex fs16">
                 <NavLink to="/stay" >Explore</NavLink>
-                <NavLink to="/add" >Become a Host</NavLink>
+                {loggedInUser ?
+                <NavLink to="/add" >Become a Host</NavLink> : 
+                <NavLink to="/login" >Become a Host</NavLink>
+                }
                 {/* <span className="hover" onClick={() => this.toggleModal()}>Become a Host</span>
                 <AddHomeModal isOpen={isModalOpen} toggle={this.toggleModal}>
                     <h1>test</h1>
@@ -74,6 +77,7 @@ class _Header extends Component {
                     <button onClick={() => this.toggleModal(false)}>toggle</button>
                 </AddHomeModal> */}
                 {/* <div>Become a Host</div> */}
+
                 <section />
             </section>
             <section>
