@@ -1,13 +1,17 @@
 import { ImgCarousel } from '../cmps/ImgCarousel'
 import { Link } from 'react-router-dom'
 import { TxtLength } from './TxtLength'
+import Alert from '../cmps/Alert'
 
-export function StayPreview({ stay, loggedInUser, addToWishlist }) {
-    const {wishlist} = loggedInUser
-    console.log(wishlist);
-
-    addToWishlist = (stayId) => {
+export function StayPreview({ stay, loggedInUser, addToWish }) {
+    
+    
+    function add(stay,userId,ev) {
+        ev.preventDefault()
+        ev.stopPropagation();
+         addToWish(stay,userId)      
     }
+    
 
     return (
         <div>
@@ -21,7 +25,10 @@ export function StayPreview({ stay, loggedInUser, addToWishlist }) {
                             {stay.reviews.length === 1 && <span className="reviews-amount">({stay.reviews.length} review)</span>}
                             {stay.reviews.length > 1 && <span className="reviews-amount">({stay.reviews.length} reviews)</span>}
                         </span>{ }
-                        <span onClick={() => addToWishlist(stay._id)} className="save-btn right flex"><i className="far fa-heart"> </i></span>
+                        {
+                            loggedInUser&&
+                            <span onClick={(ev) => add(stay,loggedInUser._id,ev)} className="save-btn right flex"><i className="far fa-heart"> </i></span>
+                        }
                     </div>
                     <div className="stay-name fs16"><TxtLength text={stay.name} /> </div>
                     <p className="stay-summery fs16">{`${stay.capacity} guests`} </p>

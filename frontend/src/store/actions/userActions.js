@@ -54,21 +54,33 @@ export function addHome(home, hostId) {
   }
 }
 
-export function addToWish(stayId) {
+export function addToWish(stay,userId) {
   return async dispatch => {
     try {
-      await userService.addToWish(stayId)
-      dispatch({ type: 'ADD_TO-WISH', stayId })
+      await userService.addToWish(stay,userId)
+      dispatch({ type: 'ADD_TO-WISH', stay })
     } catch (err) {
       console.log('UserActions: err in addToWish', err)
     }
   }
 }
 
-export function loadUser(userId) {
-  console.log('happened');
+export function removeFromWish(wishlist,wishId, userId) {
   return async dispatch => {
     try {
+      console.log('hello');
+      await userService.removeFromWish(wishlist,wishId, userId)
+      dispatch({ type: 'REMOVE_FROM_WISH', wishId })
+    } catch (err) {
+      console.log('stayActions: err in removestay', err)
+    }
+  }
+}
+
+export function loadUser(userId) {
+  return async dispatch => {
+    try {
+      console.log('happened');
       const user = await userService.getById(userId)
       dispatch({ type: 'SET_USER', user })
     } catch (err) {

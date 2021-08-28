@@ -8,7 +8,7 @@ import { LoaderCmp } from '../cmps/LoaderCmp'
 import { stayService } from '../services/stayService.js'
 import { socketService } from '../services/socketService.js'
 import { loadUser } from '../store/actions/userActions'
-import { addToWishlist } from '../store/actions/wishlistActions'
+import { addToWish } from '../store/actions/userActions'
 
 class _StayApp extends Component {
     state = {
@@ -16,11 +16,15 @@ class _StayApp extends Component {
             location: '',
         },
         isModalShown: false,
+        isOnWish:false,
         x: 0,
         y: 0,
         isLoading: true,
 
     }
+
+
+    
     async componentDidMount() {
         const {loggedInUser} = this.props
         console.log(loggedInUser);
@@ -32,7 +36,8 @@ class _StayApp extends Component {
         }, 1500);
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    
+    Update(prevProps, prevState) {
         const currLocation = this.getFilterBy().location
         let search = prevProps.location.search;
         let params = new URLSearchParams(search);
@@ -60,7 +65,7 @@ class _StayApp extends Component {
     }
 
     render() {
-        const { stays, order, setDates, setGuestAmount, setLocation,addToWishlist,loggedInUser} = this.props
+        const { stays, order, setDates, setGuestAmount, setLocation,addToWish,loggedInUser} = this.props
         if (this.state.isLoading) return (
             <section style={{minHeight:'100vh'}}>
                 <NavBar order={order} setDates={setDates} setGuestAmount={setGuestAmount} setLocation={setLocation} />
@@ -77,7 +82,7 @@ class _StayApp extends Component {
                 {loc &&
                     <h1 className="headline-explore">Stays in {loc}</h1>
                 }
-                <StayList stays={stays} addToWishlist={addToWishlist} loggedInUser={loggedInUser} />
+                <StayList stays={stays} addToWish={addToWish} loggedInUser={loggedInUser} />
             </section>
         )
     }
@@ -98,7 +103,7 @@ const mapDispatchToProps = {
     setGuestAmount,
     setLocation,
     loadUser,
-    addToWishlist
+    addToWish
 }
 
 export const StayApp = connect(mapStateToProps, mapDispatchToProps)(_StayApp)

@@ -77,9 +77,14 @@ class _StayDetails extends Component {
     }
   }
 
-  toggleModal = () => {
-    const { isModalShown } = this.state
-    this.setState({ isModalShown: !isModalShown })
+  openModal = () => {
+    // const { isModalShown } = this.state
+    this.setState({ isModalShown: true })
+  }
+
+  closeModal = () => {
+    // const { isModalShown } = this.state
+    this.setState({ isModalShown: false })
   }
 
   changeBtn = () => {
@@ -190,7 +195,7 @@ class _StayDetails extends Component {
             </div>
             {isSecondClick &&
               <Alert text="Order has booked successfully, check it on trips page!" />}
-            <CheckAvailability state={this.state} props={this.props} getGuestsNum={this.getGuestsNum} toggleModal={this.toggleModal} toggleCharge={this.toggleCharge} updateGuestsAmount={this.updateGuestsAmount} handleMouseMove={this.handleMouseMove} setDates={this.setDates} changeBtn={this.changeBtn} getTotalDays={this.getTotalDays} isMobile={isMobile} />
+            <CheckAvailability state={this.state} props={this.props} getGuestsNum={this.getGuestsNum} openModal={this.openModal} closeModal={this.closeModal} toggleCharge={this.toggleCharge} updateGuestsAmount={this.updateGuestsAmount} handleMouseMove={this.handleMouseMove} setDates={this.setDates} changeBtn={this.changeBtn} getTotalDays={this.getTotalDays} isMobile={isMobile} />
           </section>
           <div className="divider"></div>
           <Reviews reviews={stay.reviews} isMobile={isMobile}/>

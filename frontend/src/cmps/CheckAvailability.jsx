@@ -3,7 +3,7 @@ import { GuestModal } from '../cmps/GuestModal';
 import { utilService } from '../services/utilService';
 
 
-export function CheckAvailability({ state, props, getGuestsNum, toggleModal, updateGuestsAmount, setDates, changeBtn, getTotalDays,isMobile}) {
+export function CheckAvailability({ state, props, getGuestsNum, openModal, closeModal, updateGuestsAmount, setDates, changeBtn, getTotalDays,isMobile}) {
 
     const { startDate, endDate, isModalShown, isChargeShown } = state
     const { stay, order } = props
@@ -35,12 +35,12 @@ export function CheckAvailability({ state, props, getGuestsNum, toggleModal, upd
                         selectsRange
                         shouldCloseOnSelect={true}
                     />
-                    <div className="guests flex column" onClick={(ev) => toggleModal()}>
+                    <div className="guests flex column" >
                         <div className="guestAmount">
                             <p>{getGuestsNum() >= 1 ? `${getGuestsNum()} Guests` : 'Add guests'} </p>
                         </div>
                         <div className="guest-modal">
-                            <GuestModal isModalShown={isModalShown} guestAmount={guestAmount} updateGuestsAmount={updateGuestsAmount} />
+                            <GuestModal isModalShown={isModalShown} guestAmount={guestAmount} updateGuestsAmount={updateGuestsAmount} closeModal={closeModal} openModal={openModal} />
                         </div>
                     </div>
                 </div>

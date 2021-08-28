@@ -1,38 +1,47 @@
 import { useState, useEffect, useRef } from 'react';
 
-export function GuestModal({ isModalShown, updateGuestsAmount, guestAmount }) {
+export function GuestModal({ isModalShown, updateGuestsAmount, guestAmount, closeModal, openModal }) {
 
-    // const wrapperRef = useRef(null);
-    // const [isVisible, setIsVisible] = useState(false);
+    const wrapperRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
 
-    // // below is the same as componentDidMount and componentDidUnmount
-    // useEffect(() => {
-    //     // document.addEventListener("click", handleClickInside, true);
-    //     document.addEventListener("click", handleClickOutside, false);
-    //     return () => {
+    // below is the same as componentDidMount and componentDidUnmount
+    //     useEffect(() => {
     //         // document.addEventListener("click", handleClickInside, true);
     //         document.addEventListener("click", handleClickOutside, false);
+    //         return () => {
+    //             // document.addEventListener("click", handleClickInside, true);
+    //             document.addEventListener("click", handleClickOutside, false);
 
-    //     };
-    // }, []);
+    //         };
+    //     }, []);
 
-    // const handleClickOutside = event => {
-    //     console.log(wrapperRef.current);
-    //     if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-    //         setIsVisible(false)
-    //     }
-    // }
-    // const handleClickInside = event => {
-    //     console.log(wrapperRef.current);
-    //     if (wrapperRef.current && wrapperRef.current.contains(event.target)) {
-    //         setIsVisible(true)
+    //     const handleClickOutside = event => {
+    //         console.log(wrapperRef.current);
+    //         if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+    //             setIsVisible(false)
+    //         }
     //     }
 
     // };
 
+    document.addEventListener("click", (event) => {
+        if (event.target.closest('.guests')) {
+            console.log('open');
+            openModal()
+        }
+        else if (isModalShown && !event.target.matches('.guests-modal')) {
+            console.log('close');
+            closeModal()
+        }
+
+    }, false);
+
+
+
 
     return (
-       isModalShown && (
+        isModalShown && (
             // <div className="guests-modal flex column" ref={wrapperRef}>
             <div className="guests-modal flex column" >
 
