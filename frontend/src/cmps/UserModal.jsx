@@ -2,21 +2,23 @@ import { Link, NavLink } from 'react-router-dom'
 
 export function UserModal({ loggedInUser, logout, isUserModalShown, openUserModal, closeUserModal }) {
 
-    // document.addEventListener("click", (event) => {
-    //     if (event.target.closest('.login-btn')) {
-    //         console.log('open');
-    //         openUserModal()
-    //     }
-    //     else if (isUserModalShown && !event.target.matches('.login-btn')) {
-    //         console.log('close');
-    //         closeUserModal()
-    //     }
+    document.addEventListener("click", (event) => {
+        if (event.target.closest('.login-btn')) {
+            console.log('open');
+            openUserModal()
+        }
+        else if (isUserModalShown && !event.target.matches('.login-btn')) {
+            console.log('close');
+            closeUserModal()
+        }
 
-    // }, false);
+    }, false);
+
+
     return (
-        <div>
-        
-                <div className="user-modal flex column">
+        isUserModalShown&& (
+
+            <div className="user-modal flex column">
                     <ul>
                         {!loggedInUser &&
                             <NavLink to="/login">
@@ -56,9 +58,9 @@ export function UserModal({ loggedInUser, logout, isUserModalShown, openUserModa
                     </ul>
                 </div>
 
-            
-        </div>
-    )
+
+)
+)
 }
 
 

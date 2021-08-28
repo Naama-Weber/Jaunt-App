@@ -24,20 +24,19 @@ class _Header extends Component {
     //     }
     //   }
 
-    toggleModal = () => {
-        const { isModalOpen } = this.state
-        this.setState({ isModalOpen: !isModalOpen })
-        console.log(isModalOpen);
+    // toggleModal = () => {
+    //     const { isModalOpen } = this.state
+    //     this.setState({ isModalOpen: !isModalOpen })
+    //     console.log(isModalOpen);
+    // }
+
+    openUserModal = () =>{
+        this.setState({ isUserModalShown: true })
     }
 
-    // openUserModal() {
-    //     this.setState({ isUserModalShown: true })
-    // }
-
-    // closeUserModal() {
-
-    //     this.setState({ isUserModalShown: false })
-    // }
+    closeUserModal = () =>{
+        this.setState({ isUserModalShown: false })
+    }
 
     goToHomepage = () => {
         const emptyOrder = {
@@ -81,7 +80,7 @@ class _Header extends Component {
                 <section />
             </section>
             <section>
-                <button className="login-btn flex space-between align-center" onClick={() => this.toggleModal()} >
+                <button className="login-btn flex space-between align-center"  >
                     <i className="fas fa-bars fs16"></i>
                     {loggedInUser &&
                         <div className="flex">
@@ -95,10 +94,10 @@ class _Header extends Component {
                     {/* {loggedInUser && <span>
                             Hello {loggedInUser.fullName}
                         </span>} */}
-                    {
-                        isModalOpen &&
-                        <UserModal orders={orders} loggedInUser={loggedInUser} logout={this.logout} toggleModal={this.toggleModal} isUserModalShown={isUserModalShown} />
-                    }
+                    
+                        
+                        <UserModal orders={orders} loggedInUser={loggedInUser} logout={this.logout}  isUserModalShown={isUserModalShown} openUserModal={this.openUserModal}  closeUserModal={this.closeUserModal}/>
+                    
                 </div>
 
             </section>
