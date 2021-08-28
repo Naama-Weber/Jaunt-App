@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+// import { useState, useEffect, useRef } from 'react';
 
-export function GuestModal({ isModalShown, updateGuestsAmount, guestAmount, closeModal, openModal }) {
+export function GuestModal({ isModalShown, updateGuestsAmount, guestAmount, closeModal, openModal,toggleModal }) {
 
-    const wrapperRef = useRef(null);
-    const [isVisible, setIsVisible] = useState(false);
+    // const wrapperRef = useRef(null);
+    // const [isVisible, setIsVisible] = useState(false);
 
     // below is the same as componentDidMount and componentDidUnmount
     //     useEffect(() => {
@@ -25,14 +25,15 @@ export function GuestModal({ isModalShown, updateGuestsAmount, guestAmount, clos
 
     // };
 
-    document.addEventListener("click", (event) => {
+    document.addEventListener("mousedown", (event) => {
         if (event.target.closest('.guests')) {
-            console.log('open');
             openModal()
+            console.log('open');
+            
         }
-        else if (isModalShown && !event.target.matches('.guests-modal')) {
-            console.log('close');
+        if (isModalShown && !event.target.matches('.guests-modal')) {
             closeModal()
+            console.log('close');
         }
 
     }, false);
@@ -44,7 +45,6 @@ export function GuestModal({ isModalShown, updateGuestsAmount, guestAmount, clos
         isModalShown && (
             // <div className="guests-modal flex column" ref={wrapperRef}>
             <div className="guests-modal flex column" >
-
                 <div className="adults flex space-between">
                     <div className="txt flex column">
                         <p>Adults</p>

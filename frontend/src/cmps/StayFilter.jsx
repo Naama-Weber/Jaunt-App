@@ -21,6 +21,7 @@ class _StayFilter extends Component {
         y: 0
     }
 
+    
     async componentDidMount(){
         const { isModalShown } = this.state
         this.setState({isModalShown:isModalShown})
@@ -54,6 +55,11 @@ class _StayFilter extends Component {
             [name]: value
         })
     }
+
+    // toggleModal = () => {
+    //     const { isModalShown } = this.state
+    //     this.setState({ isModalShown: !isModalShown })
+    // }
     
     openModal = () => {
         // const { isModalShown } = this.state
@@ -130,14 +136,14 @@ class _StayFilter extends Component {
                 <div className="tiny-border"></div>
                 <i className="fas fa-user-plus fs24"></i>
                 {/* onClick={(ev) => this.openModal()}  no use now*/}
-                <div className="guests flex column justify-center" > 
+                <div className="guests flex column justify-center" onClick={(ev) => this.openModal()}  > 
                     <label className="label fs12" htmlFor="guestAmount">Guests</label>
                     {(guestAmount.adults + guestAmount.children + guestAmount.infants) <= 0 ?
                         <span className="add-guests fs14">Add guests</span> :
                         <span className="add-guests fs14">{guestAmount.adults + guestAmount.children + guestAmount.infants} guests</span>
                     }
                     <div className="guest-modal">
-                        <GuestModal isModalShown={isModalShown} guestAmount={guestAmount} updateGuestsAmount={this.updateGuestsAmount} closeModal={this.closeModal} openModal={this.openModal} />
+                        <GuestModal isModalShown={isModalShown} guestAmount={guestAmount} updateGuestsAmount={this.updateGuestsAmount} closeModal={this.closeModal} openModal={this.openModal} toggleModal={this.toggleModal} />
                     </div>
                 </div>
                 <button onMouseMove={this.handleMouseMove}
