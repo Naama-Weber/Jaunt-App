@@ -58,7 +58,7 @@ export function addToWish(stay,userId) {
   return async dispatch => {
     try {
       await userService.addToWish(stay,userId)
-      dispatch({ type: 'ADD_TO-WISH', stay })
+      dispatch({ type: 'ADD_TO_WISH', stay })
     } catch (err) {
       console.log('UserActions: err in addToWish', err)
     }
@@ -66,9 +66,9 @@ export function addToWish(stay,userId) {
 }
 
 export function removeFromWish(wishlist,wishId, userId) {
+  console.log('hello');
   return async dispatch => {
     try {
-      console.log('hello');
       await userService.removeFromWish(wishlist,wishId, userId)
       dispatch({ type: 'REMOVE_FROM_WISH', wishId })
     } catch (err) {
@@ -80,7 +80,7 @@ export function removeFromWish(wishlist,wishId, userId) {
 export function loadUser(userId) {
   return async dispatch => {
     try {
-      console.log('happened');
+      // console.log('happened');
       const user = await userService.getById(userId)
       dispatch({ type: 'SET_USER', user })
     } catch (err) {

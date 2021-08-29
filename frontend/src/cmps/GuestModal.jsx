@@ -1,6 +1,6 @@
 // import { useState, useEffect, useRef } from 'react';
 
-export function GuestModal({ isModalShown, updateGuestsAmount, guestAmount, closeModal, openModal,toggleModal }) {
+export function GuestModal({ isModalShown, updateGuestsAmount, guestAmount, closeModal, openModal, toggleModal }) {
 
     // const wrapperRef = useRef(null);
     // const [isVisible, setIsVisible] = useState(false);
@@ -25,15 +25,15 @@ export function GuestModal({ isModalShown, updateGuestsAmount, guestAmount, clos
 
     // };
 
-    document.addEventListener("mousedown", (event) => {
-        if (event.target.closest('.guests')) {
-            openModal()
-            console.log('open');
+    document.addEventListener("click", (ev) => {
+        if (ev.target.closest('.guests')) {
+            openModal(ev)
             
+
         }
-        if (isModalShown && !event.target.matches('.guests-modal')) {
-            closeModal()
-            console.log('close');
+        else if (isModalShown && !ev.target.matches('.guests-modal')) {
+            closeModal(ev)
+            
         }
 
     }, false);

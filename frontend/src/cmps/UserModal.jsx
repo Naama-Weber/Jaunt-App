@@ -4,11 +4,11 @@ export function UserModal({ loggedInUser, logout, isUserModalShown, openUserModa
 
     document.addEventListener("click", (event) => {
         if (event.target.closest('.login-btn')) {
-            console.log('open');
+            
             openUserModal()
         }
         else if (isUserModalShown && !event.target.matches('.login-btn')) {
-            console.log('close');
+            
             closeUserModal()
         }
 

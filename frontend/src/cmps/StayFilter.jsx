@@ -28,8 +28,10 @@ class _StayFilter extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
+        const { isModalShown } = this.state
+
         if (prevState.isModalShown !== this.state.isModalShown) {
-          console.log('pokemons state has changed.')
+          console.log(isModalShown)
         }
       }
 
@@ -61,8 +63,11 @@ class _StayFilter extends Component {
     //     this.setState({ isModalShown: !isModalShown })
     // }
     
-    openModal = () => {
+    openModal = (ev) => {
         // const { isModalShown } = this.state
+        // ev.stopPropagation();
+        // ev.preventDefault()
+        // console.log(ev);
         this.setState({ isModalShown: true })
     }
     
@@ -77,6 +82,7 @@ class _StayFilter extends Component {
         ev.preventDefault();
         const updatedOrder = { ...this.props.order }
         updatedOrder.guestAmount[typeOfGuest] += diff
+        if(updatedOrder.guestAmount[typeOfGuest] < 0 ) return
         this.props.setGuestAmount(updatedOrder)
     }
 

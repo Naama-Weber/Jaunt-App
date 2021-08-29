@@ -13,15 +13,15 @@ class _WishList extends Component {
     }
 
     remove = (ev, wishlist, wishId, userId) => {
-        console.log("remove");
         ev.preventDefault()
         ev.stopPropagation();
         removeFromWish(wishlist, wishId, userId)
+        console.log("remove",wishlist, wishId, userId);
     }
 
     render() {
         const { wishlist, _id } = this.props.loggedInUser
-        console.log(wishlist);
+        // console.log(wishlist);
         if (!wishlist) return <div>There's nothing to see here</div>
         return (
             <section className="wishlist-page">
