@@ -26,6 +26,7 @@ export function App() {
             <Route path="/myStays" component={MyStays} />
             <Route path="/add" component={NewHomeForm} />
             <Route path="/login" component={LoginSignup} />
+            <Route path="/signup" component={LoginSignup} />
             <Route path="/" component={Home} />
           </Switch>
         </main>

@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { connect } from 'react-redux'
 import { onLogin, onSignup } from '../store/actions/userActions'
-import { TextField} from '@material-ui/core'
+import { TextField } from '@material-ui/core'
 import { Header } from '../cmps/Header';
+import { Link, NavLink } from 'react-router-dom'
+
 
 class _LoginSignup extends Component {
 
@@ -58,44 +60,53 @@ class _LoginSignup extends Component {
     }
 
     styledField = (props) => {
-        return  <TextField {...props} variant="outlined" color={'primary'} />
+        return <TextField {...props} variant="outlined" color={'primary'} />
     }
 
     render() {
         const { pageMode, credentials, userInfo } = this.state
         const { loginErr } = this.props
         if (!pageMode) return ''
-        return (<section className="login-page">
-        <Header/>
-            {pageMode === 'login' && <section className="login-signup flex column align-center">
-                <h2>Login</h2>
-                <Formik initialValues={credentials} onSubmit={this.onSubmit} >
-                    <Form className="flex column align-center">
-                        <Field type="username" label="Username" name="username" as={this.styledField} />
-                        <ErrorMessage name="username" component="div" />
-                        <Field type="password" label="Password" name="password" as={this.styledField} />
-                        <ErrorMessage name="password" component="div" as={this.styledField} />
-                        {loginErr && <p>{loginErr}</p>}
-                        <button type="submit" className="primary-btn">Login</button>
-                    </Form>
-                </Formik>
-            </section>}
-            {pageMode === 'signup' &&
-                <section className="login-signup flex column align-center full">
-                    <h1>Signup</h1>
-                    <Formik initialValues={userInfo} validateOnChange={false} validateOnBlur={false} validate={this.validate} onSubmit={this.onSubmit}>
-                        <Form className="flex column">
-                            <Field type="fullname" label="Fullname" name="fullname" as={this.styledField} />
-                            <ErrorMessage name="fullname" component="p" />
+        return (
+            <>
+            <Header />
+            <section className="login-page flex column align-center ">
+                {pageMode === 'login' && <section className=" login flex column align-center ">
+                    <h2>Login</h2>
+                    <Formik initialValues={credentials} onSubmit={this.onSubmit} >
+                        <Form className="flex column align-center">
                             <Field type="username" label="Username" name="username" as={this.styledField} />
-                            <ErrorMessage name="username" component="p" />
+                            <ErrorMessage name="username" component="div" />
                             <Field type="password" label="Password" name="password" as={this.styledField} />
-                            <ErrorMessage name="password" component="p" />
-                            <button type="submit" className="primary-btn">Signup</button>
+                            <ErrorMessage name="password" component="div" as={this.styledField} />
+                            {loginErr && <p>{loginErr}</p>}
+                            <button type="submit" className="primary-btn">Login</button>
                         </Form>
                     </Formik>
+                {/* <NavLink to="/signup">
+                    <p onClick={(ev) => this.setState({ pageMode })}>Signup</p>
+                </NavLink> */}
                 </section>}
-        </section>
+                {pageMode === 'signup' &&
+                    <section className=" signup flex column align-center full">
+                        <h1>Signup</h1>
+                        <Formik initialValues={userInfo} validateOnChange={false} validateOnBlur={false} validate={this.validate} onSubmit={this.onSubmit}>
+                            <Form className="flex column">
+                                <Field type="fullname" label="Fullname" name="fullname" as={this.styledField} />
+                                <ErrorMessage name="fullname" component="p" />
+                                <Field type="username" label="Username" name="username" as={this.styledField} />
+                                <ErrorMessage name="username" component="p" />
+                                <Field type="password" label="Password" name="password" as={this.styledField} />
+                                <ErrorMessage name="password" component="p" />
+                                <button type="submit" className="primary-btn">Signup</button>
+                            </Form>
+                        </Formik>
+                    </section>}
+
+
+            </section>
+            </>
+
         )
     }
 }

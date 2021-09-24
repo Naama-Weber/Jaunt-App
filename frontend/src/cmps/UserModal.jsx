@@ -3,12 +3,10 @@ import { Link, NavLink } from 'react-router-dom'
 export function UserModal({ loggedInUser, logout, isUserModalShown, openUserModal, closeUserModal }) {
 
     document.addEventListener("click", (event) => {
-        if (event.target.closest('.login-btn')) {
-            
+        if (event.target.closest('.login-btn')) {           
             openUserModal()
         }
-        else if (isUserModalShown && !event.target.matches('.login-btn')) {
-            
+        else if (isUserModalShown && !event.target.matches('.login-btn')) {            
             closeUserModal()
         }
 

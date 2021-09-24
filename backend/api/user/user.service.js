@@ -83,10 +83,9 @@ async function add(user) {
     try {
         // peek only updatable fields!
         const userToAdd = {
+            fullname: user.fullname,
             username: user.username,
             password: user.password,
-            fullname: user.fullname,
-            score: user.score || 0
         }
         const collection = await dbService.getCollection('user')
         await collection.insertOne(userToAdd)
