@@ -80,6 +80,7 @@ async function update(user) {
 }
 
 async function add(user) {
+    console.log('user',user);
     try {
         // peek only updatable fields!
         const userToAdd = {

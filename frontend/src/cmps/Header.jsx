@@ -12,11 +12,9 @@ class _Header extends Component {
         isModalOpen: false
     }
 
-    // async componentDidMount(){
-    //     const { isUserModalShown } = this.state
-    //     this.setState({isUserModalShown:false})
-    //     console.log(isUserModalShown);
-    // }
+    componentDidMount() {
+
+    }
 
     // componentDidUpdate(prevProps, prevState) {
     //     if (prevState.isUserModalShown !== this.state.isUserModalShown) {
@@ -30,11 +28,11 @@ class _Header extends Component {
     //     console.log(isModalOpen);
     // }
 
-    openUserModal = () =>{
+    openUserModal = () => {
         this.setState({ isUserModalShown: true })
     }
 
-    closeUserModal = () =>{
+    closeUserModal = () => {
         this.setState({ isUserModalShown: false })
     }
 
@@ -66,8 +64,8 @@ class _Header extends Component {
             <section className="header-nav flex fs16">
                 <NavLink to="/stay" >Explore</NavLink>
                 {loggedInUser ?
-                <NavLink to="/add" >Become a Host</NavLink> : 
-                <NavLink to="/login" >Become a Host</NavLink>
+                    <NavLink to="/add" >Become a Host</NavLink> :
+                    <NavLink to="/login" >Become a Host</NavLink>
                 }
                 {/* <span className="hover" onClick={() => this.toggleModal()}>Become a Host</span>
                 <AddHomeModal isOpen={isModalOpen} toggle={this.toggleModal}>
@@ -91,13 +89,8 @@ class _Header extends Component {
                     }
                 </button>
                 <div className="user-container">
-                    {/* {loggedInUser && <span>
-                            Hello {loggedInUser.fullName}
-                        </span>} */}
-                    
-                        
-                        <UserModal orders={orders} loggedInUser={loggedInUser} logout={this.logout}  isUserModalShown={isUserModalShown} openUserModal={this.openUserModal}  closeUserModal={this.closeUserModal}/>
-                    
+                    <UserModal orders={orders} loggedInUser={loggedInUser} logout={this.logout} isUserModalShown={isUserModalShown} openUserModal={this.openUserModal} closeUserModal={this.closeUserModal} />
+
                 </div>
 
             </section>
