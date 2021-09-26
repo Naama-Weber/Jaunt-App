@@ -29,13 +29,12 @@ class _LoginSignup extends Component {
         const pageMode = this.props.location.pathname === '/login' ? 'login' : 'signup'
         this.setState({ pageMode })
     }
-
+    
     componentDidUpdate() {
         const { loggedInUser } = this.props
         if (loggedInUser) this.props.history.goBack()
-
     }
-
+    
     validate = (values) => {
         const errors = {}
         if (!values.username) {
@@ -53,15 +52,20 @@ class _LoginSignup extends Component {
         }
         return errors
     }
-
+    
     onSubmit = (values) => {
         const { pageMode } = this.state
         const { onLogin, onSignup } = this.props
         pageMode === 'login' ? onLogin(values) : onSignup(values)
     }
-
+    
     styledField = (props) => {
         return <TextField {...props} variant="outlined" color={'primary'} />
+    }
+    
+    setSignUp = (path) => {
+         let pageMode = path
+         this.setState({ pageMode})
     }
 
     render() {
@@ -71,7 +75,7 @@ class _LoginSignup extends Component {
         return (
             <div className="login-page flex column">
                 <Header />
-                <section className="content flex column align-center ">
+                <section className="content flex column align-center justify-center">
                     {pageMode === 'login' && <section className=" login flex column align-center ">
                         <h2>Login</h2>
                         <Formik initialValues={credentials} onSubmit={this.onSubmit} >
@@ -84,9 +88,9 @@ class _LoginSignup extends Component {
                                 <button type="submit" className="primary-btn">Login</button>
                             </Form>
                         </Formik>
-                        {/* <NavLink to="/signup">
-                <p onClick={(ev) => this.setState({ pageMode })}>Signup</p>
-            </NavLink> */}
+                        <NavLink to="/signup">
+                            <p className="log-sign-btn" onClick={(ev) => this.setSignUp('signup')}>Sign-up</p>
+                        </NavLink>
                     </section>}
                     {pageMode === 'signup' &&
                         <section className=" signup flex column align-center ">
@@ -102,6 +106,9 @@ class _LoginSignup extends Component {
                                     <button type="submit" className="primary-btn">Sign-up</button>
                                 </Form>
                             </Formik>
+                            <NavLink to="/login">
+                            <p className="log-sign-btn" onClick={(ev) => this.setSignUp('login')}>Login</p>
+                        </NavLink>
                         </section>}
                 </section>
             </div>

@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { StayFilter } from './StayFilter'
 import { Header } from './Header'
 
+
 export function Hero({order, setDates, setGuestAmount, setLocation}) {
     return (
         <section className="hero flex column full main-header home-container space-between">

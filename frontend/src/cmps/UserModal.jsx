@@ -20,14 +20,14 @@ export function UserModal({ loggedInUser, logout, isUserModalShown, openUserModa
                 <ul>
                     {!loggedInUser &&
                         <NavLink to="/login">
-                            <li className="login-link">Login</li>
+                            <li className="login-link" >Login</li>
                         </NavLink>
                     }
-                    {!loggedInUser &&
+                    {/* {!loggedInUser &&
                         <NavLink to="/signup">
                             <li className="login-link">Sign-up</li>
                         </NavLink>
-                    }
+                    } */}
                     {loggedInUser &&
                         <div className="options-loggedin">
                             {/* <li>Messages</li> */}
