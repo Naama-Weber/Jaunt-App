@@ -1,16 +1,19 @@
 import { Link, NavLink } from 'react-router-dom'
-
+import { useEffect } from 'react';
 export function UserModal({ loggedInUser, logout, isUserModalShown, openUserModal, closeUserModal }) {
 
-    document.addEventListener("click", (event) => {
-        if (event.target.closest('.login-btn')) {
-            openUserModal()
-        }
-        else if (isUserModalShown && !event.target.matches('.login-btn')) {
-            closeUserModal()
-        }
-
-    }, false);
+    useEffect(() => {
+        document.addEventListener("click", (event) => {
+            if (event.target.closest('.login-btn')) {
+                console.log('click');
+                openUserModal()
+            }
+            else if (isUserModalShown && !event.target.matches('.login-btn')) {
+                closeUserModal()
+            }
+        }, false);
+        return () => { document.removeEventListener("click", (event)=>{}) }
+      }, [isUserModalShown])
 
 
     return (

@@ -1,42 +1,21 @@
-// import { useState, useEffect, useRef } from 'react';
+ import {  useEffect } from 'react';
 
 export function GuestModal({ isModalShown, updateGuestsAmount, guestAmount, closeModal, openModal, toggleModal }) {
 
-    // const wrapperRef = useRef(null);
-    // const [isVisible, setIsVisible] = useState(false);
+    useEffect(() => {
+        document.addEventListener("click", (ev) => {
+            if (ev.target.closest('.guests')) {
+                console.log('click');
+                openModal(ev)
+            }
+            else if (isModalShown && !ev.target.matches('.guests-modal')) {
+                closeModal(ev)          
+            }
+        }, false);
+        return () => { document.removeEventListener("click", (event)=>{}) }
+      }, [isModalShown])
 
-    // below is the same as componentDidMount and componentDidUnmount
-    //     useEffect(() => {
-    //         // document.addEventListener("click", handleClickInside, true);
-    //         document.addEventListener("click", handleClickOutside, false);
-    //         return () => {
-    //             // document.addEventListener("click", handleClickInside, true);
-    //             document.addEventListener("click", handleClickOutside, false);
 
-    //         };
-    //     }, []);
-
-    //     const handleClickOutside = event => {
-    //         console.log(wrapperRef.current);
-    //         if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-    //             setIsVisible(false)
-    //         }
-    //     }
-
-    // };
-
-    document.addEventListener("click", (ev) => {
-        if (ev.target.closest('.guests')) {
-            openModal(ev)
-            
-
-        }
-        else if (isModalShown && !ev.target.matches('.guests-modal')) {
-            closeModal(ev)
-            
-        }
-
-    }, false);
 
 
 
